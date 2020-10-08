@@ -1,6 +1,12 @@
 from bs4 import BeautifulSoup
-import requests
 import asyncio
+import aiohttp
+
+
+async def get_data(url):
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url) as response:
+            return await response.text() 
 
 async def search_catalog(query, page):
     """Get a list of items from ebay's catalogue based on the query and page parameter.
@@ -19,7 +25,8 @@ async def search_catalog(query, page):
 
     #getting the webpage
     url='https://www.ebay.com/sch/i.html?_nkw='+query.replace(' ', '+')+'&_pgn='+str(page)
-    soup=BeautifulSoup(requests.get(url).text, 'html.parser')
+    data=await get_data(url)
+    soup=BeautifulSoup(data, 'html.parser')
     
     #initializing a list to store all dicts
     list=[]
