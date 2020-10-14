@@ -42,9 +42,12 @@ async def search_catalog(query, page):
         price=i.find('span', class_='s-item__price').get_text()
         shipping=i.find('span', class_='s-item__shipping s-item__logisticsCost').get_text()
         link=i.a['href']
+        item_id=link.split('/')[-1].split('?')[0]
+        link='https://www.ebay.com/itm/'+item_id
         image=i.find('img', class_='s-item__image-img')['src']
         
         list.append({
+            'item_id': item_id,
             'title': title,
             'condition': condition,
             'price': price,
@@ -54,3 +57,22 @@ async def search_catalog(query, page):
         })   
       
     return list
+    
+async def search_item(item_id):
+    #getting the webpage
+    url='https://www.ebay.com/itm/'+str(item_id)
+    data=await get_data(url)
+    soup=BeautifulSoup(data, 'html.parser')
+    
+    #extract variables from the webpage
+    title=soup.find('h1', id='itemTitle').get_text().replace('Details about   ', '')
+    image=soup.find('img', id='icImg')['src']
+    price=soup.find('span', id='priceIsum').get_text()
+    shipping=
+    condition
+    description
+    rating
+    
+    return 
+    
+print(asyncio.run(search_item(item_id=184453248228)))
