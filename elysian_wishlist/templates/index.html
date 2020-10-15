@@ -1,10 +1,44 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Document</title>
-  </head>
-  <body>
-      Hello World 2
-  </body>
-</html>
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Wishlists</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1 style="text-align: center">Wishlists</h1>
+    {% if lists|length < 1 %}
+    <h4 style="text-align: center">There are no wishlists. Create one below!</h4>
+    {% else %}
+    <table>
+        <tr>
+            <th>List</th>
+            <th>Added</th>
+            <th>Actions</th>
+        </tr>
+        {% for list in lists %}
+            <tr>
+                <td>
+                    <a href="/list/{{list.id}}">
+                        {{ list.content }}
+                    </a>
+                </td>
+                <td>{{ list.date_created.date() }}</td>
+                <td>
+                    <a href="/delete/{{list.id}}">Delete</a>
+                    <br>
+                    <a href="/update/{{list.id}}">Update</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+    <div class="form">
+        <form action="/" method="POST">
+            <input type="text" name="content" id="content">
+            <input type="submit" value="Add List">
+        </form>
+    </div>
+</div>
+{% endblock %}
