@@ -1,14 +1,21 @@
 from bs4 import BeautifulSoup
-import asyncio
-import aiohttp
+import requests
 
+def get_data(url):
+    """Get the HTML webpage using the URL.
+    
+    Parameters:
+    -----------
+    url: string
+        A string which is a url.
+        
+    Returns:
+    --------
+    The HTML information of the webpage.
+    """
+    return requests.get(url).text
 
-async def get_data(url):
-    async with aiohttp.ClientSession() as session:
-        async with session.get(url) as response:
-            return await response.text() 
-
-async def search_catalog(query, page):
+def search_catalog(query, page):
     """Get a list of items from ebay's catalogue based on the query and page parameter.
     
     Parameters:
@@ -25,7 +32,7 @@ async def search_catalog(query, page):
 
     #getting the webpage
     url='https://www.ebay.com/sch/i.html?_nkw='+query.replace(' ', '+')+'&_pgn='+str(page)
-    data=await get_data(url)
+    data=get_data(url)
     soup=BeautifulSoup(data, 'html.parser')
     
     #initializing a list to store all dicts
@@ -58,21 +65,39 @@ async def search_catalog(query, page):
       
     return list
     
-async def search_item(item_id):
+def search_item(item_id):
+    """Get information about an item based on id.
+    
+    Parameters:
+    -----------
+    item_id: int
+        The id number for an item on ebay.
+        
+    Returns:
+    --------
+    A dictionary contains relevant information for the item.
+    """
+    
     #getting the webpage
     url='https://www.ebay.com/itm/'+str(item_id)
-    data=await get_data(url)
+    data=get_data(url)
     soup=BeautifulSoup(data, 'html.parser')
     
     #extract variables from the webpage
     title=soup.find('h1', id='itemTitle').get_text().replace('Details about   ', '')
     image=soup.find('img', id='icImg')['src']
-    price=soup.find('span', id='priceIsum').get_text()
-    shipping=
-    condition
-    description
-    rating
+    price=soup.find('span', id='prcIsum').get_text()
+    shipping=soup.find('span', id='fshippingCost').get_text().replace('\n', '')
+    condition=soup.find('div', id='vi-itm-cond').get_text()
     
-    return 
-    
-print(asyncio.run(search_item(item_id=184453248228)))
+    return {
+        'item_id': item_id,
+        'title': title,
+        'condition': condition,
+        'price': price,
+        'shipping': shipping,
+        'link': url,
+        'image': image,
+    }
+
+
