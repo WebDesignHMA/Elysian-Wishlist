@@ -6,12 +6,12 @@ from werkzeug.security import generate_password_hash, check_password_hash
 db_name = "auth.db"
 
 app = Flask(__name__)
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///auth.db'.format(db=db_name)
-#app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///auth.db'.format(db=db_name)
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
 # SECRET_KEY required for session, flash and Flask Sqlalchemy to work
-#app.config['SECRET_KEY'] = 'OCML3BRawWEUeaxcuKHLpw'
+app.config['SECRET_KEY'] = 'OCML3BRawWEUeaxcuKHLpw'
 
 db = SQLAlchemy(app)
 
