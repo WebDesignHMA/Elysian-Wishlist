@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Wishlists</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1 style="text-align: center">Wishlist: <b><u>{{ result.0.content }}</u></b></h1>
+    {% if result.1|length < 1 %}
+    <h4 style="text-align: center">There are no sub lists of selected wishlist. <br> Create one below!</h4>
+    {% else %}
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Added</th>
+            <th>Actions</th>
+        </tr>
+        {% for sublist in result.1 %}
+            <tr>
+                <td>{{ sublist.child_content }}</td>
+                <td>{{ sublist.date_created.date() }}</td>
+                <td>
+                    <a href="/deletesub/{{sublist.id}}">Delete</a>
+                    <br>
+                    <a href="/updatesub/{{sublist.id}}">Update</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+    <div class="form">
+        <form action="" method="POST">
+            <input type="text" name="content" id="content" required>
+            <input type="hidden" name="parentId" value="{{ result.0.id }}">
+            <input type="submit" value="Add sub list">
+        </form>
+    </div>
+</div>
+{% endblock %}
