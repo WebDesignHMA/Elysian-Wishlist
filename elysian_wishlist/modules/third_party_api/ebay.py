@@ -1,21 +1,8 @@
 from bs4 import BeautifulSoup
 import requests
+import json
 
-def get_data(url):
-    """Get the HTML webpage using the URL.
-    
-    Parameters:
-    -----------
-    url: string
-        A string which is a url.
-        
-    Returns:
-    --------
-    The HTML information of the webpage.
-    """
-    return requests.get(url).text
-
-def search_catalog(query, page):
+def ebay_search_catalog(query, page):
     """Get a list of items from ebay's catalogue based on the query and page parameter.
     
     Parameters:
@@ -32,7 +19,7 @@ def search_catalog(query, page):
 
     #getting the webpage
     url='https://www.ebay.com/sch/i.html?_nkw='+query.replace(' ', '+')+'&_pgn='+str(page)
-    data=get_data(url)
+    data=requests.get(url).text
     soup=BeautifulSoup(data, 'html.parser')
     
     #initializing a list to store all dicts
@@ -63,9 +50,9 @@ def search_catalog(query, page):
             'image': image,
         })   
       
-    return list
+    return json.dumps(list)
     
-def search_item(item_id):
+def ebay_search_item(item_id):
     """Get information about an item based on id.
     
     Parameters:
@@ -80,7 +67,7 @@ def search_item(item_id):
     
     #getting the webpage
     url='https://www.ebay.com/itm/'+str(item_id)
-    data=get_data(url)
+    data=requests.get(url).text
     soup=BeautifulSoup(data, 'html.parser')
     
     #extract variables from the webpage
@@ -90,7 +77,7 @@ def search_item(item_id):
     shipping=soup.find('span', id='fshippingCost').get_text().replace('\n', '')
     condition=soup.find('div', id='vi-itm-cond').get_text()
     
-    return {
+    return json.dumps({
         'item_id': item_id,
         'title': title,
         'condition': condition,
@@ -98,6 +85,6 @@ def search_item(item_id):
         'shipping': shipping,
         'link': url,
         'image': image,
-    }
+    })
 
 
