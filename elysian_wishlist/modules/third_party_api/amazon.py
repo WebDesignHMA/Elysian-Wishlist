@@ -29,13 +29,14 @@ def amazon_search_catalog(query, page):
     
     #looping through the webpage to get the relevant info
     for i in soup.find_all('span', class_='celwidget slot=MAIN template=SEARCH_RESULTS widgetId=search-results'):
-
-        title=i.find('span', attrs={'class':'a-size-medium a-color-base a-text-normal'}).get_text()
-        price=i.find('span', attrs={'class': 'a-price'}).find('span').get_text()
-        image=(i.img['srcset'].split(',')[-1])[1:-2]
-        item_id=(i.find('div', class_='a-row a-size-small').find('span', class_='a-declarative'))['data-a-popover'].split(',')[-1].split('&')[1].replace('asin=', '')
-        link='https://www.amazon.com/dp/'+item_id
-        
+        try:
+            title=i.find('span', class_='a-size-base-plus a-color-base a-text-normal').get_text()
+            price=i.find('span', class_='a-offscreen').get_text()
+            image=(i.img['srcset'].split(',')[-1])[1:-2]
+            item_id=(i.find('div', class_='a-row a-size-small').find('span', class_='a-declarative'))['data-a-popover'].split(',')[-1].split('&')[1].replace('asin=', '')
+            link='https://www.amazon.com/dp/'+item_id
+        except:
+            continue
         
         list.append({
             'item_id': item_id,
