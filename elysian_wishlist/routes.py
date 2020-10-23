@@ -1,24 +1,13 @@
-from flask import Flask, render_template, request, url_for, redirect, flash, \
-session, abort
-from flask_sqlalchemy import sqlalchemy, SQLAlchemy
-from modules.user_login.login_app import *
+from flask import render_template, url_for, redirect, flash
+from elysian_wishlist import app, db
 from modules.crud.crud_Functions import *
+from modules.user_login.login_app import *
 
 # Change dbname here
 #db_name = "auth.db"
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///auth.db'.format(db=db_name)
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-
-# SECRET_KEY required for session, flash and Flask Sqlalchemy to work
-app.config['SECRET_KEY'] = 'OCML3BRawWEUeaxcuKHLpw'
-
-db = SQLAlchemy(app)
-
-def create_db():       #run this function if there is no current db created
-    db.create_all()
+#def create_db():       #run this function if there is no current db created
+#    db.create_all()
 
 @app.route("/signup/", methods=["GET", "POST"])
 def signup():
@@ -65,6 +54,3 @@ def deleteWishlistItems(id):
 @app.route('/updatesub/<int:id>', methods=['GET', 'POST'])
 def updateWishlistItems(id):
     return updatesub(id)
-
-if __name__ == "__main__":
-    app.run(port=5000, debug=True)
