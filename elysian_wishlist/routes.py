@@ -4,6 +4,7 @@ from modules.crud.crud_Functions import *
 from modules.user_login.login_app import *
 from modules.third_party_api.ebay import *
 from modules.third_party_api.amazon import *
+import json
 
 # Change dbname here
 #db_name = "auth.db"
@@ -60,19 +61,23 @@ def updateWishlistItems(id):
 #search ebay catalog
 @app.route('/ebay/search/<string:query>/<int:page>', methods=['GET'])
 def ebaySearchCatalog(query, page):
-    return ebay_search_catalog(query, page)
+    items=json.loads(ebay_search_catalog(query, page))
+    return render_template('items.html', items=items)
 
 #search ebay item
 @app.route('/ebay/item/<string:id>', methods=['GET'])
 def ebaySearchItem(id):
-    return ebay_search_item(id)    
+    item=json.loads(ebay_search_item(id))
+    return render_template('item.html', item=item)
     
 #search amazon catalog
 @app.route('/amazon/search/<string:query>/<int:page>')
 def amazonSearchCatalog(query, page):
-    return amazon_search_catalog(query, page)
+    items=json.loads(amazon_search_catalog(query, page))
+    return render_template('items.html', items=items)
     
 #search ebay item
 @app.route('/amazon/item/<string:id>', methods=['GET'])
 def amazonSearchItem(id):
-    return amazon_search_item(id) 
+    item=json.loads(amazon_search_item(id))
+    return render_template('item.html', item=item)
