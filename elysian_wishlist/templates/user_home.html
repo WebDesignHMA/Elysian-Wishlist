@@ -1,10 +1,11 @@
 <!doctype html5>
 <html>
 <head>
-  <title>{{ username["USERNAME"].title() }} - Home</title>
+  <title>{{ session["USERNAME"].title() }} - Home</title>
 </head>
 <body>
-  <h2>Hello {{username["USERNAME"].title()}}</h2>
-  <p><a href="{{ url_for('logout', username=username) }}">Logout</a></p>
+  <h2>Hello {{session["USERNAME"].title()}}</h2>
+  <p><a href="{{ url_for('logout') }}">Logout</a></p>
+  <p><a href="{{ url_for('myWishlists') }}">My Wishlists</p>
 </body>
 </html>

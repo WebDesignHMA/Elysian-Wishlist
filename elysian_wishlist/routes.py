@@ -2,9 +2,6 @@ from flask import render_template, url_for, redirect, flash
 from elysian_wishlist import app, db
 from modules.crud.crud_Functions import *
 from modules.user_login.login_app import *
-from modules.third_party_api.ebay import *
-from modules.third_party_api.amazon import *
-import json
 
 # Change dbname here
 #db_name = "auth.db"
@@ -20,18 +17,22 @@ def signup():
 def login():
     return api_login(User)
 
-@app.route("/user/<username>/")
-def user_home(username):
-    return api_user_home(username)
+@app.route("/profile/")
+def user_home():
+    return api_user_home()
 
-@app.route("/logout/<username>")
-def logout(username):
-    return api_logout(username)
+@app.route("/logout/")
+def logout():
+    return api_logout()
 
 #route for all wishlists
 @app.route('/', methods=['POST', 'GET'])
-def allWishlists():
+def myWishlists():
     return index()
+
+@app.route("/wishlists/")
+def allWishlists():
+    return api_allWishlists()
 
 #updates wishlist
 @app.route('/update/<int:id>', methods=['GET', 'POST'])
@@ -57,6 +58,7 @@ def deleteWishlistItems(id):
 @app.route('/updatesub/<int:id>', methods=['GET', 'POST'])
 def updateWishlistItems(id):
     return updatesub(id)
+
     
 #search ebay catalog
 @app.route('/ebay/search/<string:query>/<int:page>', methods=['GET'])

@@ -59,23 +59,27 @@ def api_login(User):
 
         if user and check_password_hash(user.pass_hash, password):   #the check_password_hash function will check plaintext password with hashed value stored in database to see if they match
             session["USERNAME"] = username        #will store session cookie with true if username and password is valid
-            return redirect(url_for("user_home", username=session))
+            return redirect(url_for("user_home"))
         else:
             flash("Invalid username or password.")
 
     return render_template("login_form.html")
 
-def api_user_home(username):
-    if session.get("USERNAME", None) is not None:   #if session cookie value is not true, it will not allow access to this page and return error 401
+def api_user_home():
+    if session.get("USERNAME", None) is not None:   #if session cookie value is not true, it will redirect to login.
         username = session.get("USERNAME")
         user = User.query.filter_by(username=username).first()
-        return render_template("user_home.html", username=session)
+        if user:
+            return render_template("user_home.html")
+        else:
+            print("session not found")
+            return redirect(url_for('login'))
     else:
         print("session not found")
         return redirect(url_for('login'))
 
 
-def api_logout(username):
+def api_logout():
     """ Logout user and redirect to login page with success message."""
     session.pop("USERNAME", None)     #removes the current users session cookie when logging out, this pops out 'username' session variable
     flash("successfully logged out.")

@@ -1,4 +1,5 @@
-from flask import Flask, render_template, url_for, request, redirect
+from flask import Flask, render_template, request, url_for, redirect, flash, \
+session, abort
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from elysian_wishlist import db
@@ -14,8 +15,15 @@ def index():
     #creates your wishlist or returns all wishlists created
     db.create_all()
     if request.method == 'POST':
-        list_content = request.form['content']
-        new_list = Wishlist(content=list_content)
+        username = session.get("USERNAME")
+        user = User.query.filter_by(username=username).first()
+        if user:
+            user_uid = user.uid
+            list_content = request.form['content']
+            new_list = Wishlist(content=list_content, user_uid=user_uid)
+        else:
+            flash("User Must Login to Create Wishlist")
+            return redirect('/')
 
         try:
             db.session.add(new_list)
@@ -25,8 +33,24 @@ def index():
             return 'There was an issue adding your wishlist'
 
     else:
-        lists = Wishlist.query.order_by(Wishlist.date_created).all()
-        return render_template('index.html', lists=lists)
+        username = session.get("USERNAME")
+        user = User.query.filter_by(username=username).first()
+        if user:
+            user_uid = user.uid
+            user_wishlist = Wishlist.query.filter_by(user_uid=user_uid).all()
+            return render_template('index.html', lists=user_wishlist)
+        #lists = Wishlist.query.order_by(Wishlist.date_created).all()
+        else:
+            lists=''
+            return render_template('index.html', lists=lists)
+
+
+#all WISHLISTS everyone made
+def api_allWishlists():
+    #lists = Wishlist.query.order_by(Wishlist.date_created).all()
+    lists = db.session.query(Wishlist, User).join(User, Wishlist.user_uid == User.uid).all()
+    #print(lists)
+    return render_template('allWishlists.html', lists=lists)
 
 #updates wishlist
 def update(id):
