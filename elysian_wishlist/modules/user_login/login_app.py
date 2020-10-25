@@ -2,35 +2,12 @@ from flask import Flask, render_template, request, url_for, redirect, flash, \
 session, abort
 from flask_sqlalchemy import sqlalchemy, SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
+from elysian_wishlist import db
+from elysian_wishlist.models import *
 
-db_name = "auth.db"
-
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///auth.db'.format(db=db_name)
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-
-# SECRET_KEY required for session, flash and Flask Sqlalchemy to work
-app.config['SECRET_KEY'] = 'OCML3BRawWEUeaxcuKHLpw'
-
-db = SQLAlchemy(app)
-
-class User(db.Model):                                   #creating a user model using flask sqlalchemy
-    uid = db.Column(db.Integer, primary_key=True)       #the id created when adding a session to the user
-    firstname = db.Column(db.String(100), nullable=False) #the information that will be stored in each corresponding column in the db
-    lastname = db.Column(db.String(100), nullable=False)
-    email = db.Column(db.String(100), unique=True, nullable=False)
-    username = db.Column(db.String(100), unique=True, nullable=False)
-    pass_hash = db.Column(db.String(100), nullable=False)
-
-    def __repr__(self):
-        return '' % self.username
-
-
-def create_db():       #run this function if there is no current db created
-    db.create_all()
-    
+#signup
 def api_signup(db):
+    db.create_all()
     if request.method == "POST":
         firstname = request.form['firstname']
         lastname = request.form['lastname']
@@ -81,25 +58,29 @@ def api_login(User):
         user = User.query.filter_by(username=username).first()
 
         if user and check_password_hash(user.pass_hash, password):   #the check_password_hash function will check plaintext password with hashed value stored in database to see if they match
-            session[username] = True        #will store session cookie with true if username and password is valid
-            return redirect(url_for("user_home", username=username))
+            session["USERNAME"] = username        #will store session cookie with true if username and password is valid
+            return redirect(url_for("user_home"))
         else:
             flash("Invalid username or password.")
 
     return render_template("login_form.html")
 
-def api_user_home(username):
-    if not session.get(username):   #if session cookie value is not true, it will not allow access to this page and return error 401
-        abort(401)
-  
-    return render_template("user_home.html", username=username)
+def api_user_home():
+    if session.get("USERNAME", None) is not None:   #if session cookie value is not true, it will redirect to login.
+        username = session.get("USERNAME")
+        user = User.query.filter_by(username=username).first()
+        if user:
+            return render_template("user_home.html")
+        else:
+            print("session not found")
+            return redirect(url_for('login'))
+    else:
+        print("session not found")
+        return redirect(url_for('login'))
 
-def api_logout(username):
+
+def api_logout():
     """ Logout user and redirect to login page with success message."""
-    session.pop(username, None)     #removes the current users session cookie when logging out, this pops out 'username' session variable
+    session.pop("USERNAME", None)     #removes the current users session cookie when logging out, this pops out 'username' session variable
     flash("successfully logged out.")
     return redirect(url_for('login'))
-
-
-if __name__ == "__main__":
-    app.run(port=5000, debug=True)
