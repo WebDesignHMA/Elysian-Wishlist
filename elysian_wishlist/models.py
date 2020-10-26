@@ -21,6 +21,8 @@ class child(db.Model):
     child_content = db.Column(db.String(200), nullable=False)
     Wishlist_id = db.Column(db.Integer, db.ForeignKey('Wishlist.id'), nullable=False)
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
+    prices = db.Column(db.String(200), nullable=True)
+    image_file = db.Column(db.String(200), nullable=False)
 
 
 class User(db.Model):

@@ -12,13 +12,17 @@
     {% else %}
     <table>
         <tr>
+            <th>Image</th>
             <th>Item</th>
+            <th>Prices</th>
             <th>Added</th>
             <th>Actions</th>
         </tr>
         {% for sublist in result.1 %}
             <tr>
+                <td><img src={{ sublist.image_file }}  width="120" height="90"></td>
                 <td>{{ sublist.child_content }}</td>
+                <td>{{ sublist.prices }}</td>
                 <td>{{ sublist.date_created.date() }}</td>
                 <td>
                     <a href="/deletesub/{{sublist.id}}">Delete</a>

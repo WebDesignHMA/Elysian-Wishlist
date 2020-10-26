@@ -4,6 +4,9 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from elysian_wishlist import db
 from elysian_wishlist.models import *
+from modules.third_party_api.ebay import *
+from modules.third_party_api.amazon import *
+import json
 
 
 #app = Flask(__name__)
@@ -92,10 +95,14 @@ def list(id):
     if request.method == "POST":
         content = request.form['content']
         parentId = request.form['parentId']
-        print(content)
+        json_dict = json.loads(ebay_search_catalog(content, 1))[0]
+        json_content = json_dict['title']
+        json_price = json_dict['price']
+        json_image = json_dict['image']
+        print(json_content)
         print(parentId)
 
-        new_list = child(child_content=content, Wishlist_id=int(parentId))
+        new_list = child(child_content=json_content, Wishlist_id=int(parentId), prices=json_price, image_file=json_image)
         db.session.add(new_list)
         db.session.commit()
 
