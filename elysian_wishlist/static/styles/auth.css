@@ -1,0 +1,64 @@
+.Login-Container {
+  height: 40%;
+  width: 30%;
+  border: 1px solid black;
+  position: relative;
+  left: 33%;
+  margin-top: 10%;
+}
+
+#login {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-input { 
+  width: 50%;
+  display: flex;
+  align-self: center;
+  margin-bottom: 3%;
+  border-radius: 10px;
+  border: 0.5px solid black;
+  height: 25px;
+  padding-left: 3%;
+}
+
+.Wishlist-Login-Heading
+{
+  font-family: Alatsi;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 35px;
+  text-align:center;
+  margin-bottom:0;
+  color: red;
+}
+
+.Wishlist-Login-Caption {
+  font-family: Alatsi;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  text-align:center;
+}
+
+.submit-button {
+  display: flex;
+  align-self: center;
+  margin-top: 5%;   
+  height: 25px;
+  border-radius: 10px;
+  border: none;
+  background-color: #80e5ff;
+  margin-bottom: 5%;
+}
+
+.Sign-Up-Button {
+  position: relative;
+  left: 84%;
+  margin-top: 2%;
+}
+
+.Sign-Up-Text {
+  text-decoration: none;
+}
