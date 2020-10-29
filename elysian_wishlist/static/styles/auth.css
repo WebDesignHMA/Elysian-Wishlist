@@ -15,6 +15,14 @@
   left: 33%;
   margin-top: 10%;
 }
+
+.Edit-Profile-Container {
+  height: 45%;
+  width: 30%;
+  border: 1px solid black;
+  position: relative;
+  left: 33%;
+}
 #login {
   display: flex;
   flex-direction: column;
@@ -23,6 +31,16 @@
 #signup {
   display: flex;
   flex-direction: column;
+}
+
+#edit-profile {
+  display: flex;
+  flex-direction: column;
+}
+
+.Profile-Heading {
+  display: flex;
+  flex-direction: row;
 }
 
 .login-input { 
@@ -55,6 +73,16 @@
   text-align:center;
 }
 
+.Greeting-Text {
+  font-family: Alatsi;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  text-align:center;
+  margin-right: 190px;
+  margin-left: 10px;
+}
+
 .submit-button {
   display: flex;
   align-self: center;
@@ -72,6 +100,23 @@
   margin-top: 2%;
 }
 
+.Logout-Button {
+  position: relative;
+  left: 10%;
+  margin-top: 2%;
+  height: 40px;
+
+}
+
+.My-Wishlists-Button {
+  position: relative;
+  left: 10%;
+  margin-top: 2%;
+  height: 40px;
+  margin-right: 5px;
+}
+
 .Sign-Up-Text {
   text-decoration: none;
+  color: black;
 }
