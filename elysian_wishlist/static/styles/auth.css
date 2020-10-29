@@ -7,7 +7,20 @@
   margin-top: 10%;
 }
 
+.SignUp-Container {
+  height: 45%;
+  width: 30%;
+  border: 1px solid black;
+  position: relative;
+  left: 33%;
+  margin-top: 10%;
+}
 #login {
+  display: flex;
+  flex-direction: column;
+}
+
+#signup {
   display: flex;
   flex-direction: column;
 }
