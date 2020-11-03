@@ -2,11 +2,8 @@
 body {
   background-color: #6b5b95;
 }
-.content {
-  
-}
 
-h1 {
+h1,h4 {
   text-align: center;
   color: white;
 }
@@ -16,10 +13,7 @@ h1 {
   border-top: 1px solid black;
   border-left: 1px solid black;
   background-color: #feb236;
-}
-
-.Wishlist-Columns {
-  
+  margin-top: 2%;
 }
 
 .Column-Title {
@@ -37,4 +31,9 @@ h1 {
 .Nav-Links {
   color: white;
   text-decoration-line: none;
+}
+
+.form {
+  position: relative;
+  left: 43%;
 }
