@@ -1,0 +1,39 @@
+
+body {
+  background-color: #6b5b95;
+}
+
+h1,h4 {
+  text-align: center;
+  color: white;
+}
+.All-Wishlist-Table {
+  position: relative;
+  left: 25%;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  background-color: #feb236;
+  margin-top: 2%;
+}
+
+.Column-Title {
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  height: 50px;
+  width: 250px;
+  text-align:center;
+}
+
+.Column-Title-Link {
+  text-decoration-line: none;
+}
+
+.Nav-Links {
+  color: white;
+  text-decoration-line: none;
+}
+
+.form {
+  position: relative;
+  left: 43%;
+}
