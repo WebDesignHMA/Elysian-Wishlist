@@ -1,9 +1,9 @@
 from flask import render_template, url_for, redirect, flash
 from elysian_wishlist import app, db
-from modules.crud.crud_Functions import *
-from modules.user_login.login_app import *
-from modules.third_party_api.ebay import *
-from modules.third_party_api.amazon import *
+from elysian_wishlist.modules.crud.crud_Functions import *
+from elysian_wishlist.modules.user_login.login_app import *
+from elysian_wishlist.modules.third_party_api.ebay import *
+from elysian_wishlist.modules.third_party_api.amazon import *
 import json
 
 # Change dbname here
