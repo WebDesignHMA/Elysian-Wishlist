@@ -35,6 +35,7 @@ def amazon_search_catalog(query, page):
             image=(i.img['srcset'].split(',')[-1])[1:-2]
             item_id=(i.find('div', class_='a-row a-size-small').find('span', class_='a-declarative'))['data-a-popover'].split(',')[-1].split('&')[1].replace('asin=', '')
             link='https://www.amazon.com/dp/'+item_id
+            print(title)
         except:
             continue
         
