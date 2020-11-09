@@ -2,46 +2,42 @@
 
 {% block head %}
 <title>All Wishlists</title>
-<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/pages.css') }}">
 {% endblock %}
 
 {% block body %}
-    <body>
-    <div class="content">
-        <h1>All Wishlists</h1>
-        {% if lists|length < 1 %}
-        <h4 style="text-align: center">There are no wishlists. Login to your account and make your own Wishlist!</h4>
-        {% else %}
-        <table class="All-Wishlist-Table">
-            <tr class="Column-Titles">
-                <th class="Column-Title">List</th>
-                <th class="Column-Title">Added</th>
-                <th class="Column-Title">Creators</th>
+<div class="content">
+    <h1 style="text-align: center">All Wishlists</h1>
+    {% if lists|length < 1 %}
+    <h4 style="text-align: center">There are no wishlists. Login to your account and make your own Wishlist!</h4>
+    {% else %}
+    <table>
+        <tr>
+            <th>List</th>
+            <th>Added</th>
+            <th>Creators</th>
+        </tr>
+        {% for list in lists %}
+            <tr>
+                <td>
+                    <a href="/list/{{list[0].id}}">
+                        {{ list[0].content }}
+                    </a>
+                </td>
+                <td>{{ list[0].date_created.date() }}</td>
+                <td>
+                    {{ list[1].username }}
+                </td>
             </tr>
-            {% for list in lists %}
-                <tr class="Column-Titles">
-                    <td class="Column-Title">
-                        <a class="Column-Title-Link" 
-                        href="/list/{{list[0].id}}">
-                            {{ list[0].content }}
-                        </a>
-                    </td>
-                    <td class="Column-Title">{{ list[0].date_created.date() }}</td>
-                    <td class="Column-Title">
-                        {{ list[1].username }}
-                    </td>
-                </tr>
-            {% endfor %}
-        </table>
-        {% endif %}
-    <!--
-        <div class="form">
-            <form action="/" method="POST">
-                <input type="text" name="content" id="content">
-                <input type="submit" value="Add List">
-            </form>
-        </div>
-    -->
+        {% endfor %}
+    </table>
+    {% endif %}
+<!--
+    <div class="form">
+        <form action="/" method="POST">
+            <input type="text" name="content" id="content">
+            <input type="submit" value="Add List">
+        </form>
     </div>
-</body>
+-->
+</div>
 {% endblock %}

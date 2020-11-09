@@ -4,6 +4,7 @@ from modules.crud.crud_Functions import *
 from modules.user_login.login_app import *
 from modules.third_party_api.ebay import *
 from modules.third_party_api.amazon import *
+from modules.forum.forum import *
 import json
 
 # Change dbname here
@@ -86,3 +87,19 @@ def amazonSearchCatalog(query, page):
 def amazonSearchItem(id):
     item=json.loads(amazon_search_item(id))
     return render_template('item.html', item=item)
+
+@app.route('/forum')
+def forum():
+    return api_forum()
+    
+@app.route('/new', methods=['GET', 'POST'])
+def new_thread():
+    return api_new_thread()
+    
+@app.route('/deletethread/<int:id>')
+def delete_thread(id):
+    return api_delete_thread(id)
+    
+@app.route('/view/<int:id>', methods=['GET', 'POST'])
+def view(id):
+    return api_view(id)

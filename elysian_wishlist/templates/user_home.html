@@ -1,34 +1,11 @@
 <!doctype html5>
 <html>
-
 <head>
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/auth.css') }}">
   <title>{{ session["USERNAME"].title() }} - Home</title>
 </head>
-
 <body>
-  <div class="Edit-Profile-Container">
-    <div class="Profile-Heading">
-      <p class="Greeting-Text">Hello {{session["USERNAME"].title()}}</p>
-      <button class="My-Wishlists-Button">
-        <a class="Sign-Up-Text" href="{{ url_for('myWishlists') }}">My Wishlists</a>
-      </button>
-      <button class="Logout-Button">
-        <a class="Sign-Up-Text" href="{{ url_for('logout') }}">Logout</a>
-      </button>
-    </div>
-
-    <p class="Wishlist-Login-Heading">WISHLIST</p>
-    <p class="Wishlist-Login-Caption">
-      Edit my Profile</p>
-    <form id="edit-profile" onSubmit={this.handleSubmit}>
-      <input type="text" class="login-input" name="name" placeholder="Name" onChange={this.handleChange} />
-      <input type="text" class="login-input" name="email" placeholder="Email" onChange={this.handleChange} />
-      <input type="text" class="login-input" name="city" placeholder="City" onChange={this.handleChange} />
-      <input type="text" class="login-input" name="interests" placeholder="Interests" onChange={this.handleChange} />
-      <input class="submit-button" type="submit" value="Update Profile" />
-    </form>
-  </div>
+  <h2>Hello {{session["USERNAME"].title()}}</h2>
+  <p><a href="{{ url_for('logout') }}">Logout</a></p>
+  <p><a href="{{ url_for('myWishlists') }}">My Wishlists</p>
 </body>
-
 </html>

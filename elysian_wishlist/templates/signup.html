@@ -1,50 +1,26 @@
 <!doctype html5>
 <html>
 <head>
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/auth.css') }}">
   <title>Sign Up</title>
 </head>
 <body>
-  <div class="SignUp-Container">
-      <p class="Wishlist-Login-Heading">WISHLIST</p>
-      <p class="Wishlist-Login-Caption">Sign Up to Join Wishlist!</p>
-    <form id="signup" action="{{ url_for('signup')}}" method="post">
-      <input class="login-input" 
-        type="text" 
-        id="firstname" 
-        name="firstname" 
-        placeholder="First Name"/>
-      <input class="login-input" 
-        type="text" 
-        id="lastname" 
-        name="lastname"
-        placeholder="Last Name"/>
-      <input class="login-input" 
-        type="text" 
-        id="email" 
-        name="email" 
-        placeholder="Email"/>
-      <input class="login-input" 
-        type="text" 
-        id="username" 
-        name="username" 
-        placeholder="Username"/>
-      <input class="login-input" 
-        type="password" 
-        id="password" 
-        name="password" 
-        placeholder="Password"/>
-      <input class="submit-button" type="submit" id="submit" text="Signup" />
-    </form>
-    {% with messages = get_flashed_messages() %}
-      {% if messages %}
-        <ul class=flashes>
-        {% for message in messages %}
-          <li>{{ message }}</li>
-        {% endfor %}
-        </ul>
-      {% endif %}
-    {% endwith %}
-  </div>
+  <h2>Sign Up</h2>
+  <form id="signup" action="{{ url_for('signup')}}" method="post">
+    First Name :  <input type="text" id="firstname" name="firstname" />
+    Last Name :  <input type="text" id="lastname" name="lastname" />
+    Email :  <input type="text" id="email" name="email" />
+    Username :  <input type="text" id="username" name="username" />
+    Password : <input type="password" id="password" name="password" />
+    <input type="submit" id="submit" text="Signup" />
+  </form>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul class=flashes>
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
 </body>
 </html>
