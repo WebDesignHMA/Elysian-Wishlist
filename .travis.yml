@@ -13,6 +13,6 @@ addons:
         # other script steps might be done before running the actual analysis
 script:
     - poetry run pytest
-    - sonar-scanner
+    - sonar-scanner -X
     
         
