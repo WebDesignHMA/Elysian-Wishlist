@@ -8,14 +8,13 @@
     {% block head %}{% endblock %}
 </head>
 <body>
-    <div style="text-align: center;">
-        <br>
-        <a class="Nav-Links" href="/">My Wishlists</a>
-        <br>
-        <a class="Nav-Links" href="/profile">My Profile</a>
-        <br>
-        <a class="Nav-Links" href="/wishlists">All Wishlists</a>
+    <div class="Navigation-Bar">
+        <img class="Wishlist-Logo" src="../static/graphics/wishlist_logo.png" />
+        <a class="Navbar-Item" href="/">My Wishlists</a>
+        <a class="Navbar-Item" href="/profile">My Profile</a>
+        <a class="Navbar-Item" href="/wishlists">All Wishlists</a>
     </div>
     {% block body %}{% endblock %}
 </body>
+
 </html>

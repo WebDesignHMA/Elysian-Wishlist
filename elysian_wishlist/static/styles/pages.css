@@ -1,6 +1,6 @@
 
 body {
-  background-color: white;
+  background-color: #f0f5f5;
 }
 
 h1,h4 {
@@ -33,18 +33,17 @@ h1,h4 {
   text-decoration-line: none;
 }
 
-.form {
-  position: relative;
-  left: 43%;
-}
-
 .List-Table {
   position: relative;
-  left: 19%;
-  /* border-top: 1px solid black;
-  border-bottom: 1px solid black;  */
+  left: 10%;
   border: 1px solid black;
   margin-bottom: 20px;
+}
+
+.Item-Row {
+  background-color: #e1eaea;
+  height: 200px;
+  font-size: 20px;
 }
 
 .Item-Name {
@@ -54,17 +53,72 @@ h1,h4 {
 }
 
 .Item-Price {
-  padding-right: 20px;
+  text-align: center;
+  width: 120px;
 }
 
 .Item-Date-Added {
-  padding-right: 20px;
+  text-align: center;
+  width: 120px;
 }
 
 .Item-Actions {
-  padding-right: 20px;
+  text-align:center;
+  width: 100px;
 }
 
 .Item-Image {
   padding-left: 20px;
+  height: 200px;
+  width: auto;
+}
+
+.Navigation-Bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  background-color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.Navbar-Item  {
+  text-decoration: none;
+  font-size: 25px;
+  width: 150px;
+  height: 45px;
+  text-align: center;
+  color: white;
+  padding-top: 10px;
+}
+
+.Navbar-Item:hover {
+  background-color: #111;
+}
+
+.Wishlist-Logo {
+  position: relative;
+  right: 60%;
+  height:55px;
+  width: auto;
+}
+
+.form {
+  position: relative;
+  left: 32%;
+}
+
+.Add-List-Input {
+  width: 550px;
+  height: 35px;
+  border-radius: 18px;
+}
+
+.Add-List-Submit {
+  font-size: 21px;
+  border: none;
+  position: relative;
+  padding-top: 4.5px;
+  right: 2.5%;
+  background-color: white;
 }

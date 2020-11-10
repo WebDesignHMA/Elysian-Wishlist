@@ -12,16 +12,16 @@
     <h4 style="text-align: center">There are no sub lists of selected wishlist. <br> Create one below!</h4>
     {% else %}
     <table class="List-Table">
-        <tr>
+        <!-- <tr>
             <th>Image</th>
             <th>Item</th>
             <th>Prices</th>
             <th>Added</th>
             <th>Actions</th>
-        </tr>
+        </tr> -->
         {% for sublist in result.1 %}
             <tr class="Item-Row">
-                <td class="Item-Image"><img src={{ sublist.image_file }}  width="120" height="90"></td>
+                <td class="Item-Image"><img src={{ sublist.image_file }}></td>
                 <td class="Item-Name">{{ sublist.child_content }}</td>
                 <td class="Item-Price">{{ sublist.prices }}</td>
                 <td class="Item-Date-Added">{{ sublist.date_created.date() }}</td>
