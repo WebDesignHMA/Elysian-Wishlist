@@ -7,6 +7,11 @@ h1,h4 {
   text-align: center;
   color: black;
 }
+
+.Current-Wishlist-Title {
+  text-align: center;
+  margin-top: 70px;
+}
 .All-Wishlist-Table {
   position: relative;
   left: 25%;
@@ -35,9 +40,11 @@ h1,h4 {
 
 .List-Table {
   position: relative;
-  left: 10%;
+  left: 19%;
   border: 1px solid black;
   margin-bottom: 20px;
+  width: 60%;
+  margin-top: 90px;
 }
 
 .Item-Row {
@@ -105,7 +112,9 @@ h1,h4 {
 
 .form {
   position: relative;
-  left: 32%;
+  left: 28%;
+  margin-top: 35px;
+  margin-bottom: 50px;
 }
 
 .Add-List-Input {
@@ -121,4 +130,15 @@ h1,h4 {
   padding-top: 4.5px;
   right: 2.5%;
   background-color: white;
+}
+
+.Add-Sub-List-Button {
+  font-size: 21px;
+  border: 0.5px solid black;
+  border-radius: 18px;
+  position: relative;
+  padding-top: 4.5px;
+  background-color: black;
+  color: white;
+  padding: 6.5px;
 }
