@@ -4,6 +4,7 @@ from elysian_wishlist.modules.crud.crud_Functions import *
 from elysian_wishlist.modules.user_login.login_app import *
 from elysian_wishlist.modules.third_party_api.ebay import *
 from elysian_wishlist.modules.third_party_api.amazon import *
+from elysian_wishlist.modules.forum.forum import *
 import json
 
 # Change dbname here
@@ -91,3 +92,20 @@ def amazonSearchItem(id):
 @app.route("/home/")
 def home():
     return render_template('splash_page.html')
+
+@app.route('/forum')
+def forum():
+    return api_forum()
+    
+@app.route('/new', methods=['GET', 'POST'])
+def new_thread():
+    return api_new_thread()
+    
+@app.route('/deletethread/<int:id>')
+def delete_thread(id):
+    return api_delete_thread(id)
+    
+@app.route('/view/<int:id>', methods=['GET', 'POST'])
+def view(id):
+    return api_view(id)
+
