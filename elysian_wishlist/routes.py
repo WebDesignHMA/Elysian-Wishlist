@@ -88,6 +88,11 @@ def amazonSearchItem(id):
     item=json.loads(amazon_search_item(id))
     return render_template('item.html', item=item)
 
+#Splash page
+@app.route("/home/")
+def home():
+    return render_template('splash_page.html')
+
 @app.route('/forum')
 def forum():
     return api_forum()
@@ -103,3 +108,4 @@ def delete_thread(id):
 @app.route('/view/<int:id>', methods=['GET', 'POST'])
 def view(id):
     return api_view(id)
+
