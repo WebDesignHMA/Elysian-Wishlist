@@ -21,9 +21,9 @@
             <tr>
                 <td>
                   {% if has_liked_wishlist(list[0]) %}
-                  <a href="{{ like_action(list[0].id, 'unlike') }}">Unlike</a>
+                  <a href="{{ url_for('like_action', wishlist_id=list[0].id, action='unlike') }}" class="button">Unlike</a>
                   {% else %}
-                  <a href="{{ like_action(list[0].id, 'like') }}">Like</a>
+                  <a href="{{ url_for('like_action', wishlist_id=list[0].id, action='like') }}" class="button">Like</a>
                   {% endif %}
                   {{ list[0].liked.count() }} likes
                 </td>

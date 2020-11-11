@@ -54,7 +54,7 @@ def api_allWishlists():
     lists = db.session.query(Wishlist, User).join(User, Wishlist.user_uid == User.uid).all()
     for list in lists:
         print (type(list[1]))
-    return render_template('allWishlists.html', lists=lists, has_liked_wishlist = has_liked_wishlist, like_action = like_action)
+    return render_template('allWishlists.html', lists=lists, has_liked_wishlist = has_liked_wishlist, like_action = like_action_api)
 
 #updates wishlist
 def update(id):
@@ -186,7 +186,7 @@ def has_liked_wishlist(Wishlist):
 
 
 #action to like wishlists (MAIN)
-def like_action(wishlist_id, action):
+def like_action_api(wishlist_id, action):
     wishlist = Wishlist.query.filter_by(id=wishlist_id).first_or_404()
     if action == 'like':
         like_wishlist(wishlist)
