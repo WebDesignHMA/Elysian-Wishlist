@@ -63,19 +63,28 @@ def deleteWishlistItems(id):
 def updateWishlistItems(id):
     return updatesub(id)
 
+#get catalog
+@app.route('/catalog/search', methods=['POST', 'GET'])
+def catalogPage():
+    items=[]
+    if request.method=='POST':
+        query=request.form['query']
+        page=request.form['page']
+        items=ebaySearchCatalog(query, page)
+    return render_template('list.html', items=items)
 
 #search ebay catalog
-@app.route('/ebay/search/<string:query>/<int:page>', methods=['GET'])
+@app.route('/ebay/search/<string:query>/<int:page>')
 def ebaySearchCatalog(query, page):
     items=json.loads(ebay_search_catalog(query, page))
-    return render_template('items.html', items=items)
-
+    return items
+    
 #search ebay item
 @app.route('/ebay/item/<string:id>', methods=['GET'])
 def ebaySearchItem(id):
     item=json.loads(ebay_search_item(id))
-    return render_template('item.html', item=item)
-
+    return item
+    
 #search amazon catalog
 @app.route('/amazon/search/<string:query>/<int:page>')
 def amazonSearchCatalog(query, page):

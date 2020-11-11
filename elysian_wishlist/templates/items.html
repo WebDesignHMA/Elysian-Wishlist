@@ -1,3 +1,16 @@
+<div>
+    <form id="catalog" action="{{ url_for('catalogPage') }}" method="post">
+        <input class="search-input" 
+            type="text" 
+            id="query" 
+            name="query"/>
+        <input class="search-input" 
+            type="number" 
+            id="page" 
+            name="page"/>
+        <input class="submit-button" type="submit" id="submit" text="Search" />
+    </form>
+</div>
 {% for item in items %}
 <div>
     <div>
@@ -11,3 +24,4 @@
     </div>
 </div>
 {% endfor %}
+
