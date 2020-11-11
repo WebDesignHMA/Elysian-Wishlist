@@ -120,3 +120,34 @@
   text-decoration: none;
   color: black;
 }
+
+.Navigation-Bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  background-color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.Navbar-Item  {
+  text-decoration: none;
+  font-size: 25px;
+  width: 150px;
+  text-align: center;
+  color: white;
+  padding-top: 10px;
+  height: 45px;
+}
+
+.Navbar-Item:hover {
+  background-color: #111;
+}
+
+.Wishlist-Logo {
+  position: relative;
+  right: 60%;
+  height:45px;
+  width: auto;
+  
+}

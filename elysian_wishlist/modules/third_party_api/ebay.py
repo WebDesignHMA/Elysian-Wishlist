@@ -29,13 +29,7 @@ def ebay_search_catalog(query, page):
     for i in soup.find_all('li', class_='s-item s-item--watch-at-corner'):
         try:
             title=i.h3.get_text()
-            condition=None #condition isn't always displayed.
-            try:
-                conidtion=i.find('span', class_='SECONDARY_INFO').get_text()
-            except:
-                pass
             price=i.find('span', class_='s-item__price').get_text()
-            shipping=i.find('span', class_='s-item__shipping s-item__logisticsCost').get_text()
             link=i.a['href']
             item_id=link.split('/')[-1].split('?')[0]
             link='https://www.ebay.com/itm/'+item_id
@@ -45,9 +39,7 @@ def ebay_search_catalog(query, page):
         list.append({
             'item_id': item_id,
             'title': title,
-            'condition': condition,
             'price': price,
-            'shipping': shipping,
             'link': link,
             'image': image,
         })
@@ -76,15 +68,11 @@ def ebay_search_item(item_id):
     title=soup.find('h1', id='itemTitle').get_text().replace('Details about   ', '')
     image=soup.find('img', id='icImg')['src']
     price=soup.find('span', id='prcIsum').get_text()
-    shipping=soup.find('span', id='fshippingCost').get_text().replace('\n', '')
-    condition=soup.find('div', id='vi-itm-cond').get_text()
 
     return json.dumps({
         'item_id': item_id,
         'title': title,
-        'condition': condition,
         'price': price,
-        'shipping': shipping,
         'link': url,
         'image': image,
     })
