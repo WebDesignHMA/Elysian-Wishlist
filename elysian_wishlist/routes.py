@@ -86,3 +86,8 @@ def amazonSearchCatalog(query, page):
 def amazonSearchItem(id):
     item=json.loads(amazon_search_item(id))
     return render_template('item.html', item=item)
+
+#Splash page
+@app.route("/home/")
+def home():
+    return render_template('splash_page.html')
