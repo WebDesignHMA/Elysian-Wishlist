@@ -4,7 +4,7 @@ from elysian_wishlist.modules.crud.crud_Functions import *
 from elysian_wishlist.modules.user_login.login_app import *
 from elysian_wishlist.modules.third_party_api.ebay import *
 from elysian_wishlist.modules.third_party_api.amazon import *
-from modules.forum.forum import *
+from elysian_wishlist.modules.forum.forum import *
 import json
 
 # Change dbname here
