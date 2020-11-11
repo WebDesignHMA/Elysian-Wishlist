@@ -52,8 +52,9 @@ def index():
 def api_allWishlists():
     #lists = Wishlist.query.order_by(Wishlist.date_created).all()
     lists = db.session.query(Wishlist, User).join(User, Wishlist.user_uid == User.uid).all()
-    #print(lists)
-    return render_template('allWishlists.html', lists=lists)
+    for list in lists:
+        print (type(list[1]))
+    return render_template('allWishlists.html', lists=lists, has_liked_wishlist = has_liked_wishlist, like_action = like_action)
 
 #updates wishlist
 def update(id):
@@ -148,3 +149,49 @@ def updatesub(id):
     else:
         result = {'sub':True, 'sublist':sublist}
         return render_template('update.html', context = result)
+
+
+#to like a wishlist (HELPER)
+def like_wishlist(Wishlist):
+    username = session.get("USERNAME")
+    user = User.query.filter_by(username=username).first()
+    if user:
+        if not has_liked_wishlist(Wishlist):
+            like = LikedWishlist(user_uid=user.uid, Wishlist_id=Wishlist.id)
+            db.session.add(like)
+            #return redirect('/wishlists/')
+    else:
+        flash("User Must Login to Like Wishlist")
+
+#to unlike a wishlist (HELPER)
+def unlike_wishlist(Wishlist):
+    username = session.get("USERNAME")
+    user = User.query.filter_by(username=username).first()
+    if user:
+        if has_liked_wishlist(Wishlist):
+            LikedWishlist.query.filter(LikedWishlist.user_uid == user.uid).filter(LikedWishlist.Wishlist_id == Wishlist.id).delete()
+            #return redirect('/wishlists/')
+    else:
+        flash("User Must Login to Like/Dislike Wishlist")
+
+
+#check if user has liked wishlist ALREADY (HELPER)
+def has_liked_wishlist(Wishlist):
+    username = session.get("USERNAME")
+    user = User.query.filter_by(username=username).first()
+    if user:
+        return LikedWishlist.query.filter(LikedWishlist.user_uid == user.uid, LikedWishlist.Wishlist_id == Wishlist.id).count() > 0
+    else:
+        return False
+
+
+#action to like wishlists (MAIN)
+def like_action(wishlist_id, action):
+    wishlist = Wishlist.query.filter_by(id=wishlist_id).first_or_404()
+    if action == 'like':
+        like_wishlist(wishlist)
+        db.session.commit()
+    if action == 'unlike':
+        unlike_wishlist(wishlist)
+        db.session.commit()
+    return redirect('/wishlists/')

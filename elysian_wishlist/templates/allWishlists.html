@@ -12,12 +12,21 @@
     {% else %}
     <table>
         <tr>
+            <th>Like/Dislike</th>
             <th>List</th>
             <th>Added</th>
             <th>Creators</th>
         </tr>
         {% for list in lists %}
             <tr>
+                <td>
+                  {% if has_liked_wishlist(list[0]) %}
+                  <a href="{{ like_action(list[0].id, 'unlike') }}">Unlike</a>
+                  {% else %}
+                  <a href="{{ like_action(list[0].id, 'like') }}">Like</a>
+                  {% endif %}
+                  {{ list[0].liked.count() }} likes
+                </td>
                 <td>
                     <a href="/list/{{list[0].id}}">
                         {{ list[0].content }}

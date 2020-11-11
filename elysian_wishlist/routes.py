@@ -37,6 +37,11 @@ def myWishlists():
 def allWishlists():
     return api_allWishlists()
 
+#like/unlike wishlists
+@app.route('/like/<int:Wishlist_id>/<action>')
+def like_action(wishlist_id, action):
+    return like_action(wishlist_id, action)
+
 #updates wishlist
 @app.route('/update/<int:id>', methods=['GET', 'POST'])
 def updateWishlist(id):
