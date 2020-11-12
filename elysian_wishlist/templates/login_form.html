@@ -8,17 +8,23 @@
 </head>
 
 <body>
-  <div class="Login-Container">
-      <button class="Sign-Up-Button">
+    <img class="Wishlist-Logo" src="../static/graphics/wishlist_logo_redblack.png" />
+  <div class="SignUp-Container">
+      <button class="Alt-Sign-Up-Button">
           <a class="Sign-Up-Text" 
             href="{{ url_for('signup') }}">Signup</a>
         </button>
-    <p class="Wishlist-Login-Heading">WISHLIST</p>
-    <p class="Wishlist-Login-Caption">Sign into your Wishlist!</p>
-    <form id="login" action="{{ url_for('login')}}" method="post">
-      <input type="text" class="login-input" id="username" name="username" placeholder="Username" />
-      <input type="password" class="login-input" id="password" name="password" placeholder="Password" />
-      <input type="submit" class="submit-button" id="submit" text="Login" />
+    <p class="SignUp-Caption">Login to your Wishlist Account!</p>
+    <form id="signup" action="{{ url_for('login')}}" method="post">
+      <div class="Input-Div">
+        <img class="Input-Icon" src="../static/graphics/user_icon.png"/>
+        <input type="text" class="login-input" id="username" name="username" placeholder="Username" />
+      </div>
+      <div class="Input-Div">
+          <img class="Input-Icon" src="../static/graphics/key_icon.png"/>
+          <input type="password" class="login-input" id="password" name="password" placeholder="Password" />
+     </div>
+      <input type="submit" class="Sign-Up-Button" id="submit" text="Login" value="Login"/>
     </form>
     {% with messages = get_flashed_messages() %}
     {% if messages %}
