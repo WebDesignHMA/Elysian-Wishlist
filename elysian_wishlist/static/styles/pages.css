@@ -1,6 +1,16 @@
+.Wishlist-Logo {
+  width: 10%;
+  height: 10%;
 
+}
 body {
-  background-color: #f0f5f5;
+  background-color: white;
+  margin:0;
+  padding:0;
+}
+
+.Splash-Page {
+  background-color: white;
 }
 
 h1,h4 {
@@ -112,6 +122,85 @@ h1,h4 {
 
 .form {
   position: relative;
+  left: 43%;
+}
+
+.Splash-Page-Section-2 {
+  display: flex;
+  flex-direction: row;
+}
+
+.Splash-Page-Section-2-Image {
+  height: auto;
+  width: 350px;
+  margin-left: 3%;
+  margin-top: 3%;
+}
+
+.Feature-List-Title {
+  color: black;
+  font-size: 70px;
+  position: relative;
+  left: 10%;
+}
+
+.Feature-List {
+  list-style-type: square;
+}
+
+.Feature-List-Item {
+  font-size: 30px;
+  position: relative;
+  left: 10%;
+  margin-bottom: 5%;
+}
+
+.Action-1-Link {
+  position: relative;
+  left: 17%;
+  font-size: 20px;
+}
+
+.Get-Started-Link {
+  text-decoration: none;
+}
+
+.Device-Section {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  left: 25%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.Device-Feature-Image {
+  width: 400px;
+  height: auto;
+  margin-left: 5%;
+}
+
+.About-Section {
+  display: flex;
+  flex-direction: row;
+}
+
+.About-Us-Image {
+  width: 100%;
+  height: auto;
+}
+
+.About-Us-Text {
+  font-size: 20px;
+}
+
+.About-Us-Title {
+  font-size: 50px;
+  margin-bottom: 0;
+}
+
+.About-Us-Text-Section {
+  text-align: center;
   left: 28%;
   margin-top: 35px;
   margin-bottom: 50px;
@@ -127,8 +216,7 @@ h1,h4 {
   font-size: 21px;
   border: none;
   position: relative;
-  padding-top: 4.5px;
-  right: 2.5%;
+  right: 11.5%;
   background-color: white;
 }
 

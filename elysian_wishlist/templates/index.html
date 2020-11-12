@@ -33,23 +33,20 @@
             {% for list in lists %}
             <tr class="Column-Titles">
                 <td class="Column-Title">
-                    <a class="Column-Title-Link"
-                    href="/list/{{list.id}}">
+                    <a class="Column-Title-Link" href="/list/{{list.id}}">
                         {{ list.content }}
                     </a>
                 </td>
                 <td class="Column-Title">{{ list.date_created.date() }}</td>
                 <td class="Column-Title">
-                    <a class="Column-Title-Link"
-                    href="/delete/{{list.id}}">Delete</a>
+                    <a class="Column-Title-Link" href="/delete/{{list.id}}">Delete</a>
                     <br>
-                    <a class="Column-Title-Link"
-                    href="/update/{{list.id}}">Update</a>
+                    <a class="Column-Title-Link" href="/update/{{list.id}}">Update</a>
                 </td>
             </tr>
             {% endfor %}
         </table>
         {% endif %}
     </div>
-    {% endblock %}
 </body>
+{% endblock %}

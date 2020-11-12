@@ -9,10 +9,10 @@ addons:
     sonarcloud:
         organization: "webdesignhma" # the key of the org you chose at step #3
         token:
-            secure: SONARCLOUD # encrypted value of your token
+            secure: 479dec7364a7e1b342d3b19093fe4396965d55f0 # encrypted value of your token
         # other script steps might be done before running the actual analysis
 script:
     - poetry run pytest
-    - sonar-scanner
+    - sonar-scanner -X
     
         
