@@ -57,6 +57,16 @@ def deleteWishlist(id):
 def wishlistItems(id):
     return list(id)
 
+@app.route('/apiResult/<string:name>/<int:id>', methods=['GET'])
+def ebayApiResult(name,id):
+    return apiResult(name,id)
+
+#HELPER FUNCTION: selected items for EBAY are added to db
+@app.route('/addToWishlist/<int:wishlistId>/<itemId>')
+def addToWishlist(wishlistId, itemId):
+    return addToWishlistApi(wishlistId, itemId)
+
+
 #deletes items from each wishlist
 @app.route('/deletesub/<int:id>')
 def deleteWishlistItems(id):

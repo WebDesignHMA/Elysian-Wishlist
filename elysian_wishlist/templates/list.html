@@ -10,6 +10,15 @@
     {% if result.1|length < 1 %}
     <h4 style="text-align: center">There are no sub lists of selected wishlist. <br> Create one below!</h4>
     {% else %}
+
+    <div class="form">
+        <form action="" method="POST">
+            <input type="text" name="content" id="content" required>
+            <input type="hidden" name="parentId" value="{{ result.0.id }}">
+            <input type="submit" value="Add sub list">
+        </form>
+    </div>
+    <br>
     <table>
         <tr>
             <th>Image</th>
@@ -34,12 +43,5 @@
     </table>
     {% endif %}
 
-    <div class="form">
-        <form action="" method="POST">
-            <input type="text" name="content" id="content" required>
-            <input type="hidden" name="parentId" value="{{ result.0.id }}">
-            <input type="submit" value="Add sub list">
-        </form>
-    </div>
 </div>
 {% endblock %}
