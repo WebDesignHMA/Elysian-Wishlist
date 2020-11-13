@@ -1,0 +1,174 @@
+.Login-Container {
+  height: 40%;
+  width: 30%;
+  border: 1px solid black;
+  position: relative;
+  left: 33%;
+  margin-top: 10%;
+}
+
+.SignUp-Container {
+  height: 100%;
+  width: 100%;
+}
+
+.Edit-Profile-Container {
+  height: 50%;
+  width: 30%;
+  border: 1px solid black;
+  position: relative;
+  left: 33%;
+}
+#login {
+  display: flex;
+  flex-direction: column;
+}
+
+#signup {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  left: 25%;
+}
+
+#edit-profile {
+  display: flex;
+  flex-direction: column;
+}
+
+.Profile-Heading {
+  display: flex;
+  flex-direction: row;
+}
+
+.login-input { 
+  height: 70px;
+  width: 50%;
+  margin-bottom: 3%;
+  border-radius: 10px;
+  border: 0.5px solid black;
+  padding-left: 3%;
+  font-size: 25px;
+}
+
+.Alt-Sign-Up-Button {
+  color: white;
+  height: 35px;
+  width: 12.5%;
+  border: none;
+  border-radius: 18px;
+  background-color: #32CD32;
+  font-size: 18px;
+  position: relative;
+  left: 63%;
+}
+
+.Sign-Up-Button {
+  height: 35px;
+  width: 25%;
+  position: relative;
+  left: 34px;
+  border: none;
+  border-radius: 18px;
+  background-color: #89CFF0;
+  font-size: 18px;
+  color: white;
+}
+
+.Input-Div {
+  display: flex;
+  flex-direction: row;
+}
+
+.Input-Icon {
+  height: 25px;
+  width: auto;
+  position: relative;
+  padding-top: 20px;
+  left: 38px;
+}
+
+.Wishlist-Login-Heading
+{
+  font-family: Alatsi;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 35px;
+  text-align:center;
+  margin-bottom:0;
+  color: red;
+}
+
+.SignUp-Caption {
+  font-family: Alatsi;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 25px;
+  position: relative;
+  left: 27%;
+}
+
+.Greeting-Text {
+  font-family: Alatsi;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  position: relative;
+  left: 26%;
+
+}
+
+.Button-Set {
+  position: relative;
+  left: 55%;
+}
+
+.Logout-Button {
+  margin-top: 2%;
+  height: 40px;
+  background-color: #f54029;
+  border-radius: 18px;
+  border: none;
+}
+
+.My-Wishlists-Button {
+  margin-top: 2%;
+  height: 40px;
+  margin-right: 5px;
+  background-color: #228B22;
+  border-radius: 18px;
+  border: none;
+}
+
+.Sign-Up-Text {
+  text-decoration: none;
+  color: white;
+}
+
+.Navigation-Bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  background-color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.Navbar-Item  {
+  text-decoration: none;
+  font-size: 25px;
+  width: 150px;
+  text-align: center;
+  color: white;
+  padding-top: 10px;
+  height: 45px;
+}
+
+.Navbar-Item:hover {
+  background-color: #111;
+}
+
+.Wishlist-Logo {
+  height:100px;
+  width: auto;
+}

@@ -2,13 +2,28 @@
 
 {% block head %}
 <title>Wishlists</title>
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/pages.css') }}">
 {% endblock %}
 
 {% block body %}
 <div class="content">
-    <h1 style="text-align: center">Wishlist: <b><u>{{ result.0.content }}</u></b></h1>
+    <h1 class="Current-Wishlist-Title">Current Wishlist: <b><u>{{ result.0.content }}</u></b></h1>
+    <div class="form">
+            <form action="" method="POST">
+                <input class="Add-List-Input" 
+                        type="text" 
+                        name="content" 
+                        id="content" 
+                        required>
+                <input type="hidden" name="parentId" value="{{ result.0.id }}">
+                <input 
+                    class="Add-Sub-List-Button" 
+                    type="submit" 
+                    value="Add Sub-List">
+            </form>
+        </div>
     {% if result.1|length < 1 %}
-    <h4 style="text-align: center">There are no sub lists of selected wishlist. <br> Create one below!</h4>
+    <h2 style="text-align: center">There are no sub-lists for {{result.0.content}}. <br> Create one below!</h2>
     {% else %}
 
     <div class="form">
@@ -19,7 +34,7 @@
         </form>
     </div>
     <br>
-    <table>
+    <table class="List-Table">
         <tr>
             <th>Image</th>
             <th>Item</th>
@@ -28,12 +43,12 @@
             <th>Actions</th>
         </tr>
         {% for sublist in result.1 %}
-            <tr>
-                <td><img src={{ sublist.image_file }}  width="120" height="90"></td>
-                <td>{{ sublist.child_content }}</td>
-                <td>{{ sublist.prices }}</td>
-                <td>{{ sublist.date_created.date() }}</td>
-                <td>
+            <tr class="Item-Row">
+                <td class="Item-Image"><img src={{ sublist.image_file }}></td>
+                <td class="Item-Name">{{ sublist.child_content }}</td>
+                <td class="Item-Price">{{ sublist.prices }}</td>
+                <td class="Item-Date-Added">{{ sublist.date_created.date() }}</td>
+                <td class="Item-Actions">
                     <a href="/deletesub/{{sublist.id}}">Delete</a>
                     <br>
                     <a href="/updatesub/{{sublist.id}}">Update</a>
@@ -42,6 +57,5 @@
         {% endfor %}
     </table>
     {% endif %}
-
 </div>
 {% endblock %}

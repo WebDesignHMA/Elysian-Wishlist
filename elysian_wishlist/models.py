@@ -46,4 +46,24 @@ class LikedWishlist(db.Model):
     user_uid = db.Column(db.Integer, db.ForeignKey('User.uid'))
     Wishlist_id = db.Column(db.Integer, db.ForeignKey('Wishlist.id'))
 
-    
+class Thread(db.Model):
+  id = db.Column(db.Integer, primary_key=True)
+  title = db.Column(db.String(200), nullable=False)
+  content = db.Column(db.Text, nullable=False)
+  date_created = db.Column(db.DateTime, default=datetime.now)
+  uid = db.Column(db.Integer, db.ForeignKey('User.uid'), nullable=False)
+  comments = db.relationship('Comment', backref="thread", cascade="all, delete, delete-orphan")
+  
+  def __repr__(self):
+    return '<Thread %r>' % self.title
+
+class Comment(db.Model):
+  id = db.Column(db.Integer, primary_key=True)
+  content = db.Column(db.Text, nullable=False)
+  date_created = db.Column(db.DateTime, default=datetime.now)
+  thread_id = db.Column(db.Integer, db.ForeignKey('thread.id'))
+  uid = db.Column(db.Integer, db.ForeignKey('User.uid'), nullable=False)
+
+  def __repr__(self):
+    return '<Comment %r>' % self.content
+

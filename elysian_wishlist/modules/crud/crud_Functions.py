@@ -4,8 +4,8 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from elysian_wishlist import db
 from elysian_wishlist.models import *
-from modules.third_party_api.ebay import *
-from modules.third_party_api.amazon import *
+from elysian_wishlist.modules.third_party_api.ebay import *
+from elysian_wishlist.modules.third_party_api.amazon import *
 import json
 
 

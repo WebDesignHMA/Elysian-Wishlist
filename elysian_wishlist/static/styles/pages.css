@@ -1,0 +1,232 @@
+.Wishlist-Logo {
+  width: 10%;
+  height: 10%;
+
+}
+body {
+  background-color: white;
+  margin:0;
+  padding:0;
+}
+
+.Splash-Page {
+  background-color: white;
+}
+
+h1,h4 {
+  text-align: center;
+  color: black;
+}
+
+.Current-Wishlist-Title {
+  text-align: center;
+  margin-top: 70px;
+}
+.All-Wishlist-Table {
+  position: relative;
+  left: 25%;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  background-color: white;
+  margin-top: 2%;
+}
+
+.Column-Title {
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  height: 50px;
+  width: 250px;
+  text-align:center;
+}
+
+.Column-Title-Link {
+  text-decoration-line: none;
+}
+
+.Nav-Links {
+  color: black;
+  text-decoration-line: none;
+}
+
+.List-Table {
+  position: relative;
+  left: 19%;
+  border: 1px solid black;
+  margin-bottom: 20px;
+  width: 60%;
+  margin-top: 90px;
+}
+
+.Item-Row {
+  background-color: #e1eaea;
+  height: 200px;
+  font-size: 20px;
+}
+
+.Item-Name {
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.Item-Price {
+  text-align: center;
+  width: 120px;
+}
+
+.Item-Date-Added {
+  text-align: center;
+  width: 120px;
+}
+
+.Item-Actions {
+  text-align:center;
+  width: 100px;
+}
+
+.Item-Image {
+  padding-left: 20px;
+  height: 200px;
+  width: auto;
+}
+
+.Navigation-Bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  background-color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.Navbar-Item  {
+  text-decoration: none;
+  font-size: 25px;
+  width: 150px;
+  height: 45px;
+  text-align: center;
+  color: white;
+  padding-top: 10px;
+}
+
+.Navbar-Item:hover {
+  background-color: #111;
+}
+
+.Wishlist-Logo {
+  position: relative;
+  right: 60%;
+  height:55px;
+  width: auto;
+}
+
+.form {
+  position: relative;
+  left: 43%;
+}
+
+.Splash-Page-Section-2 {
+  display: flex;
+  flex-direction: row;
+}
+
+.Splash-Page-Section-2-Image {
+  height: auto;
+  width: 350px;
+  margin-left: 3%;
+  margin-top: 3%;
+}
+
+.Feature-List-Title {
+  color: black;
+  font-size: 70px;
+  position: relative;
+  left: 10%;
+}
+
+.Feature-List {
+  list-style-type: square;
+}
+
+.Feature-List-Item {
+  font-size: 30px;
+  position: relative;
+  left: 10%;
+  margin-bottom: 5%;
+}
+
+.Action-1-Link {
+  position: relative;
+  left: 17%;
+  font-size: 20px;
+}
+
+.Get-Started-Link {
+  text-decoration: none;
+}
+
+.Device-Section {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  left: 25%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.Device-Feature-Image {
+  width: 400px;
+  height: auto;
+  margin-left: 5%;
+}
+
+.About-Section {
+  display: flex;
+  flex-direction: row;
+}
+
+.About-Us-Image {
+  width: 100%;
+  height: auto;
+}
+
+.About-Us-Text {
+  font-size: 20px;
+}
+
+.About-Us-Title {
+  font-size: 50px;
+  margin-bottom: 0;
+}
+
+.About-Us-Text-Section {
+  text-align: center;
+  left: 28%;
+  margin-top: 35px;
+  margin-bottom: 50px;
+}
+
+.Add-List-Input {
+  width: 550px;
+  height: 35px;
+  border-radius: 18px;
+}
+
+.Add-List-Submit {
+  font-size: 21px;
+  border: none;
+  position: relative;
+  right: 11.5%;
+  background-color: white;
+}
+
+.Add-Sub-List-Button {
+  font-size: 21px;
+  border: 0.5px solid black;
+  border-radius: 18px;
+  position: relative;
+  padding-top: 4.5px;
+  background-color: black;
+  color: white;
+  padding: 6.5px;
+}

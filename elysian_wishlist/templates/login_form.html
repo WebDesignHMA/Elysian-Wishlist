@@ -1,24 +1,41 @@
 <!doctype html5>
 <html>
+
 <head>
   <title>Login</title>
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/auth.css') }}">
+
 </head>
+
 <body>
-  <h2>Login</h2>
-  <form id="login" action="{{ url_for('login')}}" method="post">
-    Username :  <input type="text" id="username" name="username" />
-    Password : <input type="password" id="password" name="password" />
-    <input type="submit" id="submit" text="Login" />
-  </form>
-  <p><a href="{{ url_for('signup') }}">Signup</a></p>
-  {% with messages = get_flashed_messages() %}
+    <img class="Wishlist-Logo" src="../static/graphics/wishlist_logo_redblack.png" />
+  <div class="SignUp-Container">
+      <button class="Alt-Sign-Up-Button">
+          <a class="Sign-Up-Text" 
+            href="{{ url_for('signup') }}">Signup</a>
+        </button>
+    <p class="SignUp-Caption">Login to your Wishlist Account!</p>
+    <form id="signup" action="{{ url_for('login')}}" method="post">
+      <div class="Input-Div">
+        <img class="Input-Icon" src="../static/graphics/user_icon.png"/>
+        <input type="text" class="login-input" id="username" name="username" placeholder="Username" />
+      </div>
+      <div class="Input-Div">
+          <img class="Input-Icon" src="../static/graphics/key_icon.png"/>
+          <input type="password" class="login-input" id="password" name="password" placeholder="Password" />
+     </div>
+      <input type="submit" class="Sign-Up-Button" id="submit" text="Login" value="Login"/>
+    </form>
+    {% with messages = get_flashed_messages() %}
     {% if messages %}
-      <ul class=flashes>
+    <ul class=flashes>
       {% for message in messages %}
-        <li>{{ message }}</li>
+      <li>{{ message }}</li>
       {% endfor %}
-      </ul>
+    </ul>
     {% endif %}
-  {% endwith %}
+    {% endwith %}
+  </div>
 </body>
+
 </html>

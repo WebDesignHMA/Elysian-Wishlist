@@ -1,26 +1,65 @@
 <!doctype html5>
 <html>
 <head>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/auth.css') }}">
   <title>Sign Up</title>
 </head>
 <body>
-  <h2>Sign Up</h2>
-  <form id="signup" action="{{ url_for('signup')}}" method="post">
-    First Name :  <input type="text" id="firstname" name="firstname" />
-    Last Name :  <input type="text" id="lastname" name="lastname" />
-    Email :  <input type="text" id="email" name="email" />
-    Username :  <input type="text" id="username" name="username" />
-    Password : <input type="password" id="password" name="password" />
-    <input type="submit" id="submit" text="Signup" />
-  </form>
-  {% with messages = get_flashed_messages() %}
-    {% if messages %}
-      <ul class=flashes>
-      {% for message in messages %}
-        <li>{{ message }}</li>
-      {% endfor %}
-      </ul>
-    {% endif %}
-  {% endwith %}
+    <img class="Wishlist-Logo" src="../static/graphics/wishlist_logo_redblack.png" />
+  <div class="SignUp-Container">
+      <p class="SignUp-Caption">Sign Up For Wishlist!</p>
+    <form id="signup" action="{{ url_for('signup')}}" method="post">
+      <div class="Input-Div">
+          <img class="Input-Icon" src="../static/graphics/user_icon.png"/>
+          <input class="login-input" 
+            type="text" 
+            id="firstname" 
+            name="firstname" 
+            placeholder="First Name"/>
+      </div>
+      <div class="Input-Div">
+          <img class="Input-Icon" src="../static/graphics/user_icon.png"/>
+          <input class="login-input" 
+            type="text" 
+            id="lastname" 
+            name="lastname"
+            placeholder="Last Name"/>
+      </div>
+      <div class="Input-Div">
+          <img class="Input-Icon" src="../static/graphics/email_icon.png"/>
+          <input class="login-input" 
+            type="text" 
+            id="email" 
+            name="email" 
+            placeholder="Email"/>
+      </div>
+      <div class="Input-Div">
+          <img class="Input-Icon" src="../static/graphics/user_icon.png"/>
+          <input class="login-input" 
+          type="text" 
+          id="username" 
+          name="username" 
+          placeholder="Username"/>
+      </div>
+      <div class="Input-Div">
+          <img class="Input-Icon" src="../static/graphics/key_icon.png"/>
+          <input class="login-input" 
+            type="password" 
+            id="password" 
+            name="password" 
+            placeholder="Password"/>
+     </div>
+      <input class="Sign-Up-Button" type="submit" id="submit" value="Sign Up" />
+    </form>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class=flashes>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+  </div>
 </body>
 </html>

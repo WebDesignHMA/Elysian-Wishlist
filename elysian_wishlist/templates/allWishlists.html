@@ -2,6 +2,7 @@
 
 {% block head %}
 <title>All Wishlists</title>
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/pages.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -37,16 +38,17 @@
                     {{ list[1].username }}
                 </td>
             </tr>
-        {% endfor %}
-    </table>
-    {% endif %}
-<!--
-    <div class="form">
-        <form action="/" method="POST">
-            <input type="text" name="content" id="content">
-            <input type="submit" value="Add List">
-        </form>
+            {% endfor %}
+        </table>
+        {% endif %}
+    <!--
+        <div class="form">
+            <form action="/" method="POST">
+                <input type="text" name="content" id="content">
+                <input type="submit" value="Add List">
+            </form>
+        </div>
+    -->
     </div>
--->
-</div>
+</body>
 {% endblock %}
