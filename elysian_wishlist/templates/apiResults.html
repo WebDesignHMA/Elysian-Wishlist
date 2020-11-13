@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Wishlists</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+
+    {% if result|length < 1 %}
+    <h4 style="text-align: center">There are results for this search request.</h4>
+    {% else %}
+
+    <br>
+    <table>
+        <tr>
+            <th>Image</th>
+            <th>Item</th>
+            <th>Prices</th>
+        </tr>
+        {% for item in result %}
+            <tr>
+                <td><img src={{ item.image }}  width="120" height="90"></td>
+                <td>{{ item.title }}</td>
+                <td>{{ item.price }}</td>
+                <td><a href="{{ url_for('addToWishlist', wishlistId=wishlistId, itemId=item.item_id) }}" >Add to Wishlist</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+</div>
+{% endblock %}
