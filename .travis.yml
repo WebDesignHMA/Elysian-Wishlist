@@ -1,18 +1,15 @@
 language: python
-python: 
-    - "3.7"
+python:
+- '3.7'
 before_install:
-    - pip install poetry
+- pip install poetry
 install:
-    - poetry install
+- poetry install
 addons:
-    sonarcloud:
-        organization: "webdesignhma" # the key of the org you chose at step #3
-        token:
-            secure: 479dec7364a7e1b342d3b19093fe4396965d55f0 # encrypted value of your token
-        # other script steps might be done before running the actual analysis
+  sonarcloud:
+    organization: webdesignhma
+    token:
+      secure: mThdLETOhNQuo4FPij2Pi0dA0kfuheWBewpZrDHEnB4hYNISFAI4EOHtFySUxo2B1uYJ6gbRfhv3HPcUzd/gfEWd5yZWTIhusTZmDwN24x3SvNGkh9QugEptkHsAvVds3/o+3+8wL/I8M0/yq/ggokx43q5bzSMcp9Q7F1jViK3YzKgl2KbrDc7khNcpy1sTuZ/f6xsQs+LqNcsxJtIJ/AerAtGT813QAzmL2Xc6N2L5JWjOh9wiJ6is8azlZls1f365yDm3kc/5Mw3ywBTNbEJVpnqGQm+TSH1mailZPoSk5EtsxgotlKIUm3HFeGMEQI14SjtGWkOre3XphjViPtMZJhoH2eJ8NiEBCghEMNEpLb2OTO7TsIk4pQVfzHQEBSqvLnV/K0c3s6/49Dazo4fA8IJbcqP/faws0JYkeNtcBZVUNGv/hXN9/UndNlt92XND1NVJS0leqLGsVyyhe0O7D7EyNjmm1tPzUGZ0TgCH/4oXmQGk2sz/xJ+Gb6F37Amcx+HaylJoxYrw3BkPlrHp8dbBqLGBOq5QR2hFLdZWrhi/Hlzjh2/R6TQMkUJXYZGujBEZPVWYNakSXM1xYy1NlZmXmJ//ipTtRYtqDhw06T9Q7hdDZC2OJdqsIn1DSGN8pYaSgBsTwGyY9xjIFYP1XO/rHOO96FUDS0EOnqk=
 script:
-    - poetry run pytest
-    - sonar-scanner -X
-    
-        
+- poetry run pytest
+- sonar-scanner -X
