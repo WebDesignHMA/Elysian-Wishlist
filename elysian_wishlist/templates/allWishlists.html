@@ -7,34 +7,34 @@
 
 {% block body %}
 <div class="content">
-    <h1 style="text-align: center">All Wishlists</h1>
+    <h1>All Wishlists</h1>
     {% if lists|length < 1 %}
     <h4 style="text-align: center">There are no wishlists. Login to your account and make your own Wishlist!</h4>
     {% else %}
-    <table>
-        <tr>
-            <th>Like/Dislike</th>
-            <th>List</th>
-            <th>Added</th>
-            <th>Creators</th>
+    <table class="All-Wishlist-Table">
+        <tr class="Column-Titles">
+            <th class="Column-Title">Like/Dislike</th>
+            <th class="Column-Title">List</th>
+            <th class="Column-Title">Added</th>
+            <th class="Column-Title">Creators</th>
         </tr>
         {% for list in lists %}
-            <tr>
-                <td>
+            <tr class="Column-Titles">
+                <td class="Column-Title">
                   {% if has_liked_wishlist(list[0]) %}
-                  <a href="{{ url_for('like_action', wishlist_id=list[0].id, action='unlike') }}" >Unlike</a>
+                  <a  class="Column-Title-Link" href="{{ url_for('like_action', wishlist_id=list[0].id, action='unlike') }}" >Unlike</a>
                   {% else %}
-                  <a href="{{ url_for('like_action', wishlist_id=list[0].id, action='like') }}" >Like</a>
+                  <a  class="Column-Title-Link" href="{{ url_for('like_action', wishlist_id=list[0].id, action='like') }}" >Like</a>
                   {% endif %}
                   {{ list[0].liked.count() }} likes
                 </td>
-                <td>
+                <td class="Column-Title">
                     <a href="/list/{{list[0].id}}">
                         {{ list[0].content }}
                     </a>
                 </td>
-                <td>{{ list[0].date_created.date() }}</td>
-                <td>
+                <td class="Column-Title">{{ list[0].date_created.date() }}</td>
+                <td class="Column-Title">
                     {{ list[1].username }}
                 </td>
             </tr>
