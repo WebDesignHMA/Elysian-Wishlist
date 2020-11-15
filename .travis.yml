@@ -8,7 +8,8 @@ install:
 addons:
   sonarcloud:
     organization: "webdesignhma"
-    token: "122b129b90d56fd180160deda5ddc04bb318c296"
+    token: 
+      secure: "efTA0wqIVKvRPamJ0LAhVvZfkrtF1g0VT+5aabt8sFlWhX1ckgqggggO17byVvE590F06+nR8VEr8W/e5fGUUg/VOAWtd+zxPc4LRAgpOw9m56Ed5UieeijO0mgDBaGRkhRkM495rA8akCGWcAkWwCvPeRkXDuFYI2G5vE9q1w36Tm3c1D+X3/GHsW+5fGssz/FsrZTwR+aKFVJP/2sN+tqawg9tpCSTP7UarFs720/mX/tqsan7vdZQ3uwwfBL16WHvGbfep1h7rlvcunNc7f0pWxWNCiiLKGO4Ub6fp8vmZAjVHSD5zZriIcgY/8MTUZx5wyYhj0+8zLyt0tzb/5lQLaL7084MdQeyfSvZrFCZPOU/8jyC9TlwVUBC7ADflzPQknEyQN8v1ONaNuocWkxBQ3sGP6LMndQMF9nDWEoMUgyq20lCrM0u7J0cwv1+PBaq01R5G97Pr/YLpAG39K/ZeIof8ZP6bstPAMJzj2q711RxAVd5VKwobfL9SzCTB4ON2/bFia9W5YOeD4IXLisejKEo26CVLuMLYW4vsbSCfGh0dCyAGGNyS+rDJMe9lBPm08W76g04rV/ICaH8SB3XknAcWS7Tu5pH4uP5alGoBc6PLKQKdqDIK1FpTBl0U7lOFjZapAwWMZui8C8EMR49p7GZSL4JfkRP8MHvUWM="
 script:
 - poetry run pytest
 - sonar-scanner -X
