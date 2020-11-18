@@ -26,22 +26,14 @@
     <h2 style="text-align: center">There are no sub-lists for {{result.0.content}}. <br> Create one below!</h2>
     {% else %}
 
-    <div class="form">
-        <form action="" method="POST">
-            <input type="text" name="content" id="content" required>
-            <input type="hidden" name="parentId" value="{{ result.0.id }}">
-            <input type="submit" value="Add sub list">
-        </form>
-    </div>
-    <br>
     <table class="List-Table">
-        <tr>
+        <!-- <tr>
             <th>Image</th>
             <th>Item</th>
             <th>Prices</th>
             <th>Added</th>
             <th>Actions</th>
-        </tr>
+        </tr> -->
         {% for sublist in result.1 %}
             <tr class="Item-Row">
                 <td class="Item-Image"><img src={{ sublist.image_file }}></td>
