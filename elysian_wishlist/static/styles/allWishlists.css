@@ -1,0 +1,47 @@
+.Wishlists-Holder {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  border: 0.5px solid black;
+}
+
+.Card-Image {
+  height: 50%;
+  width: auto;
+  border-bottom: 0.5px dotted black;
+}
+
+.Wishlist-Card {
+  display: flex;
+  flex-direction: column;
+  width: 49%;
+  height: 300px;
+  border: 0.5px solid black;
+}
+
+.Wishlist-Title {
+  text-decoration-line: none;
+  text-align:center;
+  font-size: 18px;
+  padding-top: 15px;
+}
+
+.Creator-Username {
+  text-align: center;
+  padding-top: 10px;
+}
+
+.Card-Bottom {
+  display: flex;
+  flex-direction: row;
+}
+
+.Wishlist-Like {
+  padding-right: 7px;
+  padding-left: 7px;
+}
+
+.Date-Added {
+  position: relative;
+  left: 370px;
+}
