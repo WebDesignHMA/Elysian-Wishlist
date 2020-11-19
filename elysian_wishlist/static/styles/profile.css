@@ -1,0 +1,73 @@
+.Profile-Caption {
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 32px;
+  /* color: gray; */
+  color: #5AB9EA;
+  position: relative;
+  left: 30%;
+}
+
+#Profile-Form {
+  display: flex;
+  flex-direction: column;
+  /* border: 0.5px solid black; */
+  padding: 10px;
+  width: 350px;
+  position: relative;
+  left: 37%;
+}
+
+.Profile-Input {
+  margin-bottom: 7%;
+  border-radius: 10px;
+  border: 0.5px solid grey;
+  padding: 10px;
+  width: 320px;
+  height: 35px;
+  background-color: #f0f5f5;
+}
+
+.Update-Profile-Button {
+  background-color: #84CEEB;
+  color: white;
+  width: 300px;
+  height: 35px;
+  border-radius: 15px;
+  border: none;
+  position: relative;
+  left: 2.5%;
+}
+
+.Profile-Heading {
+  display: flex;
+  flex-direction: row;
+}
+
+.Greeting-Text {
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 16px;
+  margin-right: 95px;
+}
+
+.My-Wishlists-Button {
+  width: 70px;
+  height: 30px;
+  border-radius: 10px;
+  border: 0.5px solid black;
+  margin-right: 5px;
+  background-color: #84CEEB;
+}
+
+.Logout-Button {
+  width: 60px;
+  height: 30px;
+  border-radius: 10px;
+  border: 0.5px solid black;
+  background-color: #5AB9EA;
+}
+
+.Button-Text {
+  text-decoration-line: none;
+  font-size: 10px;
+  color: white;
+}
