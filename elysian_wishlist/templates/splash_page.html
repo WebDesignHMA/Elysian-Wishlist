@@ -1,14 +1,36 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/pages.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/home.css') }}">
+
+
 <title>Wishlists</title>
 {% endblock %}
 
 {% block body %}
 
 <body>
-    <div class="Splash-Page">
+  <section class="main-page">
+  <header id="company-name">
+    <h1>Wishlist</h1>
+  </header>
+  <header class="company-motto">  <!--the slogan under company name-->
+    <h1 class="motto">Create something amazing</h1>
+  </header>
+</section>
+<article>
+  <h2>Some additional content</h2>
+  Have you ever made a wish? Wanted something you couldn't get?
+  Passed on something because it was too expensive? Missed out
+  on something because it sold out? What if it was easier to
+  get what you wished for? WISHLIST is an immersive web application
+  where you can express what you wish for, others can see it and
+  maybe, just maybe, that wish comes true. We're here to make
+  dreams a reality.
+
+  WISHLIST. We make wishes come true.
+</article>
+    <!-- <div class="Splash-Page">
         <div class="Splash-Page-Section-2">
             <img class="Splash-Page-Section-2-Image" src="../static/images/paints.jpg" />
             <div class="Feature-List-Section">
@@ -55,19 +77,19 @@
                 <p class="About-Us-Title">ABOUT US</p>
                 <p class="About-Us-Text">
                     Have you ever made a wish? Wanted something you couldn't get?
-                    Passed on something because it was too expensive? Missed out 
+                    Passed on something because it was too expensive? Missed out
                     <br/>
-                    on something because it sold out? What if it was easier to 
-                    get what you wished for? WISHLIST is an immersive web application 
+                    on something because it sold out? What if it was easier to
+                    get what you wished for? WISHLIST is an immersive web application
                     <br/>
-                    where you can express what you wish for, others can see it and 
-                    maybe, just maybe, that wish comes true. We're here to make 
-                    dreams a reality. 
+                    where you can express what you wish for, others can see it and
+                    maybe, just maybe, that wish comes true. We're here to make
+                    dreams a reality.
                     <br/>
                     WISHLIST. We make wishes come true.
                 </p>
             </div>
         </div>
-    </div>
+    </div> -->
 </body>
 {% endblock %}

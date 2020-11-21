@@ -4,16 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="{url_for('static',filename='styles/main.css')}">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel= "stylesheet" href= "{{ url_for('static',filename='styles/nav.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
     {% block head %}{% endblock %}
 </head>
 <body>
-    <div class="Navigation-Bar">
+    <!-- <div class="Navigation-Bar">
         <img class="Wishlist-Logo" src="../static/graphics/wishlist_logo.png" />
         <a class="Navbar-Item" href="/">My Wishlists</a>
         <a class="Navbar-Item" href="/profile">My Profile</a>
         <a class="Navbar-Item" href="/wishlists">All Wishlists</a>
-    </div>
+    </div> -->
+    <nav id="navbar" class="nav">
+      <div class="nav-wrapper">
+        <div class="logo">
+          <a href="/home" class="a_nav"><i class="fa fa-angellist"></i>Wishlist</a>
+          <ul id="menu">
+           <li><a href="/home">Home</a></li>
+           <li><a href="/">Create Wishlist</a></li>
+           <li><a href="/wishlists">Explore</a></li>
+           <li><a href="/forum">Community Forum</a></li>
+        </ul>
+        </div>
+        <ul>
+         <li><a href="/profile">Profile</a></li>
+         <li><a href="{{ url_for('login')}}">Login</a></li>
+         <li><a href="{{ url_for('signup')}}">Signup</a></li>
+        </ul>
+      </div>
+    </nav>
     {% block body %}{% endblock %}
 </body>
 
