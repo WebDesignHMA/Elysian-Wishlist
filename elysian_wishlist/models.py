@@ -10,6 +10,7 @@ class Wishlist(db.Model):
     user_uid = db.Column(db.Integer, db.ForeignKey('User.uid'), nullable=False)
     wishlist_sub = db.relationship('child', backref='wishlist')
     liked = db.relationship('LikedWishlist', backref='wishlist', lazy='dynamic')
+    comment = db.relationship('WishlistComment', backref='wishlist', lazy='dynamic')
 
 
     def __repr__(self):
@@ -36,6 +37,7 @@ class User(db.Model):
     pass_hash = db.Column(db.String(100), nullable=False)
     user_wishlist = db.relationship('Wishlist', backref='user')
     liked = db.relationship('LikedWishlist', backref='user', lazy='dynamic')
+    wishlist_comment = db.relationship('WishlistComment', backref='user', lazy='dynamic')
 
     def __repr__(self):
         return f"User('{self.uid}', '{self.firstname}', '{self.lastname}', '{self.email}', '{self.username}')"
@@ -53,7 +55,7 @@ class Thread(db.Model):
   date_created = db.Column(db.DateTime, default=datetime.now)
   uid = db.Column(db.Integer, db.ForeignKey('User.uid'), nullable=False)
   comments = db.relationship('Comment', backref="thread", cascade="all, delete, delete-orphan")
-  
+
   def __repr__(self):
     return '<Thread %r>' % self.title
 
@@ -67,3 +69,13 @@ class Comment(db.Model):
   def __repr__(self):
     return '<Comment %r>' % self.content
 
+class WishlistComment(db.Model):
+    __tablename__ = 'WishlistComment'
+    id = db.Column(db.Integer, primary_key=True)
+    body = db.Column(db.String(200))
+    timestamp = db.Column(db.DateTime, default=datetime.now)
+    wishlist_id = db.Column(db.Integer, db.ForeignKey('Wishlist.id'))
+    uid = db.Column(db.Integer, db.ForeignKey('User.uid'), nullable=False)
+
+    def __repr__(self):
+      return '<WishlistComment %r>' % self.body

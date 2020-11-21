@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, url_for, redirect, flash, \
 session, abort
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import func
 from datetime import datetime
 from elysian_wishlist import db
 from elysian_wishlist.models import *
@@ -51,10 +52,20 @@ def index():
 #all WISHLISTS everyone made
 def api_allWishlists():
     #lists = Wishlist.query.order_by(Wishlist.date_created).all()
-    lists = db.session.query(Wishlist, User).join(User, Wishlist.user_uid == User.uid).all()
+    lists = db.session.query(Wishlist, User).join(User).all()
+    bubbleSort(lists)
     for list in lists:
-        print (type(list[1]))
+        print (list[0].liked.count())
     return render_template('allWishlists.html', lists=lists, has_liked_wishlist = has_liked_wishlist, like_action = like_action_api)
+
+#bubbleSort to sort the likes
+def bubbleSort(arr):
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n - i - 1):
+            if arr[j][0].liked.count() < arr[j + 1][0].liked.count():
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+
 
 #updates wishlist
 def update(id):
@@ -103,6 +114,48 @@ def addToWishlistApi(wishlistId, itemId):
     db.session.add(new_list)
     db.session.commit()
     return redirect('/list/'+str(wishlistId))
+
+
+def displayComments(id):
+    if request.method == "POST":
+        content = request.form['content']
+        parentId = request.form['parentId']
+        author = request.form['authorId']
+        new_list = WishlistComment(body=content, wishlist_id=parentId, uid=author)
+        try:
+            db.session.add(new_list)
+            db.session.commit()
+            return redirect('/comments/'+str(id))
+        except:
+            return 'There was an issue adding your wishlist'
+
+
+
+    #myList = WishlistComment.query.filter_by(wishlist_id=id).join(User).add_columns('username').all()
+    myList = db.session.query(WishlistComment).filter(WishlistComment.wishlist_id == id).join(User, WishlistComment.uid==User.uid).add_columns('username').all()
+    #myList = Wishlist.query.filter_by(id=id).join(User).add_columns('username').join(LikedWishlist).add_columns('body')
+    #myList = []
+    lists = Wishlist.query.filter_by(id=id).join(User).add_columns('username')
+    for list in lists:
+        print(list[0].id)
+        print(list[1])
+    return render_template('displayComments.html', result = myList, lists=lists)
+
+def postComments(id):
+    #myList = Wishlist.query.get_or_404(id)
+    if request.method == "POST":
+        content = request.form['content']
+        parentId = request.form['parentId']
+        author = request.form['authorId']
+        new_list = WishlistComment(body=content, wishlist_id=parentId, uid=author)
+        try:
+            db.session.add(new_list)
+            db.session.commit()
+            return redirect('/')
+        except:
+            return 'There was an issue adding your wishlist'
+
+    return redirect('/comments/'+str(id))
 
 
 

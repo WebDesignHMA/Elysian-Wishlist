@@ -62,6 +62,17 @@ def wishlistItems(id):
 def ebayApiResult(name,id):
     return apiResult(name,id)
 
+#routes for showing the wishlist COMMENTS
+@app.route('/comments/<int:id>', methods=['POST', 'GET'])
+def displayCommentsApi(id):
+    return displayComments(id)
+
+@app.route('/postComments/', methods=['POST', 'GET'])
+def postCommentsApi(id):
+    return postComments(id)
+
+
+
 #HELPER FUNCTION: selected items for EBAY are added to db
 @app.route('/addToWishlist/<int:wishlistId>/<itemId>')
 def addToWishlist(wishlistId, itemId):
@@ -111,16 +122,15 @@ def home():
 @app.route('/forum')
 def forum():
     return api_forum()
-    
+
 @app.route('/new', methods=['GET', 'POST'])
 def new_thread():
     return api_new_thread()
-    
+
 @app.route('/deletethread/<int:id>')
 def delete_thread(id):
     return api_delete_thread(id)
-    
+
 @app.route('/view/<int:id>', methods=['GET', 'POST'])
 def view(id):
     return api_view(id)
-
