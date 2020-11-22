@@ -49,5 +49,20 @@
 }
 
 .Date-Added {
-  margin-left: 115px;
+  margin-left: 95px;
+}
+
+.Unlike-Icon {
+  width: 30px;
+  height: auto;
+  padding-left: 15px;
+  position: relative;
+  top: 4px;
+}
+
+.Like-Icon {
+  width: 27px;
+  height: auto;
+  position: relative;
+  bottom: 10%;
 }
