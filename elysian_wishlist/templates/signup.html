@@ -1,52 +1,54 @@
 <!doctype html5>
 <html>
 <head>
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/nav.css') }}">
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/auth.css') }}">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <title>Sign Up</title>
 </head>
-<body>
+<!-- <body>
     <img class="Wishlist-Logo" src="../static/graphics/wishlist_logo_redblack.png" />
   <div class="SignUp-Container">
       <p class="SignUp-Caption">Sign Up For Wishlist!</p>
     <form id="signup" action="{{ url_for('signup')}}" method="post">
       <div class="Input-Div">
           <img class="Input-Icon" src="../static/graphics/user_icon.png"/>
-          <input class="login-input" 
-            type="text" 
-            id="firstname" 
-            name="firstname" 
+          <input class="signup-input"
+            type="text"
+            id="firstname"
+            name="firstname"
             placeholder="First Name"/>
       </div>
       <div class="Input-Div">
           <img class="Input-Icon" src="../static/graphics/user_icon.png"/>
-          <input class="login-input" 
-            type="text" 
-            id="lastname" 
+          <input class="signup-input"
+            type="text"
+            id="lastname"
             name="lastname"
             placeholder="Last Name"/>
       </div>
       <div class="Input-Div">
           <img class="Input-Icon" src="../static/graphics/email_icon.png"/>
-          <input class="login-input" 
-            type="text" 
-            id="email" 
-            name="email" 
+          <input class="signup-input"
+            type="text"
+            id="email"
+            name="email"
             placeholder="Email"/>
       </div>
       <div class="Input-Div">
           <img class="Input-Icon" src="../static/graphics/user_icon.png"/>
-          <input class="login-input" 
-          type="text" 
-          id="username" 
-          name="username" 
+          <input class="signup-input"
+          type="text"
+          id="username"
+          name="username"
           placeholder="Username"/>
       </div>
       <div class="Input-Div">
           <img class="Input-Icon" src="../static/graphics/key_icon.png"/>
-          <input class="login-input" 
-            type="password" 
-            id="password" 
-            name="password" 
+          <input class="signup-input"
+            type="password"
+            id="password"
+            name="password"
             placeholder="Password"/>
      </div>
       <input class="Sign-Up-Button" type="submit" id="submit" value="Sign Up" />
@@ -61,5 +63,67 @@
       {% endif %}
     {% endwith %}
   </div>
+</body> -->
+
+<body>
+  <nav id="navbar" class="nav">
+    <div class="nav-wrapper">
+      <div class="logo">
+        <a href="/home"><i class="fa fa-angellist"></i>Wishlist</a>
+        <ul id="menu">
+         <li><a href="/home">Home</a></li>
+         <li><a href="/">Create Wishlist</a></li>
+         <li><a href="/wishlists">Explore</a></li>
+         <li><a href="/forum">Community Forum</a></li>
+      </ul>
+      </div>
+      <ul>
+       <li><a href="/profile">Profile</a></li>
+       <li><a href="{{ url_for('login')}}">Login</a></li>
+       <li><a href="{{ url_for('signup')}}">Signup</a></li>
+      </ul>
+    </div>
+  </nav>
+
+<div class="container" id="container">
+	<div class="form-container sign-up-container">
+		<form id="signup" action="{{ url_for('signup')}}" method="post">
+			<h1>Create Account</h1>
+			<input type="text" id="firstname" name="firstname" placeholder="First Name" />
+      	<input type="text" id="lastname" name="lastname" placeholder="Last Name" />
+        	<input type="email" id="email" name="email" placeholder="Email" />
+			<input type="text" id="username" name="username" placeholder="Username" />
+			<input type="password" id="password" name="password" placeholder="Password" />
+			<button>Sign Up</button>
+		</form>
+	</div>
+
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-right">
+				<h1>Welcome Back!</h1>
+				<p>To keep connected with us please login with your personal info</p>
+				<button class="ghost" id="signIn">
+            <a href="{{ url_for('login')}}">Sign In</a>
+        </button>
+			</div>
+			<!-- <div class="overlay-panel overlay-right">
+				<h1>Hello, Friend!</h1>
+				<p>Enter your personal details and start journey with us</p>
+				<button class="ghost" id="signUp">Sign Up</button>
+			</div> -->
+		</div>
+	</div>
+</div>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
 </body>
+
 </html>
