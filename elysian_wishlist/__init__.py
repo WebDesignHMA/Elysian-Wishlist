@@ -11,7 +11,6 @@ def create_app(db_uri='postgres://gyrkqxkdikjkmt:8449569b8985bf996624c077e2f21e0
     db.init_app(app)
     app.app_context().push()
     db.create_all()
-
     return app
 
 app=create_app()
