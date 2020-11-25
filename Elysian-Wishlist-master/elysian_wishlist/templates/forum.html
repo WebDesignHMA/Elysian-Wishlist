@@ -1,0 +1,42 @@
+{% extends 'base_forum.html'%}
+
+{% block head %}
+<title>Forum - Example</title>
+{% endblock %}
+
+{% block body %}
+
+<div class="content">
+  <h1>Community Forum</h1>
+
+  {% if threads|length < 1 %}
+    <h4>There are no threads yet</h4>
+
+  {% else %}
+    <table>
+      <tr class="tableRowMain">
+        <th width="60%">Thread</th>
+        <th>Added</th>
+        <th>Comments</th>
+        <th>Actions</th>
+      </tr>
+      {% for thread in threads %}  
+        <tr>
+          <td>{{ thread.title }}</td>
+          <td>{{ thread.date_created.strftime('%H:%M - %d-%m-%Y') }}</td>
+          <td>{{ thread.comments|length }}</td>
+          <td>
+            <a href="/deletethread/{{thread.id}}" class="formbuttondelete">Delete</a>
+            <br>
+            <a href="/view/{{thread.id}}" class="formbuttonview">View</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+  {% endif %}
+  <div id="addthread">
+      <a href='/new' class="button">New Thread</a>
+  </div>
+</div>
+
+{% endblock %}
