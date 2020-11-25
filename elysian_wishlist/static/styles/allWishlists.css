@@ -1,0 +1,53 @@
+.Wishlists-Holder {
+  display: flex;
+  flex-wrap: wrap;
+  width: 55%;
+  border: 0.5px solid black;
+}
+
+.Card-Image {
+  height: 50%;
+  width: auto;
+  border-bottom: 0.5px dotted black;
+}
+
+.Wishlist-Card {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  height: 300px;
+  border: 0.5px solid black;
+  margin-left: 6.5%;
+  margin-top: 4%;
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.Wishlist-Title {
+  text-decoration-line: none;
+  text-align:center;
+  font-size: 18px;
+  padding-top: 15px;
+  color: #84CEEB;
+}
+
+.Creator-Username {
+  text-align: center;
+  padding-top: 10px;
+}
+
+.Card-Bottom {
+  display: flex;
+  flex-direction: row;
+}
+
+.Wishlist-Like {
+  padding-right: 7px;
+  padding-left: 15px;
+  text-decoration-line: none;
+  color: #5AB9EA;
+}
+
+.Date-Added {
+  margin-left: 115px;
+}

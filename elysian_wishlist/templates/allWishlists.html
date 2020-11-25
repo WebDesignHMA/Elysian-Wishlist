@@ -2,7 +2,9 @@
 
 {% block head %}
 <title>All Wishlists</title>
-<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/pages.css') }}">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/allWishlists.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -11,35 +13,40 @@
     {% if lists|length < 1 %}
     <h4 style="text-align: center">There are no wishlists. Login to your account and make your own Wishlist!</h4>
     {% else %}
-    <table class="All-Wishlist-Table">
-        <tr class="Column-Titles">
+    <!-- <table class="All-Wishlist-Table"> -->
+        <!-- <tr class="Column-Titles">
             <th class="Column-Title">Like/Dislike</th>
             <th class="Column-Title">List</th>
             <th class="Column-Title">Added</th>
             <th class="Column-Title">Creators</th>
-        </tr>
+        </tr> -->
+        <div class="Wishlists-Holder">
         {% for list in lists %}
-            <tr class="Column-Titles">
-                <td class="Column-Title">
+            <div class="Wishlist-Card">
+                <img src="#" class="Card-Image"/>
+                <a class="Wishlist-Title" href="/list/{{list[0].id}}">
+                    {{ list[0].content }}
+                </a>
+                <p class="Creator-Username">
+                        {{ list[1].username }}
+                </p>
+                <div class="Card-Bottom">
                   {% if has_liked_wishlist(list[0]) %}
-                  <a  class="Column-Title-Link" href="{{ url_for('like_action', wishlist_id=list[0].id, action='unlike') }}" >Unlike</a>
+                  <p>
+                    <a class="Wishlist-Unlike" href="{{ url_for('like_action', wishlist_id=list[0].id, action='unlike') }}" >Unlike</a>
+                 </p>
                   {% else %}
-                  <a  class="Column-Title-Link" href="{{ url_for('like_action', wishlist_id=list[0].id, action='like') }}" >Like</a>
+                  <p>
+                    <a class="Wishlist-Like" href="{{ url_for('like_action', wishlist_id=list[0].id, action='like') }}" >Like</a>
+                 </p>
                   {% endif %}
-                  {{ list[0].liked.count() }} likes
-                </td>
-                <td class="Column-Title">
-                    <a href="/list/{{list[0].id}}">
-                        {{ list[0].content }}
-                    </a>
-                </td>
-                <td class="Column-Title">{{ list[0].date_created.date() }}</td>
-                <td class="Column-Title">
-                    {{ list[1].username }}
-                </td>
-            </tr>
+                 <p class="Like-Count"> {{ list[0].liked.count() }} likes</p>
+                 <p class="Date-Added">{{ list[0].date_created.date() }}</p>
+                </div>
+            </div>
             {% endfor %}
-        </table>
+        </div>
+        <!-- </table> -->
         {% endif %}
     <!--
         <div class="form">
