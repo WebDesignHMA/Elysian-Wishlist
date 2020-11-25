@@ -1,0 +1,116 @@
+
+.content {
+  width: 100%;
+}
+
+.List-Container {
+  display: flex;
+  flex-direction: column;
+  font-family: sans-serif;
+  width: 70%;
+  padding-left: 15%;
+  padding-right:15%;
+}
+
+.Item-Row {
+  display: flex;
+  flex-direction: row;
+  border-top: 1px solid #e0e0eb;
+  border-bottom: 1px solid #e0e0eb;
+}
+
+.Middle-Section {
+  display: flex;
+  flex-direction: column;
+}
+
+.End-Section {
+  display: flex;
+  flex-direction: column;
+}
+
+.Item-Actions {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  top: 55%;
+  left: 50%;
+}
+
+.Item-Image {
+  height: auto;
+  width: 20%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: 25px;
+}
+
+.Item-Title {
+  width: 600px;
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.Item-Date-Added {
+  padding-top: 120px;
+}
+
+.Item-Price {
+  font-weight: 300;
+  font-size: 22px;
+}
+
+.Update-Icon {
+  width: 25px;
+  height: 25px;
+  padding-right: 10px;
+}
+
+.Delete-Icon {
+  width: 25px;
+  height: 25px;
+}
+
+.Add-List-Input {
+  width: 350px;
+  height: 35px;
+  border-radius: 18px;
+  border: 0.5px solid black;
+  margin-bottom: 20px;
+}
+
+.Add-List-Submit {
+  font-size: 21px;
+  border: none;
+  position: relative;
+  right: 11.5%;
+  background-color: white;
+}
+
+.Add-Sub-List-Button {
+  font-size: 21px;
+  border: 0.5px solid black;
+  border-radius: 18px;
+  position: relative;
+  padding-top: 4.5px;
+  background-color: black;
+  color: white;
+  padding: 6.5px;
+}
+
+.form {
+  position: relative;
+  left: 12%;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.Current-Wishlist-Title {
+  font-size: 20px;
+  margin-left: 80px;
+  margin-top: 31px;
+  font-weight: 300;
+}
