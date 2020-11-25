@@ -110,7 +110,7 @@ def addToWishlistApi(wishlistId, itemId):
     json_content = json_dict['title']
     json_price = json_dict['price']
     json_image = json_dict['image']
-    new_list = child(child_content=json_content, Wishlist_id=int(wishlistId), prices=json_price, image_file=json_image)
+    new_list = child(child_content=json_content, Wishlist_id=int(wishlistId), prices=json_price, image_file=json_image, ebay_id=itemId)
     db.session.add(new_list)
     db.session.commit()
     return redirect('/list/'+str(wishlistId))

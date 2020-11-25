@@ -25,6 +25,7 @@ class child(db.Model):
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
     prices = db.Column(db.String(200), nullable=True)
     image_file = db.Column(db.String(200), nullable=False)
+    ebay_id = db.Column(db.String(200), nullable=True)
 
 
 class User(db.Model):
@@ -79,3 +80,10 @@ class WishlistComment(db.Model):
 
     def __repr__(self):
       return '<WishlistComment %r>' % self.body
+
+class cronScheduler(db.Model):
+    __tablename__ = 'cronScheduler'
+    id = db.Column(db.Integer, primary_key=True)
+    ebay_id = db.Column(db.String(200), nullable=True)
+    date_created = db.Column(db.DateTime, default=datetime.now)
+    prices = db.Column(db.String(200), nullable=True)
