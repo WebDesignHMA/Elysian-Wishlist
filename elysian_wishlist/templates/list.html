@@ -7,9 +7,9 @@
 
 {% block body %}
 <div class="content">
-    <h1 class="Current-Wishlist-Title">Current Wishlist: <b><u>{{ result.0.content }}</u></b></h1>
-    <div class="form">
-        <form action="" method="POST">
+    <div class="form-container">
+        <h1 class="Current-Wishlist-Title">Current Wishlist: <b><u>{{ result.0.content }}</u></b></h1>
+        <form class="form" action="" method="POST">
             <input class="Add-List-Input" type="text" name="content" required>
             <input type="hidden" name="parentId" value="{{ result.0.id }}">
             <input class="Add-Sub-List-Button" type="submit" value="Add Sub-List">

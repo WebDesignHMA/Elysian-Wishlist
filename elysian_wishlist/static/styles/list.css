@@ -71,11 +71,6 @@
   height: 25px;
 }
 
-.Current-Wishlist-Title {
-  font-size: 18px;
-  text-align: center;
-}
-
 .Add-List-Input {
   width: 350px;
   height: 35px;
@@ -105,5 +100,17 @@
 
 .form {
   position: relative;
-  left: 35%;
+  left: 12%;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.Current-Wishlist-Title {
+  font-size: 20px;
+  margin-left: 80px;
+  margin-top: 31px;
+  font-weight: 300;
 }
