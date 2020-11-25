@@ -2,60 +2,44 @@
 
 {% block head %}
 <title>Wishlists</title>
-<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/pages.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/list.css') }}">
 {% endblock %}
 
 {% block body %}
 <div class="content">
     <h1 class="Current-Wishlist-Title">Current Wishlist: <b><u>{{ result.0.content }}</u></b></h1>
     <div class="form">
-            <form action="" method="POST">
-                <input class="Add-List-Input" 
-                        type="text" 
-                        name="content" 
-                        id="content" 
-                        required>
-                <input type="hidden" name="parentId" value="{{ result.0.id }}">
-                <input 
-                    class="Add-Sub-List-Button" 
-                    type="submit" 
-                    value="Add Sub-List">
-            </form>
-        </div>
+        <form action="" method="POST">
+            <input class="Add-List-Input" type="text" name="content" required>
+            <input type="hidden" name="parentId" value="{{ result.0.id }}">
+            <input class="Add-Sub-List-Button" type="submit" value="Add Sub-List">
+        </form>
+    </div>
     {% if result.1|length < 1 %}
     <h2 style="text-align: center">There are no sub-lists for {{result.0.content}}. <br> Create one below!</h2>
     {% else %}
-
-    <div class="form">
-        <form action="" method="POST">
-            <input type="text" name="content" id="content" required>
-            <input type="hidden" name="parentId" value="{{ result.0.id }}">
-            <input type="submit" value="Add sub list">
-        </form>
-    </div>
-    <br>
-    <table class="List-Table">
-        <tr>
-            <th>Image</th>
-            <th>Item</th>
-            <th>Prices</th>
-            <th>Added</th>
-            <th>Actions</th>
-        </tr>
+    <div class="List-Container">
         {% for sublist in result.1 %}
-            <tr class="Item-Row">
-                <td class="Item-Image"><img src={{ sublist.image_file }}></td>
-                <td class="Item-Name">{{ sublist.child_content }}</td>
-                <td class="Item-Price">{{ sublist.prices }}</td>
-                <td class="Item-Date-Added">{{ sublist.date_created.date() }}</td>
-                <td class="Item-Actions">
-                    <a href="/deletesub/{{sublist.id}}">Delete</a>
-                    <br>
-                    <a href="/updatesub/{{sublist.id}}">Update</a>
-                </td>
-            </tr>
+        <div class="Item-Row">
+            <img class="Item-Image" src={{ sublist.image_file }}>
+            <div class="Middle-Section">
+                <p class="Item-Title">{{ sublist.child_content }}</p>
+                <p class="Item-Date-Added">Added on {{ sublist.date_created.date() }}</p>
+            </div>
+            <div class="End-Section">
+                <p class="Item-Price">{{ sublist.prices }}</p>
+                <div class="Item-Actions">
+                    <a href="/updatesub/{{sublist.id}}">
+                        <img class="Update-Icon" src="../static/images/updateIcon.png" />
+                    </a>
+                    <a href="/deletesub/{{sublist.id}}">
+                        <img class="Delete-Icon" src="../static/images/deleteIcon.png" />
+                    </a>
+                </div>
+            </div>
+        </div>
         {% endfor %}
-    </table>
+    </div>
     {% endif %}
 </div>
 {% endblock %}

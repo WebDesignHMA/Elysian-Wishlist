@@ -206,27 +206,4 @@ h1,h4 {
   margin-bottom: 50px;
 }
 
-.Add-List-Input {
-  width: 550px;
-  height: 35px;
-  border-radius: 18px;
-}
 
-.Add-List-Submit {
-  font-size: 21px;
-  border: none;
-  position: relative;
-  right: 11.5%;
-  background-color: white;
-}
-
-.Add-Sub-List-Button {
-  font-size: 21px;
-  border: 0.5px solid black;
-  border-radius: 18px;
-  position: relative;
-  padding-top: 4.5px;
-  background-color: black;
-  color: white;
-  padding: 6.5px;
-}
