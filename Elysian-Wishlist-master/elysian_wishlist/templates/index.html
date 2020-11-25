@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/pages.css') }}">
+<title>Wishlists</title>
+{% endblock %}
+
+{% block body %}
+
+<body>
+    <div class="content">
+        <h1 style="text-align: center">My Wishlists</h1>
+        <form class="form" action="/" method="POST">
+            <input 
+                class="Add-List-Input"
+                type="text" 
+                name="content" 
+                id="content">
+            <input 
+                class="Add-List-Submit"
+                type="submit" 
+                value="+">
+        </form>
+        {% if lists|length < 1 %}
+        <h4 style="text-align: center">There are no wishlists. Create one above!</h4>
+        {% else %}
+        <table class="All-Wishlist-Table">
+            <tr class="Column-Titles">
+                <th class="Column-Title">List</th>
+                <th class="Column-Title">Added</th>
+                <th class="Column-Title">Actions</th>
+            </tr>
+            {% for list in lists %}
+            <tr class="Column-Titles">
+                <td class="Column-Title">
+                    <a class="Column-Title-Link" href="/list/{{list.id}}">
+                        {{ list.content }}
+                    </a>
+                </td>
+                <td class="Column-Title">{{ list.date_created.date() }}</td>
+                <td class="Column-Title">
+                    <a class="Column-Title-Link" href="/delete/{{list.id}}">Delete</a>
+                    <br>
+                    <a class="Column-Title-Link" href="/update/{{list.id}}">Update</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+    </div>
+</body>
+{% endblock %}
