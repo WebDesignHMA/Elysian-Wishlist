@@ -52,17 +52,19 @@
   margin-left: 95px;
 }
 
-.Unlike-Icon {
-  width: 30px;
+.Like-Icon {
+  width: 32px;
   height: auto;
-  padding-left: 15px;
   position: relative;
-  top: 4px;
+  bottom: 10%;
+
 }
 
-.Like-Icon {
+.Unlike-Icon {
   width: 27px;
   height: auto;
   position: relative;
   bottom: 10%;
+  padding-left: 14px;
+  padding-right: 10px;
 }

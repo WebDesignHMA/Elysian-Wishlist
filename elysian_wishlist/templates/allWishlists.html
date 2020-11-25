@@ -34,13 +34,13 @@
                   {% if has_liked_wishlist(list[0]) %}
                   <p>
                     <a class="Wishlist-Unlike" href="{{ url_for('like_action', wishlist_id=list[0].id, action='unlike') }}" >
-                        <img class="Unlike-Icon" src="../static/images/thumbsDownIcon.png"/>
+                        <img class="Unlike-Icon" src="../static/images/thumbsUpIcon.png"/>
                     </a>
                  </p>
                   {% else %}
                   <p>
                     <a class="Wishlist-Like" href="{{ url_for('like_action', wishlist_id=list[0].id, action='like') }}">
-                        <img class="Like-Icon" src="../static/images/thumbsUpIcon.png"/>
+                        <img class="Like-Icon" src="../static/images/thumbsUpUnfilled.png"/>
                     </a>
                  </p>
                   {% endif %}
