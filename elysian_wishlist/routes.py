@@ -4,6 +4,7 @@ from elysian_wishlist.modules.crud.crud_Functions import *
 from elysian_wishlist.modules.user_login.login_app import *
 from elysian_wishlist.modules.third_party_api.ebay import *
 from elysian_wishlist.modules.third_party_api.amazon import *
+from elysian_wishlist.modules.cronChart.priceChart import *
 from elysian_wishlist.modules.forum.forum import *
 import json
 
@@ -37,6 +38,11 @@ def myWishlists():
 @app.route("/wishlists/")
 def allWishlists():
     return api_allWishlists()
+
+#route for charts
+@app.route("/charts/")
+def displayChartApi():
+    return makePriceChart()
 
 #like/unlike wishlists
 @app.route('/like/<int:wishlist_id>/<action>')

@@ -1,5 +1,6 @@
 from datetime import datetime
 from elysian_wishlist import db
+from sqlalchemy_serializer import SerializerMixin
 
 #db model for each wishlist
 class Wishlist(db.Model):
@@ -81,7 +82,7 @@ class WishlistComment(db.Model):
     def __repr__(self):
       return '<WishlistComment %r>' % self.body
 
-class cronScheduler(db.Model):
+class cronScheduler(db.Model, SerializerMixin):
     __tablename__ = 'cronScheduler'
     id = db.Column(db.Integer, primary_key=True)
     ebay_id = db.Column(db.String(200), nullable=True)
