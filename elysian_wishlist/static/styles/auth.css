@@ -1,153 +1,143 @@
-.Login-Container {
-  height: 40%;
-  width: 30%;
-  border: 1px solid black;
-  position: relative;
-  left: 33%;
-  margin-top: 10%;
+* {
+	box-sizing: border-box;
 }
 
-.SignUp-Container {
-  height: 50%;
-  width: 30%;
-  border: 1px solid black;
-  position: relative;
-  left: 33%;
-  margin-top: 10%;
+body {
+	/* background: #f6f5f7; */
+  background: linear-gradient(to right, #D2BCFB, #84CEEB);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	font-family: 'Montserrat', sans-serif;
+	height: 100vh;
+	/* margin: -20px 0 50px; */
+	margin: 0;
 }
 
-.Edit-Profile-Container {
-  height: 50%;
-  width: 30%;
-  border: 1px solid black;
-  position: relative;
-  left: 33%;
-}
-#login {
-  display: flex;
-  flex-direction: column;
+h1 {
+	font-weight: bold;
+	margin: 0;
 }
 
-#signup {
-  display: flex;
-  flex-direction: column;
+p {
+	font-size: 14px;
+	font-weight: 100;
+	line-height: 20px;
+	letter-spacing: 0.5px;
+	margin: 20px 0 30px;
 }
 
-#edit-profile {
-  display: flex;
-  flex-direction: column;
+span {
+	font-size: 12px;
 }
 
-.Profile-Heading {
-  display: flex;
-  flex-direction: row;
+a {
+	color: #333;
+	font-size: 14px;
+	text-decoration: none;
+	margin: 15px 0;
 }
 
-.login-input { 
-  width: 50%;
-  display: flex;
-  align-self: center;
-  margin-bottom: 3%;
-  border-radius: 10px;
-  border: 0.5px solid black;
-  height: 25px;
-  padding-left: 3%;
+button {
+	border-radius: 20px;
+	border: 1px solid #5AB9EA;
+	background-color: #5AB9EA;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
 }
 
-.Wishlist-Login-Heading
-{
-  font-family: Alatsi;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 35px;
-  text-align:center;
-  margin-bottom:0;
-  color: red;
+button.ghost {
+	background-color: transparent;
+	border-color: #FFFFFF;
 }
 
-.Wishlist-Login-Caption {
-  font-family: Alatsi;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  text-align:center;
+form {
+	background-color: #FFFFFF;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 50px;
+	height: 100%;
+	text-align: center;
 }
 
-.Greeting-Text {
-  font-family: Alatsi;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  text-align:center;
-  margin-right: 190px;
-  margin-left: 10px;
+input {
+	background-color: #eee;
+	border: none;
+	padding: 12px 15px;
+	margin: 8px 0;
+	width: 100%;
 }
 
-.submit-button {
-  display: flex;
-  align-self: center;
-  margin-top: 5%;   
-  height: 25px;
-  border-radius: 10px;
-  border: none;
-  background-color: #80e5ff;
-  margin-bottom: 5%;
+.container {
+	background-color: #fff;
+	border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25),
+			0 10px 10px rgba(0,0,0,0.22);
+	position: relative;
+	overflow: hidden;
+	width: 768px;
+	max-width: 100%;
+	min-height: 480px;
 }
 
-.Sign-Up-Button {
-  position: relative;
-  left: 84%;
-  margin-top: 2%;
+.form-container {
+	position: absolute;
+	top: 0;
+	height: 100%;
 }
 
-.Logout-Button {
-  position: relative;
-  left: 10%;
-  margin-top: 2%;
-  height: 40px;
-
+.sign-in-container {
+	left: 0;
+	width: 50%;
+	z-index: 2;
 }
 
-.My-Wishlists-Button {
-  position: relative;
-  left: 10%;
-  margin-top: 2%;
-  height: 40px;
-  margin-right: 5px;
+.overlay-container {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 50%;
+	height: 100%;
+	overflow: hidden;
+	/* transition: transform 0.6s ease-in-out; */
+	z-index: 100;
 }
 
-.Sign-Up-Text {
-  text-decoration: none;
-  color: black;
+.overlay {
+	background: #84CEEB;
+	background: -webkit-linear-gradient(to right, #5AB9EA, #84CEEB);
+	background: linear-gradient(to right, #5AB9EA, #84CEEB);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 0 0;
+	color: #FFFFFF;
+	position: relative;
+	left: -100%;
+	height: 100%;
+	width: 200%;
 }
 
-.Navigation-Bar {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  background-color: #333;
-  margin: 0;
-  padding: 0;
+.overlay-panel {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 40px;
+	text-align: center;
+	top: 0;
+	height: 100%;
+	width: 50%;
 }
 
-.Navbar-Item  {
-  text-decoration: none;
-  font-size: 25px;
-  width: 150px;
-  text-align: center;
-  color: white;
-  padding-top: 10px;
-  height: 45px;
-}
-
-.Navbar-Item:hover {
-  background-color: #111;
-}
-
-.Wishlist-Logo {
-  position: relative;
-  right: 60%;
-  height:45px;
-  width: auto;
-  
+.overlay-right {
+	right: 0;
+	transform: translateX(0);
 }

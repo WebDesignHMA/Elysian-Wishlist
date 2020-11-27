@@ -9,6 +9,7 @@ class Wishlist(db.Model):
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
     user_uid = db.Column(db.Integer, db.ForeignKey('User.uid'), nullable=False)
     wishlist_sub = db.relationship('child', backref='wishlist')
+    liked = db.relationship('LikedWishlist', backref='wishlist', lazy='dynamic')
 
 
     def __repr__(self):
@@ -34,9 +35,16 @@ class User(db.Model):
     username = db.Column(db.String(100), unique=True, nullable=False)
     pass_hash = db.Column(db.String(100), nullable=False)
     user_wishlist = db.relationship('Wishlist', backref='user')
+    liked = db.relationship('LikedWishlist', backref='user', lazy='dynamic')
 
     def __repr__(self):
         return f"User('{self.uid}', '{self.firstname}', '{self.lastname}', '{self.email}', '{self.username}')"
+
+class LikedWishlist(db.Model):
+    __tablename__ = 'LikedWishlist'
+    id = db.Column(db.Integer, primary_key=True)
+    user_uid = db.Column(db.Integer, db.ForeignKey('User.uid'))
+    Wishlist_id = db.Column(db.Integer, db.ForeignKey('Wishlist.id'))
 
 class Thread(db.Model):
   id = db.Column(db.Integer, primary_key=True)

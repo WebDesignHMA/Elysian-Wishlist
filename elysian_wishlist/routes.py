@@ -38,6 +38,11 @@ def myWishlists():
 def allWishlists():
     return api_allWishlists()
 
+#like/unlike wishlists
+@app.route('/like/<int:wishlist_id>/<action>')
+def like_action(wishlist_id, action):
+    return like_action_api(wishlist_id, action)
+
 #updates wishlist
 @app.route('/update/<int:id>', methods=['GET', 'POST'])
 def updateWishlist(id):
@@ -52,6 +57,16 @@ def deleteWishlist(id):
 @app.route('/list/<int:id>', methods=['POST', 'GET'])
 def wishlistItems(id):
     return list(id)
+
+@app.route('/apiResult/<string:name>/<int:id>', methods=['GET'])
+def ebayApiResult(name,id):
+    return apiResult(name,id)
+
+#HELPER FUNCTION: selected items for EBAY are added to db
+@app.route('/addToWishlist/<int:wishlistId>/<itemId>')
+def addToWishlist(wishlistId, itemId):
+    return addToWishlistApi(wishlistId, itemId)
+
 
 #deletes items from each wishlist
 @app.route('/deletesub/<int:id>')
@@ -82,7 +97,7 @@ def amazonSearchCatalog(query, page):
     items=json.loads(amazon_search_catalog(query, page))
     return render_template('items.html', items=items)
 
-#search ebay item
+#search amazon item
 @app.route('/amazon/item/<string:id>', methods=['GET'])
 def amazonSearchItem(id):
     item=json.loads(amazon_search_item(id))
