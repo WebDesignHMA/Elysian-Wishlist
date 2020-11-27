@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Wishlists</title>
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/apiResults.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    {% if result|length < 1 %}
+    <h4 style="text-align: center">There are results for this search request.</h4>
+    {% else %}
+    <br>
+    <div class="API-Results-Container">
+        {% for item in result %}
+        <div class="API-Result-Card">
+            <img class="Item-Image" src={{ item.image }} width="180" height="135" />
+            <div class="Card-Middle">
+                <p class="Item-Title">{{ item.title }}</p>
+                <p class="Item-Price">{{ item.price }}</p>
+            </div>
+            <button class="Add-Item-Button">
+                    <a class="Add-Item-Link"
+                        href="{{ url_for('addToWishlist', wishlistId=wishlistId, itemId=item.item_id) }}">
+                        Add to List</a>
+                </button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
