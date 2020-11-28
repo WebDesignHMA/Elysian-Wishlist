@@ -11,9 +11,13 @@ Flask-SQLAlchemy = "^2.4.4"
 bs4 = "^0.0.1"
 requests = "^2.24.0"
 aiohttp = "^3.6.2"
+sqlalchemy_serializer = "^1.3.4"
+matplotlib = "^3.3.3"
+flask_apscheduler = "^1.11.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
+coverage = "^5.3"
 
 [build-system]
 requires = ["poetry>=0.12"]
