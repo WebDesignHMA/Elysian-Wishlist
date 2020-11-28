@@ -7,7 +7,7 @@
 </head>
 
 <body>
-  <img class="Wishlist-Logo" src="../static/graphics/wishlist_logo_redblack.png" />
+  <!-- <img class="Wishlist-Logo" src="../static/graphics/wishlist_logo_redblack.png" /> -->
   <div class="SignUp-Container">
     <div class="Profile-Heading">
       <p class="Greeting-Text">Hello {{session["USERNAME"].title()}}</p>
@@ -23,10 +23,10 @@
     <p class="SignUp-Caption">
       Edit my Profile</p>
     <form id="signup" onSubmit={this.handleSubmit}>
-      <input type="text" class="login-input" name="name" placeholder="Name" onChange={this.handleChange} />
-      <input type="text" class="login-input" name="email" placeholder="Email" onChange={this.handleChange} />
-      <input type="text" class="login-input" name="city" placeholder="City" onChange={this.handleChange} />
-      <input type="text" class="login-input" name="interests" placeholder="Interests" onChange={this.handleChange} />
+      <input type="text" class="profile-input" name="name" placeholder="Name" onChange={this.handleChange} />
+      <input type="text" class="profile-input" name="email" placeholder="Email" onChange={this.handleChange} />
+      <input type="text" class="profile-input" name="city" placeholder="City" onChange={this.handleChange} />
+      <input type="text" class="profile-input" name="interests" placeholder="Interests" onChange={this.handleChange} />
       <input class="Sign-Up-Button" type="submit" value="Update Profile" />
     </form>
   </div>

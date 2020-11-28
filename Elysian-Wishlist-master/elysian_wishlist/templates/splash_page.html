@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/splash-page.css') }}">
+
+
+<title>Wishlists</title>
+{% endblock %}
+
+{% block body %}
+
+<body>
+  <header class="homepage">
+			<div class="homepage-top">
+				<img src="../static/graphics/wishlist_logo.png" alt="" />
+			</div>
+			<div class="homepage-content">
+				<h1>Something For You</h1>
+				<p>Create</p>
+				<a href="/wishlists/" class="btn btn-xl">Start Exploring Now!</a>
+			</div>
+		</header>
+
+    <section>
+      <ul class="card-list">
+
+      	<li class="card">
+      		  <a class="card-image" href="/wishlists" style="background-image: url(../static/images/explore.jpg)" ></a>
+      			<h2>Explore</h2>
+      			<p>Find out what others have created.</p>
+      	</li>
+
+      	<li class="card">
+      		<a class="card-image" href="/" style="background-image: url(../static/images/create-list.jpg)" ></a>
+      			<h2>Create Wishlist</h2>
+      			<p>Search and add items to your wishlist.</p>
+      	</li>
+
+      	<li class="card">
+      		<a class="card-image" href="/forum" style="background-image: url(../static/images/explore.jpg)" ></a>
+      			<h2>Community</h2>
+      			<p>Share your thoughts with the community.</p>
+      	</li>
+
+      	<li class="card">
+      		<a class="card-image" href="/profile/" style="background-image: url(../static/images/profile.jpg)" ></a>
+      			<h2>Profile</h2>
+      			<p>Easy access to your current wishlists.</p>
+      	</li>
+
+      </ul>
+
+      </section>
+
+</body>
+{% endblock %}

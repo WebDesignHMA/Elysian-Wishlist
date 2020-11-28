@@ -1,0 +1,55 @@
+
+body {
+	font-family: 'PT Sans Caption',"Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	font-size: 3vh;
+}
+
+#company-name {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+  color: black;
+}
+
+#logo {
+  text-decoration: none;
+  color: white;
+  font-size: 5vh;
+  font-weight: bold;
+}
+
+#menu-icon {
+  font-family: Geneva, sans-serif;
+  font-size: 6vh;
+}
+
+.main-page {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100vh;
+	padding: 1em;
+	box-sizing: border-box;
+	color: white;
+  font-size: 25px;
+	background: url(../images/home_page_wallpaper.jpg) center center no-repeat;
+	background-size: cover;
+}
+
+.motto {
+	max-width: 16em;
+	margin: 0;
+	font-size: 50px;
+	font-weight: bold;
+  color: black;
+	line-height: .9;
+  position: absolute;
+  top: 40%;
+  /* text-align: left */
+}
+
+article {
+	max-width: 36em;
+	margin: 0 auto;
+	padding: 1em;
+}
