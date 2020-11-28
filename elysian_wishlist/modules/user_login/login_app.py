@@ -65,12 +65,20 @@ def api_login(User):
 
     return render_template("login_form.html")
 
+
 def api_user_home():
     if session.get("USERNAME", None) is not None:   #if session cookie value is not true, it will redirect to login.
         username = session.get("USERNAME")
         user = User.query.filter_by(username=username).first()
         if user:
-            return render_template("user_home.html")
+            #myList = db.session.query(LikedWishlist).filter(LikedWishlist.user_uid == user.uid).join(Wishlist).all()
+            #myList = db.session.query(Wishlist, LikedWishlist).join(LikedWishlist, LikedWishlist.Wishlist_id == Wishlist.id).filter_by(LikedWishlist.user_uid==user.uid).all()
+            #myList = Wishlist.query.join(LikedWishlist, LikedWishlist.user_uid==user.uid).all()
+            likedList = db.session.query(Wishlist).join(LikedWishlist).filter(LikedWishlist.user_uid==user.uid).all()
+            listCreated = db.session.query(Wishlist).join(User).filter(User.uid==user.uid).all()
+
+            #print(myList)
+            return render_template("user_home.html", likedList=likedList, listCreated=listCreated)
         else:
             print("session not found")
             return redirect(url_for('login'))

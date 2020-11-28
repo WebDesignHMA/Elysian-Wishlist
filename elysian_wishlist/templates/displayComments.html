@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Wishlist Comments</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1 style="text-align: center">Wishlist: <b><u>{{ lists[0].content }}</u></b></h1>
+    <table>
+        <tr>
+            <th>Like/Dislike</th>
+            <th>List</th>
+            <th>Added</th>
+            <th>Creators</th>
+        </tr>
+        {% for list in lists %}
+            <tr>
+                <td>
+                  {{ list[0].liked.count() }} likes
+                </td>
+                <td>
+                    <a href="/list/{{list[0].id}}">
+                        {{ list[0].content }}
+                    </a>
+                </td>
+                <td>{{ list[0].date_created.date() }}</td>
+                <td>
+                    {{ list[1] }}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    {% if result|length < 1 %}
+    <h4 style="text-align: center">There are no comments. <br> Add your opinion below!</h4>
+    {% else %}
+    <hr>
+    <h4 style="text-align: center">Comments... <br> Add your opinion below!</h4>
+
+        {% for sublist in result %}
+          <strong>
+              {{ sublist[1] }} -
+              {{ sublist[0].timestamp.date() }}
+          </strong>
+          <br>
+                {{ sublist[0].body }}
+          <br><br>
+        {% endfor %}
+
+    {% endif %}
+    <hr>
+
+    <div class="form">
+        <form action="/comments/1" method="POST">
+            <input type="text" name="content" id="content" required>
+            <input type="hidden" name="parentId" value="{{ lists[0].0.id }}">
+            <input type="hidden" name="authorId" value="{{ lists[0].0.user_uid }}">
+            <input type="submit" value="Add Comment">
+        </form>
+    </div>
+</div>
+<br><br><br>
+{% endblock %}

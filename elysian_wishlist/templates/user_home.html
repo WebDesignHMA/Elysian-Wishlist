@@ -30,6 +30,80 @@
       <input class="Sign-Up-Button" type="submit" value="Update Profile" />
     </form>
   </div>
+
+
+<div class="">
+
+
+    <h1 style="text-align: center">Liked Wishlists</h1>
+    {% if likedList|length < 1 %}
+    <h4 style="text-align: center">There are no liked wishlists.</h4>
+    {% else %}
+    <table>
+        <tr>
+            <th>Like/Dislike</th>
+            <th>List</th>
+            <th>Added</th>
+        </tr>
+        {% for list in likedList %}
+            <tr>
+                <td>
+                  {{ list.liked.count() }} likes
+                </td>
+                <td>
+                    <a href="/list/{{list.id}}">
+                        {{ list.content }}
+                    </a>
+                </td>
+                <td>{{ list.date_created.date() }}</td>
+                <td>
+                    {{ list.username }}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+
+
+
+</div>
+
+
+<div class="">
+
+
+  <h1 style="text-align: center">Wishlists I created</h1>
+  {% if listCreated|length < 1 %}
+  <h4 style="text-align: center">There are no liked wishlists.</h4>
+  {% else %}
+  <table>
+      <tr>
+          <th>Like/Dislike</th>
+          <th>List</th>
+          <th>Added</th>
+      </tr>
+      {% for list in listCreated %}
+          <tr>
+              <td>
+                {{ list.liked.count() }} likes
+              </td>
+              <td>
+                  <a href="/list/{{list.id}}">
+                      {{ list.content }}
+                  </a>
+              </td>
+              <td>{{ list.date_created.date() }}</td>
+              <td>
+                  {{ list.username }}
+              </td>
+          </tr>
+          {% endfor %}
+      </table>
+      {% endif %}
+
+
+</div>
+
 </body>
 
 </html>

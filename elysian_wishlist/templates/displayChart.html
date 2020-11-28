@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <title></title>
+  </head>
+  <body>
+    <canvas id="line-chart" width="2500" height="1000"></canvas>
+
+{% block javascript %}
+    <script type="text/javascript">
+
+      labels = JSON.parse({{ xVal | tojson }})
+	     data = JSON.parse({{ yVal | tojson }})
+
+    new Chart(document.getElementById("line-chart"), {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [{
+          data: data,
+          label: "Price of {product}",
+          borderColor: "#3e95cd",
+          fill: false
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Price Changes of {Product}'
+      }
+    }
+  });
+    </script>
+{% endblock %}
+
+  </body>
+</html>
