@@ -4,6 +4,7 @@ python:
 before_install:
 - pip install poetry
 install:
+- poetry lock
 - poetry install
 addons:
   sonarcloud:
