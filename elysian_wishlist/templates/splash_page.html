@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/home.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/splash-page.css') }}">
 
 
 <title>Wishlists</title>
@@ -10,86 +10,47 @@
 {% block body %}
 
 <body>
-  <section class="main-page">
-  <header id="company-name">
-    <h1>Wishlist</h1>
-  </header>
-  <header class="company-motto">  <!--the slogan under company name-->
-    <h1 class="motto">Create something amazing</h1>
-  </header>
-</section>
-<article>
-  <h2>Some additional content</h2>
-  Have you ever made a wish? Wanted something you couldn't get?
-  Passed on something because it was too expensive? Missed out
-  on something because it sold out? What if it was easier to
-  get what you wished for? WISHLIST is an immersive web application
-  where you can express what you wish for, others can see it and
-  maybe, just maybe, that wish comes true. We're here to make
-  dreams a reality.
+  <header class="homepage">
+			<div class="homepage-top">
+				<img src="../static/graphics/wishlist_logo.png" alt="" />
+			</div>
+			<div class="homepage-content">
+				<h1>Something For You</h1>
+				<p>Create</p>
+				<a href="/wishlists/" class="btn btn-xl">Start Exploring Now!</a>
+			</div>
+		</header>
 
-  WISHLIST. We make wishes come true.
-</article>
-    <!-- <div class="Splash-Page">
-        <div class="Splash-Page-Section-2">
-            <img class="Splash-Page-Section-2-Image" src="../static/images/paints.jpg" />
-            <div class="Feature-List-Section">
-                <p class="Feature-List-Title">
-                    Create. Add. Share.
-                </p>
-                <ul class="Feature-List">
-                    <li class="Feature-List-Item">
-                        Save for later.
-                    </li>
-                    <li class="Feature-List-Item">
-                        Share your crazy and not so crazy wishes.
-                    </li>
-                    <li class="Feature-List-Item">
-                        See what your friends wish for.
-                    </li>
-                </ul>
-                <a class="Action-1-Link" href="{{ url_for('signup') }}">Create my first WISHLIST</a>
-            </div>
-        </div>
-        <div class="Device-Section">
-            <div class="Device-Subsection">
-                <p class="Feature-List-Title">
-                    Fun & Easy to Use.
-                </hp>
-                <ul class="Feature-List">
-                    <li class="Feature-List-Item">
-                        Our Web Application is on all major browsers.<br/>
-                        Chrome, Firefox, and Safari.
-                    </li>
-                    <li class="Feature-List-Item">
-                        Seamlessly add items from Amazon or eBay.
-                    </li>
-                    <li class="Feature-List-Item">
-                        Easily update Wishlists as you please.
-                    </li>
-                </ul>
-            </div>
-            <img class="Device-Feature-Image" src="../static/images/skyscraper.jpg" />
-        </div>
-        <div class="About-Us-Section">
-            <img src="../static/images/friends_jumping.jpg" class="About-Us-Image"/>
-            <div class="About-Us-Text-Section">
-                <p class="About-Us-Title">ABOUT US</p>
-                <p class="About-Us-Text">
-                    Have you ever made a wish? Wanted something you couldn't get?
-                    Passed on something because it was too expensive? Missed out
-                    <br/>
-                    on something because it sold out? What if it was easier to
-                    get what you wished for? WISHLIST is an immersive web application
-                    <br/>
-                    where you can express what you wish for, others can see it and
-                    maybe, just maybe, that wish comes true. We're here to make
-                    dreams a reality.
-                    <br/>
-                    WISHLIST. We make wishes come true.
-                </p>
-            </div>
-        </div>
-    </div> -->
+    <section>
+      <ul class="card-list">
+
+      	<li class="card">
+      		  <a class="card-image" href="/wishlists" style="background-image: url(../static/images/explore.jpg)" ></a>
+      			<h2>Explore</h2>
+      			<p>Find out what others have created.</p>
+      	</li>
+
+      	<li class="card">
+      		<a class="card-image" href="/" style="background-image: url(../static/images/create-list.jpg)" ></a>
+      			<h2>Create Wishlist</h2>
+      			<p>Search and add items to your wishlist.</p>
+      	</li>
+
+      	<li class="card">
+      		<a class="card-image" href="/forum" style="background-image: url(../static/images/explore.jpg)" ></a>
+      			<h2>Community</h2>
+      			<p>Share your thoughts with the community.</p>
+      	</li>
+
+      	<li class="card">
+      		<a class="card-image" href="/profile/" style="background-image: url(../static/images/profile.jpg)" ></a>
+      			<h2>Profile</h2>
+      			<p>Easy access to your current wishlists.</p>
+      	</li>
+
+      </ul>
+
+      </section>
+
 </body>
 {% endblock %}
