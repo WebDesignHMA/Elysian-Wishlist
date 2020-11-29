@@ -76,9 +76,8 @@ def api_user_home():
             #myList = Wishlist.query.join(LikedWishlist, LikedWishlist.user_uid==user.uid).all()
             likedList = db.session.query(Wishlist).join(LikedWishlist).filter(LikedWishlist.user_uid==user.uid).all()
             listCreated = db.session.query(Wishlist).join(User).filter(User.uid==user.uid).all()
-
-            #print(myList)
-            return render_template("user_home.html", likedList=likedList, listCreated=listCreated)
+            print(user)
+            return render_template("user_home.html", likedList=likedList, listCreated=listCreated, userInfo=user)
         else:
             print("session not found")
             return redirect(url_for('login'))

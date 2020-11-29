@@ -1,14 +1,17 @@
+{% extends 'base.html' %}
 <!doctype html5>
 <html>
-
+{% block head %}
 <head>
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/auth.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/userHome.css') }}">
   <title>{{ session["USERNAME"].title() }} - Home</title>
 </head>
+{% endblock %}
 
+{% block body %}
 <body>
   <!-- <img class="Wishlist-Logo" src="../static/graphics/wishlist_logo_redblack.png" /> -->
-  <div class="SignUp-Container">
+  <div class="Profile-Container">
     <div class="Profile-Heading">
       <p class="Greeting-Text">Hello {{session["USERNAME"].title()}}</p>
       <div class="Button-Set">
@@ -20,90 +23,90 @@
           </button>
       </div>
     </div>
-    <p class="SignUp-Caption">
-      Edit my Profile</p>
-    <form id="signup" onSubmit={this.handleSubmit}>
-      <input type="text" class="profile-input" name="name" placeholder="Name" onChange={this.handleChange} />
-      <input type="text" class="profile-input" name="email" placeholder="Email" onChange={this.handleChange} />
-      <input type="text" class="profile-input" name="city" placeholder="City" onChange={this.handleChange} />
-      <input type="text" class="profile-input" name="interests" placeholder="Interests" onChange={this.handleChange} />
-      <input class="Sign-Up-Button" type="submit" value="Update Profile" />
-    </form>
+    <p class="Profile-Description">
+      <span>{{ userInfo.firstname }}</span>
+      <span>{{ userInfo.lastname }}</span>
+      <span>{{ userInfo.email }}</span>
+    </p>
   </div>
 
 
-<div class="">
 
+<div class="LikedWishlist">
 
-    <h1 style="text-align: center">Liked Wishlists</h1>
-    {% if likedList|length < 1 %}
-    <h4 style="text-align: center">There are no liked wishlists.</h4>
-    {% else %}
-    <table>
-        <tr>
-            <th>Like/Dislike</th>
-            <th>List</th>
-            <th>Added</th>
-        </tr>
-        {% for list in likedList %}
-            <tr>
-                <td>
-                  {{ list.liked.count() }} likes
-                </td>
-                <td>
-                    <a href="/list/{{list.id}}">
-                        {{ list.content }}
-                    </a>
-                </td>
-                <td>{{ list.date_created.date() }}</td>
-                <td>
-                    {{ list.username }}
-                </td>
-            </tr>
-            {% endfor %}
-        </table>
-        {% endif %}
+  <h1 style="text-align: center">Wishlists I created</h1>
+  {% if likedList|length < 1 %}
+  <h4 style="text-align: center">There are no liked wishlists.</h4>
+  {% else %}
 
+  <div class="cards">
 
+    {% for list in likedList %}
+    <div class="card">
+        <div class="card__image-holder">
+          <img class="card__image" src="https://source.unsplash.com/300x225/?wave" alt="wave" />
+        </div>
+        <div class="card-title">
+          <h2>
+              Title: {{ list.content }}
+              <small>User: {{ list.username }}</small>
+              <small>{{ list.liked.count() }} likes</small>
+          </h2>
+        </div>
+        <div class="card-flap flap1">
+          <div class="card-description">
+            Description: {{ list.content }}
+          </div>
+          <div class="card-actions">
+            <a href="/list/{{list.id}}" class="btn">Explore</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
 
+    </div>
+    {% endif %}
 </div>
 
 
-<div class="">
 
+<div class="CreatedWishlist">
 
   <h1 style="text-align: center">Wishlists I created</h1>
   {% if listCreated|length < 1 %}
   <h4 style="text-align: center">There are no liked wishlists.</h4>
   {% else %}
-  <table>
-      <tr>
-          <th>Like/Dislike</th>
-          <th>List</th>
-          <th>Added</th>
-      </tr>
-      {% for list in listCreated %}
-          <tr>
-              <td>
-                {{ list.liked.count() }} likes
-              </td>
-              <td>
-                  <a href="/list/{{list.id}}">
-                      {{ list.content }}
-                  </a>
-              </td>
-              <td>{{ list.date_created.date() }}</td>
-              <td>
-                  {{ list.username }}
-              </td>
-          </tr>
-          {% endfor %}
-      </table>
-      {% endif %}
 
+  <div class="cards">
 
+    {% for list in listCreated %}
+    <div class="card">
+        <div class="card__image-holder">
+          <img class="card__image" src="https://source.unsplash.com/300x225/?wave" alt="wave" />
+        </div>
+        <div class="card-title">
+          <h2>
+              Title: {{ list.content }}
+              <small>User: {{ list.username }}</small>
+              <small>{{ list.liked.count() }} likes</small>
+          </h2>
+        </div>
+        <div class="card-flap flap1">
+          <div class="card-description">
+            Description: {{ list.content }}
+          </div>
+          <div class="card-actions">
+            <a href="/list/{{list.id}}" class="btn">Explore</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+    {% endif %}
 </div>
 
 </body>
+{% endblock %}
 
 </html>
