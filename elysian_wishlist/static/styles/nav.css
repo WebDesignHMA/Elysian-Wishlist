@@ -7,13 +7,6 @@ body {                    /*stops the overlaying of the navbar*/
   }
 }
 
-.nav {
-  border: 0;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: Andale Mono;
-}
 
 #navbar {
   background: white;
@@ -24,6 +17,10 @@ body {                    /*stops the overlaying of the navbar*/
   line-height: 60px;
   width: 100vw;
   z-index: 10;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 100%;
+  min-width: 1000px;
 }
 
 .logo {
@@ -51,17 +48,18 @@ body {                    /*stops the overlaying of the navbar*/
   -webkit-transition: transform 0.5s ease-out; */
 }
 
-#navbar li {
+#navbar ul li {
   display: inline-block;
+  padding: 0 10px;
 }
 
-#navbar li a {
+#navbar ul li a {
   display: block;
   font-size: 15px;
   height: 50px;
   letter-spacing: 1px;
   margin: 0 20px;
-  padding: 0 4px;
+  padding-left: : 25px;
   position: relative;
   text-decoration: none;
   text-transform: uppercase;

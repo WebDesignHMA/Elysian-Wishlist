@@ -13,6 +13,6 @@ def create_app(db_uri='postgres://uhfejtnaccuojq:960f111d3b5a84c8b548950c79e5ae6
     db.create_all()
     return app
 
-app=create_app()
+app=create_app("sqlite:///auth.db")
 
 from elysian_wishlist import routes
