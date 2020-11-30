@@ -19,15 +19,15 @@ def index():
     #creates your wishlist or returns all wishlists created
     db.create_all()
     if request.method == 'POST':
-        username = session.get("USERNAME")
-        user = User.query.filter_by(username=username).first()
-        if user:
+        if session.get("USERNAME", None) is not None:
+            username = session.get("USERNAME")
+            user = User.query.filter_by(username=username).first()
             user_uid = user.uid
             list_content = request.form['content']
             new_list = Wishlist(content=list_content, user_uid=user_uid)
         else:
-            flash("User Must Login to Create Wishlist")
-            return redirect('/')
+            flash("User Must Login to Create Wishlist", "danger")
+            return redirect('/login/')
 
         try:
             db.session.add(new_list)
@@ -37,9 +37,9 @@ def index():
             return 'There was an issue adding your wishlist'
 
     else:
-        username = session.get("USERNAME")
-        user = User.query.filter_by(username=username).first()
-        if user:
+        if session.get("USERNAME", None) is not None:
+            username = session.get("USERNAME")
+            user = User.query.filter_by(username=username).first()
             user_uid = user.uid
             user_wishlist = Wishlist.query.filter_by(user_uid=user_uid).all()
             return render_template('index.html', lists=user_wishlist)
@@ -223,7 +223,8 @@ def like_wishlist(Wishlist):
             db.session.add(like)
             #return redirect('/wishlists/')
     else:
-        flash("User Must Login to Like Wishlist")
+        flash("User Must Login to Like Wishlist", "danger")
+        return redirect('/login/')
 
 #to unlike a wishlist (HELPER)
 def unlike_wishlist(Wishlist):
@@ -234,7 +235,8 @@ def unlike_wishlist(Wishlist):
             LikedWishlist.query.filter(LikedWishlist.user_uid == user.uid).filter(LikedWishlist.Wishlist_id == Wishlist.id).delete()
             #return redirect('/wishlists/')
     else:
-        flash("User Must Login to Like/Dislike Wishlist")
+        flash("User Must Login to Like/Dislike Wishlist", "danger")
+        return redirect('/login/')
 
 
 #check if user has liked wishlist ALREADY (HELPER)

@@ -16,7 +16,7 @@ def api_signup(db):
         password = request.form['password']
 
         if not (firstname and lastname and email and username and password):
-            flash("Fields cannot be empty")
+            flash("Fields cannot be empty", "danger")
             return redirect(url_for('signup'))
         else:
             firstname = firstname.strip()       #strip() removing all whitespaces
@@ -38,7 +38,7 @@ def api_signup(db):
             flash("Username {u} is not available.".format(u=username))
             return redirect(url_for('signup'))
 
-        flash("User account has been created.")
+        flash("User account has been created.", "success")
         return redirect(url_for("login"))
 
     return render_template("signup.html")
@@ -49,7 +49,7 @@ def api_login(User):
         password = request.form['password']
 
         if not (username and password):
-            flash("Username or Password cannot be empty.")
+            flash("Username or Password cannot be empty.", "danger")
             return redirect(url_for('login'))
         else:
             username = username.strip()
@@ -61,7 +61,7 @@ def api_login(User):
             session["USERNAME"] = username        #will store session cookie with true if username and password is valid
             return redirect(url_for("user_home"))
         else:
-            flash("Invalid username or password.")
+            flash("Invalid username or password.", "danger")
 
     return render_template("login_form.html")
 
@@ -89,5 +89,5 @@ def api_user_home():
 def api_logout():
     """ Logout user and redirect to login page with success message."""
     session.pop("USERNAME", None)     #removes the current users session cookie when logging out, this pops out 'username' session variable
-    flash("successfully logged out.")
+    flash("successfully logged out.", "success")
     return redirect(url_for('login'))
