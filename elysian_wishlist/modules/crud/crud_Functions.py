@@ -53,9 +53,12 @@ def index():
 def api_allWishlists():
     #lists = Wishlist.query.order_by(Wishlist.date_created).all()
     lists = db.session.query(Wishlist, User).join(User).all()
-    bubbleSort(lists)
-    for list in lists:
-        print (list[0].liked.count())
+    if lists is not None:
+        bubbleSort(lists)
+    else:
+        lists = ''
+    #for list in lists:
+    #    print (list[0].liked.count())
     return render_template('allWishlists.html', lists=lists, has_liked_wishlist = has_liked_wishlist, like_action = like_action_api)
 
 #bubbleSort to sort the likes

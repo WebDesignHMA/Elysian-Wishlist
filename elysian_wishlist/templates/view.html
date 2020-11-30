@@ -21,16 +21,16 @@
           <th width="80%">Comments</th>
           <th>Added</th>
         </tr>
-        {% for comment in comment %} 
+        {% for comment in comment %}
           <tr>
             <td>{{ comment.content }}</td>
-            <td>{{ comment.date_created.strftime('%H:%M - %d-%m-%Y') }}</td>
+            <td>{{ comment.date_created.strftime('%H:%M - %B-%d-%Y') }}</td>
           </tr>
         {% endfor %}
       </table>
     </div>
   {% endif %}
-  
+
   <form action="/view/{{thread.id}}" method="POST">
     <textarea type="text" name="content" id="commentcontent" placeholder="Write a comment"></textarea><br>
     <input type="submit" id="commentsubmit" value="Add Comment" class="button">
