@@ -83,6 +83,7 @@ def api_user_home():
             return redirect(url_for('login'))
     else:
         print("session not found")
+        flash("Please login or signup to access your profile", "danger")
         return redirect(url_for('login'))
 
 

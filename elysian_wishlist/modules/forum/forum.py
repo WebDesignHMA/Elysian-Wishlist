@@ -22,7 +22,7 @@ def api_new_thread():
         thread_title = request.form['title']
         new_thread = Thread(content=thread_content, title=thread_title, uid=uid)
     else:
-        flash("User Must Login to Create Thread")
+        flash("User Must Login to Create Thread", "danger")
         return redirect('/login/')
 
     try:
@@ -50,7 +50,7 @@ def api_delete_thread(id):
            db.session.commit()
            return redirect('/forum')
     else:
-        flash("Cannot perform this action")
+        flash("Cannot perform this action", "danger")
         return redirect('/forum')
 
 
@@ -68,7 +68,7 @@ def api_view(id):
         thread_parent = thread
         new_comment = Comment(content=comment_content, thread=thread_parent, uid=uid)
     else:
-        flash("User Must Login to Comment")
+        flash("User Must Login to Comment", "danger")
         return redirect('/login/')
 
     try:
