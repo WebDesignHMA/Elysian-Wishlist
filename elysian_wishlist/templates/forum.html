@@ -2,7 +2,8 @@
 
 {% block head %}
 <title>Forum - Example</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+  integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
 {% endblock %}
 
@@ -10,35 +11,28 @@
 
 <div class="content">
   <h1>Community Forum</h1>
-
+  <a href='/new' class="New-Thread-Button">New Thread +</a>
   {% if threads|length < 1 %}
-    <h4>There are no threads yet</h4>
-
+  <h4>There are no threads yet</h4>
   {% else %}
-    <table>
-      <tr class="tableRowMain">
-        <th width="60%">Thread</th>
-        <th>Added</th>
-        <th>Comments</th>
-        <th>Actions</th>
-      </tr>
-      {% for thread in threads %}
-        <tr>
-          <td>{{ thread.title }}</td>
-          <td>{{ thread.date_created.strftime('%H:%M - %B %d,%Y') }}</td>
-          <td>{{ thread.comments|length }}</td>
-          <td>
-            <a href="/deletethread/{{thread.id}}" class="formbuttondelete">Delete</a>
-            <br>
-            <a href="/view/{{thread.id}}" class="formbuttonview">View</a>
-          </td>
-        </tr>
-      {% endfor %}
-    </table>
-  {% endif %}
-  <div id="addthread">
-      <a href='/new' class="button">New Thread</a>
+  <div class="Forum-Container">
+    {% for thread in threads %}
+    <div class="Single-Thread">
+      <div class="Thread-Top">
+        <a href="/view/{{thread.id}}" class="Thread-Title">{{ thread.title }}</a>
+        <p class="Thread-Date">{{ thread.date_created.strftime('%H:%M - %B %d,%Y') }}</p>
+        <a href="/deletethread/{{thread.id}}">
+          <img class="Delete-Icon" src="../static/images/deleteIcon.png" />
+        </a>
+      </div>
+      <div class="Comments-Center">
+        <img class="Comments-Icon" src="../static/images/commentsIcon.png" />
+        <p class="Comment-Count">{{ thread.comments|length }}</p>
+      </div>
+    </div>
+    {% endfor %}
   </div>
+  {% endif %}
 </div>
 
 {% endblock %}

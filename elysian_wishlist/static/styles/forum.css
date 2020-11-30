@@ -15,8 +15,8 @@ footer {
 
 .content {
   margin: 0 auto;
-  width: 60%;
-  height: 90%;
+  width: 100%;
+  height: 100%;
 }
 
 h1 {
@@ -183,4 +183,63 @@ form {
 
 #backbutton {
   margin-top: 2%;
+}
+
+.Forum-Container {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  margin-left: 15%;
+  margin-top: 10px;
+}
+
+.Single-Thread {
+  display: flex;
+  flex-direction: column;
+  border-top: 0.5px solid #e0e0eb;
+  border-bottom: 0.5px solid #e0e0eb;
+}
+.Thread-Top {
+  display: flex;
+  flex-direction: row;
+}
+
+:hover.Thread-Title {
+  text-decoration-line: underline;
+}
+.Thread-Title {
+  font-size: 25px;
+  margin-right: 20px;
+}
+
+.Thread-Date {
+  font-size: 25px;
+  margin-right: 20px;
+  font-weight: 100;
+}
+
+.Delete-Icon {
+  margin-top: 5px;
+  height: 25px;
+  width: auto;
+}
+
+.Comments-Center {
+  display: flex;
+  flex-direction: row;
+}
+
+.Comments-Icon {
+  height: 25px;
+  width: auto;
+}
+
+:hover.New-Thread-Button {
+  text-decoration-line: underline;
+}
+.New-Thread-Button {
+  font-size: 25px;
+  position: relative;
+  left: 15%;
+  color: black;
 }
