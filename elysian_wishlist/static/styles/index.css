@@ -1,0 +1,92 @@
+.Wishlists-Container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 70%;
+  padding-left: 15%;
+  padding-right: 15%;
+}
+
+.Wishlist-Card {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  height: 300px;
+  border: 0.5px solid black;
+  margin-left: 6.5%;
+  margin-top: 4%;
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.Wishlist-Title {
+  text-decoration-line: none;
+  text-align:center;
+  font-size: 18px;
+  padding-top: 15px;
+  color: #84CEEB;
+}
+
+.Card-Image {
+  height: 50%;
+  width: auto;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.Card-Bottom {
+  display: flex;
+  flex-direction: row;
+  margin-top:50px;
+}
+
+.Date-Added {
+  margin-left: 25px;
+}
+
+.Update-Icon {
+  width: 25px;
+  height: 25px;
+  padding-right: 10px;
+  margin-left: 212px;
+  position: relative;
+  top: 12px;
+}
+
+.Delete-Icon {
+  width: 25px;
+  height: 25px;
+  position: relative;
+  top: 12px;
+}
+
+.Update-Link {
+  text-decoration-line: none;
+}
+
+.Delete-Link {
+  text-decoration-line: none;
+}
+
+.New-List-Input {
+  width: 35%;
+  height: 35px;
+  border-radius: 18px;
+  border: 0.5px solid black;
+  margin-bottom: 20px;
+  margin-left: 32.5%;
+}
+
+.Add-List-Button {
+  font-size: 21px;
+  border: none;
+  background-color: white;
+  position: relative;
+  right: 3%;
+  top: 3px;
+}
+
+.My-Wishlists-Text {
+  font-family: Andale Mono;
+}
+
+
