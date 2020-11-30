@@ -2,6 +2,7 @@
 <!doctype html5>
 <html>
 {% block head %}
+
 <head>
   <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/userHome.css') }}">
   <title>{{ session["USERNAME"].title() }} - Home</title>
@@ -9,102 +10,75 @@
 {% endblock %}
 
 {% block body %}
+
 <body>
   <!-- <img class="Wishlist-Logo" src="../static/graphics/wishlist_logo_redblack.png" /> -->
   <div class="Profile-Container">
     <div class="Profile-Heading">
-      <p class="Greeting-Text">Hello {{session["USERNAME"].title()}}</p>
       <div class="Button-Set">
-          <button class="My-Wishlists-Button">
-              <a class="Sign-Up-Text" href="{{ url_for('myWishlists') }}">My Wishlists</a>
-            </button>
-            <button class="Logout-Button">
-              <a class="Sign-Up-Text" href="{{ url_for('logout') }}">Logout</a>
-          </button>
+        <p class="User-Name">{{session["USERNAME"].title()}}</p>
+        <a class="Action-Link" href="{{ url_for('myWishlists') }}">My Wishlists</a>
+        <a class="Action-Link" href="{{ url_for('logout') }}">Logout</a>
       </div>
     </div>
-    <p class="Profile-Description">
+    <!-- <p class="Profile-Description">
       <span>{{ userInfo.firstname }}</span>
       <span>{{ userInfo.lastname }}</span>
       <span>{{ userInfo.email }}</span>
-    </p>
+    </p> -->
   </div>
 
+  <div class="LikedWishlist">
+    <h1 class="I-Liked-Title" style="text-align: center">Wishlists I Liked</h1>
+    {% if likedList|length < 1 %}
+    <h4 class="No-Liked-Title" style="text-align: center">There are no liked wishlists.</h4>
+    {% else %}
 
-
-<div class="LikedWishlist">
-
-  <h1 style="text-align: center">Wishlists I Liked</h1>
-  {% if likedList|length < 1 %}
-  <h4 style="text-align: center">There are no liked wishlists.</h4>
-  {% else %}
-
-  <div class="cards">
-
-    {% for list in likedList %}
-    <div class="card">
-        <div class="card__image-holder">
-          <img class="card__image" src="https://source.unsplash.com/300x225/?wave" alt="wave" />
+    <div class="Wishlists-Container">
+      {% for list in likedList %}
+      <div class="Wishlist-Card">
+        <img class="Card-Image" src="https://source.unsplash.com/300x225/?wave" alt="wave" />
+        <div class="Card-Middle">
+          <p class="Wishlist-Title">{{ list.content }}</p>
+          <p class="Wishlist-Owner">{{ list.username }}</p>
         </div>
-        <div class="card-title">
-          <h2>
-              Title: {{ list.content }}
-              <small>User: {{ list.username }}</small>
-              <small>{{ list.liked.count() }} likes</small>
-          </h2>
-        </div>
-        <div class="card-flap flap1">
-          <div class="card-description">
-            Description: {{ list.content }}
-          </div>
-          <div class="card-actions">
-            <a href="/list/{{list.id}}" class="btn">Explore</a>
-          </div>
+        <div class="Card-Bottom">
+          <img class="Like-Icon" src="../static/images/thumbsUpIcon.png" />
+          <p class="Like-Count">{{ list.liked.count() }}</p>
+          <a href="/list/{{list.id}}" class="btn">Explore</a>
         </div>
       </div>
       {% endfor %}
-
     </div>
     {% endif %}
-</div>
+  </div>
 
+  <div class="CreatedWishlist">
+    <h1 style="text-align: center">Wishlists I created</h1>
+    {% if listCreated|length < 1 %}
+    <h4 style="text-align: center">There are no liked wishlists.</h4>
+    {% else %}
 
-
-<div class="CreatedWishlist">
-
-  <h1 style="text-align: center">Wishlists I created</h1>
-  {% if listCreated|length < 1 %}
-  <h4 style="text-align: center">There are no liked wishlists.</h4>
-  {% else %}
-
-  <div class="cards">
-
-    {% for list in listCreated %}
-    <div class="card">
-        <div class="card__image-holder">
-          <img class="card__image" src="https://source.unsplash.com/300x225/?wave" alt="wave" />
-        </div>
-        <div class="card-title">
-          <h2>
-              Title: {{ list.content }}
-              <small>User: {{ list.username }}</small>
-              <small>{{ list.liked.count() }} likes</small>
-          </h2>
-        </div>
-        <div class="card-flap flap1">
-          <div class="card-description">
-            Description: {{ list.content }}
+    <div class="Wishlists-Container">
+      {% for list in listCreated %}
+      <div class="Wishlist-Card">
+          <img class="Card-Image" src="https://source.unsplash.com/300x225/?wave" alt="wave" />
+          <div class="Card-Middle">
+            <p class="Wishlist-Title">{{ list.content }}</p>
+            <p class="Wishlist-Owner">{{ list.username }}</p>
           </div>
-          <div class="card-actions">
-            <a href="/list/{{list.id}}" class="btn">Explore</a>
+          <div class="Card-Bottom">
+            <img class="Like-Icon" src="../static/images/thumbsUpIcon.png" />
+            <p class="Like-Count">{{ list.liked.count() }}</p>
+            <a href="/list/{{list.id}}" class="Go-Link">
+               <img class="Go-Icon" src="../static/images/goIcon.png"/>
+            </a>
           </div>
         </div>
-      </div>
       {% endfor %}
-
     </div>
     {% endif %}
-</div>
+  </div>
 
 </body>
 {% endblock %}
