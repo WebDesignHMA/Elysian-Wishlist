@@ -1,14 +1,23 @@
 from flask_sqlalchemy import SQLAlchemy
 from elysian_wishlist import create_app, db
+app = create_app('sqlite:///test.db')
+db.drop_all()
+db.create_all()
+
 from flask import render_template, url_for, redirect, flash
 from elysian_wishlist.modules.crud.crud_Functions import *
 from elysian_wishlist.modules.user_login.login_app import *
 from elysian_wishlist.modules.third_party_api.ebay import *
 from elysian_wishlist.modules.third_party_api.amazon import *
+from elysian_wishlist.modules.cronChart.priceChart import *
 from elysian_wishlist.modules.forum.forum import *
 import json
 
-app = create_app('sqlite:///test.db')
+# Change dbname here
+#db_name = "auth.db"
+
+#def create_db():       #run this function if there is no current db created
+#    db.create_all()
 
 @app.route("/signup/", methods=["GET", "POST"])
 def signup():
@@ -35,6 +44,11 @@ def myWishlists():
 def allWishlists():
     return api_allWishlists()
 
+#route for charts
+@app.route("/charts/")
+def displayChartApi():
+    return makePriceChart()
+
 #like/unlike wishlists
 @app.route('/like/<int:wishlist_id>/<action>')
 def like_action(wishlist_id, action):
@@ -59,11 +73,19 @@ def wishlistItems(id):
 def ebayApiResult(name,id):
     return apiResult(name,id)
 
+#routes for showing the wishlist COMMENTS
+@app.route('/comments/<int:id>', methods=['POST', 'GET'])
+def displayCommentsApi(id):
+    return displayComments(id)
+
+@app.route('/postComments/', methods=['POST', 'GET'])
+def postCommentsApi(id):
+    return postComments(id)
+
 #HELPER FUNCTION: selected items for EBAY are added to db
 @app.route('/addToWishlist/<int:wishlistId>/<itemId>')
 def addToWishlist(wishlistId, itemId):
     return addToWishlistApi(wishlistId, itemId)
-
 
 #deletes items from each wishlist
 @app.route('/deletesub/<int:id>')
@@ -74,7 +96,6 @@ def deleteWishlistItems(id):
 @app.route('/updatesub/<int:id>', methods=['GET', 'POST'])
 def updateWishlistItems(id):
     return updatesub(id)
-
 
 #search ebay catalog
 @app.route('/ebay/search/<string:query>/<int:page>', methods=['GET'])
@@ -108,15 +129,12 @@ def home():
 @app.route('/forum')
 def forum():
     return api_forum()
-    
+
 @app.route('/new', methods=['GET', 'POST'])
 def new_thread():
     return api_new_thread()
-    
+
 @app.route('/deletethread/<int:id>')
 def delete_thread(id):
     return api_delete_thread(id)
-    
-@app.route('/view/<int:id>', methods=['GET', 'POST'])
-def view(id):
-    return api_view(id)
+

@@ -1,4 +1,4 @@
-from elysian_wishlist.tests import app
+from elysian_wishlist.tests import app, db
 from elysian_wishlist.modules.third_party_api.ebay import ebay_search_catalog, ebay_search_item
 import json
 
@@ -16,7 +16,38 @@ def test_ebay_search_item():
     item=json.loads(ebay_search_item(id))
     assert type(item)==type({})
 
-def test_signup():
+def test_home():
     with app.test_client() as client:
         response = client.get('/home/')
-        print(response.data)
+        assert response.status == "200 OK"
+        
+def test_signup():
+    with app.test_client() as client:
+        response = client.get('/signup/')
+        assert response.status == "200 OK"
+
+def test_login():
+    with app.test_client() as client:
+        response = client.get('/login/')
+        assert response.status == "200 OK"
+
+def test_profile():
+    with app.test_client() as client:
+        response = client.get('/profile/')
+        assert response.status == "302 FOUND"
+        
+def test_logout():
+    with app.test_client() as client:
+        response = client.get('/profile/')
+        assert response.status == "302 FOUND"
+
+def test_index():
+    with app.test_client() as client:
+        response = client.get('/')
+        assert response.status == "200 OK"
+
+def test_allWishlist():
+    with app.test_client() as client:
+        response = client.get('/')
+        assert response.status == "200 OK"
+        

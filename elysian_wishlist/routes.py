@@ -95,7 +95,6 @@ def deleteWishlistItems(id):
 def updateWishlistItems(id):
     return updatesub(id)
 
-
 #search ebay catalog
 @app.route('/ebay/search/<string:query>/<int:page>', methods=['GET'])
 def ebaySearchCatalog(query, page):
