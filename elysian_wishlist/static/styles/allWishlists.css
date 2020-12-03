@@ -1,8 +1,9 @@
 .Wishlists-Holder {
   display: flex;
   flex-wrap: wrap;
-  width: 55%;
+  width: 60%;
   border: 0.5px solid black;
+  margin-left: 20%;
 }
 
 .Card-Image {
@@ -49,7 +50,7 @@
 }
 
 .Date-Added {
-  margin-left: 95px;
+  margin-left: 135px;
 }
 
 .Like-Icon {

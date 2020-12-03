@@ -13,7 +13,7 @@
   <h1>Community Forum</h1>
   <a href='/new' class="New-Thread-Button">New Thread +</a>
   {% if threads|length < 1 %}
-  <h4>There are no threads yet</h4>
+  <h4 class="No-Threads-Yet">There are no threads yet</h4>
   {% else %}
   <div class="Forum-Container">
     {% for thread in threads %}
