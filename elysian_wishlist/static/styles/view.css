@@ -1,0 +1,79 @@
+body {
+  background-color:#b3e0ff;
+}
+.Thread-Comments-Container {
+  margin-top: 100px;
+  width: 60%;
+  margin-left: 20%;
+  font-family: Verdana, sans-serif;
+  padding-left: 5%;
+  height: 100%;
+  background-color: white;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border: none;
+}
+
+.Thread-Title {
+  font-weight: 550;
+  font-size: 25px;
+}
+
+.Thread-Content {
+  font-weight: 300;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 30px;
+}
+
+.Create-Comment-Form {
+  display: flex;
+  flex-direction: row;
+  margin-top: 30px;
+}
+
+.Comment-Content {
+  width: 70%;
+}
+
+.Comment-Container {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 0.5px solid #e0ebeb;
+}
+
+.Single-Comment-Content {
+  font-size: 20px;
+  width: 70%;
+  height: 30px;
+  border-radius: 7px;
+}
+
+.Date-Added {
+  font-size: 12px;
+  font-weight: 100;
+  position: relative;
+  right: 45%;
+  top: 8px;
+}
+
+.Post-Comment-Button {
+  height: 35px;
+  border-radius: 7px;
+  color: white;
+  background-color:#4da6ff;
+  border: none;
+  margin-left: 3px;
+}
+
+.Back-Icon {
+  width: 30px;
+  height:auto;
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+
+:hover.Back-Icon {
+  background-color: #e0e0eb;
+}
+
