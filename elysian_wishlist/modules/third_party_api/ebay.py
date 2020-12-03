@@ -34,6 +34,13 @@ def ebay_search_catalog(query, page):
             item_id=link.split('/')[-1].split('?')[0]
             link='https://www.ebay.com/itm/'+item_id
             image=i.find('img', class_='s-item__image-img')['src']
+            
+            #make sure price has $ in it
+            for i in price:
+                if i == '$':
+                    break
+            else:
+                continue
         except:
             continue
         list.append({
