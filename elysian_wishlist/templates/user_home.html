@@ -12,7 +12,6 @@
 {% block body %}
 
 <body>
-  <!-- <img class="Wishlist-Logo" src="../static/graphics/wishlist_logo_redblack.png" /> -->
   <div class="Profile-Container">
     <div class="Profile-Heading">
       <div class="Button-Set">
@@ -21,11 +20,19 @@
         <a class="Action-Link" href="{{ url_for('logout') }}">Logout</a>
       </div>
     </div>
-    <!-- <p class="Profile-Description">
-      <span>{{ userInfo.firstname }}</span>
-      <span>{{ userInfo.lastname }}</span>
-      <span>{{ userInfo.email }}</span>
-    </p> -->
+    <div class="Profile-Card">
+      <div class="Icon-Container">
+          <img class="User-Profile-Icon" src="../static/images/userIconDark.png" />
+      </div>
+      <div class="User-Details">
+        <p class="Full-Name">
+          {{userInfo.firstname}} {{userInfo.lastname}}
+        </p>
+        <p class="User-Email">
+          {{userInfo.email}}
+        </p>
+      </div>
+    </div>
   </div>
 
   <div class="LikedWishlist">
@@ -45,7 +52,9 @@
         <div class="Card-Bottom">
           <img class="Like-Icon" src="../static/images/thumbsUpIcon.png" />
           <p class="Like-Count">{{ list.liked.count() }}</p>
-          <a href="/list/{{list.id}}" class="btn">Explore</a>
+          <a href="/list/{{list.id}}" class="Go-Link">
+            <img class="Go-Icon" src="../static/images/goIcon.png" />
+          </a>
         </div>
       </div>
       {% endfor %}
@@ -62,19 +71,19 @@
     <div class="Wishlists-Container">
       {% for list in listCreated %}
       <div class="Wishlist-Card">
-          <img class="Card-Image" src="https://source.unsplash.com/300x225/?wave" alt="wave" />
-          <div class="Card-Middle">
-            <p class="Wishlist-Title">{{ list.content }}</p>
-            <p class="Wishlist-Owner">{{ list.username }}</p>
-          </div>
-          <div class="Card-Bottom">
-            <img class="Like-Icon" src="../static/images/thumbsUpIcon.png" />
-            <p class="Like-Count">{{ list.liked.count() }}</p>
-            <a href="/list/{{list.id}}" class="Go-Link">
-               <img class="Go-Icon" src="../static/images/goIcon.png"/>
-            </a>
-          </div>
+        <img class="Card-Image" src="https://source.unsplash.com/300x225/?wave" alt="wave" />
+        <div class="Card-Middle">
+          <p class="Wishlist-Title">{{ list.content }}</p>
+          <p class="Wishlist-Owner">{{ list.username }}</p>
         </div>
+        <div class="Card-Bottom">
+          <img class="Like-Icon" src="../static/images/thumbsUpIcon.png" />
+          <p class="Like-Count">{{ list.liked.count() }}</p>
+          <a href="/list/{{list.id}}" class="Go-Link">
+            <img class="Go-Icon" src="../static/images/goIcon.png" />
+          </a>
+        </div>
+      </div>
       {% endfor %}
     </div>
     {% endif %}
