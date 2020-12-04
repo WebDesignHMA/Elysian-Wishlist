@@ -61,6 +61,16 @@
 
 }
 
+.Comment-Icon {
+  width: 32px;
+  height: auto;
+  position: relative;
+  bottom: 10%;
+  padding-left: 40px;
+  padding-right: 10px;
+
+}
+
 .Unlike-Icon {
   width: 27px;
   height: auto;

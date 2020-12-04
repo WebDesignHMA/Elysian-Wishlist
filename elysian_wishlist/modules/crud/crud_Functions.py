@@ -59,7 +59,7 @@ def api_allWishlists():
         lists = ''
     #for list in lists:
     #    print (list[0].liked.count())
-    return render_template('allWishlists.html', lists=lists, has_liked_wishlist = has_liked_wishlist, like_action = like_action_api)
+    return render_template('allWishlists.html', lists=lists, has_liked_wishlist = has_liked_wishlist, like_action = like_action_api, displayComments=displayComments)
 
 #bubbleSort to sort the likes
 def bubbleSort(arr):
@@ -121,16 +121,23 @@ def addToWishlistApi(wishlistId, itemId):
 
 def displayComments(id):
     if request.method == "POST":
-        content = request.form['content']
-        parentId = request.form['parentId']
-        author = request.form['authorId']
-        new_list = WishlistComment(body=content, wishlist_id=parentId, uid=author)
-        try:
-            db.session.add(new_list)
-            db.session.commit()
-            return redirect('/comments/'+str(id))
-        except:
-            return 'There was an issue adding your wishlist'
+        if session.get("USERNAME", None) is not None:
+            username = session.get("USERNAME")
+            user = User.query.filter_by(username=username).first()
+            user_uid = user.uid
+            content = request.form['content']
+            parentId = request.form['parentId']
+            new_list = WishlistComment(body=content, wishlist_id=parentId, uid=user_uid)
+            try:
+                db.session.add(new_list)
+                db.session.commit()
+                return redirect('/comments/'+str(id))
+            except:
+                return 'There was an issue adding your wishlist'
+        else:
+            flash("User Must Login to Create Wishlist", "danger")
+            return redirect('/login/')
+
 
 
 
