@@ -1,9 +1,14 @@
+
+.All-Wishlists-Content{
+  background-color: #b3e0ff;
+}
+
 .Wishlists-Holder {
   display: flex;
   flex-wrap: wrap;
   width: 60%;
-  border: 0.5px solid black;
   margin-left: 20%;
+  background-color: white;
 }
 
 .Card-Image {
@@ -51,7 +56,7 @@
 }
 
 .Date-Added {
-  margin-left: 25px;
+  margin-left: 63px;
 }
 
 .Like-Icon {
@@ -73,6 +78,6 @@
   height: auto;
   position: relative;
   bottom: 10%;
-  padding-left: 14px;
-  padding-right: 10px;
+  margin-left: 14px;
+  margin-right: 7px;
 }
