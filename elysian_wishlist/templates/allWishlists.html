@@ -25,7 +25,7 @@
         <div class="Wishlists-Holder">
         {% for list in lists %}
             <div class="Wishlist-Card">
-                <img src="#" class="Card-Image"/>
+                <img class="Card-Image" src="https://source.unsplash.com/300x225/?wave" alt="wave" />
                 <a class="Wishlist-Title" href="/list/{{list[0].id}}">
                     {{ list[0].content }}
                 </a>
@@ -49,7 +49,7 @@
                  <p class="Like-Count"> {{ list[0].liked.count() }} likes</p>
                  <p>
                    <a class="Comments-Center" href="{{ url_for('displayCommentsApi', id= list[0].id ) }}">
-                       <img class="Like-Icon" src="../static/images/commentsIcon.png"/>
+                       <img class="Comment-Icon" src="../static/images/commentsIcon.png"/>
                    </a>
                 </p>
                  <p class="Comment-Count"> {{ list[0].comment.count() }}</p>

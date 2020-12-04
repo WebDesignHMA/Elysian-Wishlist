@@ -6,36 +6,16 @@
 {% endblock %}
 
 {% block body %}
-<div class="Thread-Comments-Container">
-    <h1 style="text-align: center">Wishlist: <b><u>{{ lists[0].content }}</u></b></h1>
-    <table>
-        <tr>
-            <th>Like/Dislike</th>
-            <th>List</th>
-            <th>Added</th>
-            <th>Creators</th>
-        </tr>
+    <div class="Thread-Comments-Container">
+        <h1 style="text-align: center">{{ lists[0].content }}</h1>
         {% for list in lists %}
-            <tr>
-                <td>
-                  {{ list[0].liked.count() }} likes
-                </td>
-                <td>
-                    <a href="/list/{{list[0].id}}">
+            <div class="Comments-Container-Top">
+                    <a class="Wishlist-Name" href="/list/{{list[0].id}}">
                         {{ list[0].content }}
                     </a>
-                </td>
-                <td>{{ list[0].date_created.date().strftime('%B-%d-%Y') }}</td>
-                <td>
-                    {{ list[1] }}
-                </td>
-            </tr>
+                <p class="Wishlist-Creator">{{ list[1] }}</p>
+            </div>
             {% endfor %}
-        </table>
-    </div>
-
-
-    <div class="Thread-Comments-Container">
 
       {% if result|length < 1 %}
         <h4 class="Comment-Text">No comments yet.</h4>
