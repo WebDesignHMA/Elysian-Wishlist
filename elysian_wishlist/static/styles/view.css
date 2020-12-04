@@ -77,3 +77,28 @@ body {
   background-color: #e0e0eb;
 }
 
+.Comments-Container-Top {
+  display: flex;
+  flex-direction: row;
+  padding-top: 35px;
+}
+
+.Wishlist-Name {
+  text-decoration-line: none;
+  color: black;
+  font-weight: 600;
+  font-size: 24px;
+}
+
+.Wishlist-Creator {
+  font-weight: 100;
+  font-size: 16px;
+  color: lightgray;
+  margin-left: 5px;
+  position: relative;
+  bottom: 8px;
+}
+
+:hover.Wishlist-Name {
+  text-decoration-line: underline;
+}

@@ -1,15 +1,21 @@
+
+.All-Wishlists-Content{
+  background-color: #b3e0ff;
+}
+
 .Wishlists-Holder {
   display: flex;
   flex-wrap: wrap;
   width: 60%;
-  border: 0.5px solid black;
   margin-left: 20%;
+  background-color: white;
 }
 
 .Card-Image {
   height: 50%;
   width: auto;
-  border-bottom: 0.5px dotted black;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .Wishlist-Card {
@@ -50,7 +56,7 @@
 }
 
 .Date-Added {
-  margin-left: 135px;
+  margin-left: 63px;
 }
 
 .Like-Icon {
@@ -58,17 +64,13 @@
   height: auto;
   position: relative;
   bottom: 10%;
-
 }
 
 .Comment-Icon {
   width: 32px;
   height: auto;
-  position: relative;
+  margin-left: 5px;
   bottom: 10%;
-  padding-left: 40px;
-  padding-right: 10px;
-
 }
 
 .Unlike-Icon {
@@ -76,6 +78,6 @@
   height: auto;
   position: relative;
   bottom: 10%;
-  padding-left: 14px;
-  padding-right: 10px;
+  margin-left: 14px;
+  margin-right: 7px;
 }

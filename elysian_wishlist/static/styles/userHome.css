@@ -1,3 +1,6 @@
+body{
+  overflow-x: hidden;
+}
 .Wishlists-Container {
   display: flex;
   flex-wrap: wrap;
