@@ -2,10 +2,11 @@
 
 {% block head %}
 <title>Wishlist Comments</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/view.css') }}">
 {% endblock %}
 
 {% block body %}
-<div class="content">
+<div class="Thread-Comments-Container">
     <h1 style="text-align: center">Wishlist: <b><u>{{ lists[0].content }}</u></b></h1>
     <table>
         <tr>
@@ -24,41 +25,49 @@
                         {{ list[0].content }}
                     </a>
                 </td>
-                <td>{{ list[0].date_created.date() }}</td>
+                <td>{{ list[0].date_created.date().strftime('%B-%d-%Y') }}</td>
                 <td>
                     {{ list[1] }}
                 </td>
             </tr>
             {% endfor %}
         </table>
-
-    {% if result|length < 1 %}
-    <h4 style="text-align: center">There are no comments. <br> Add your opinion below!</h4>
-    {% else %}
-    <hr>
-    <h4 style="text-align: center">Comments... <br> Add your opinion below!</h4>
-
-        {% for sublist in result %}
-          <strong>
-              {{ sublist[1] }} -
-              {{ sublist[0].timestamp.date() }}
-          </strong>
-          <br>
-                {{ sublist[0].body }}
-          <br><br>
-        {% endfor %}
-
-    {% endif %}
-    <hr>
-
-    <div class="form">
-        <form action="/comments/1" method="POST">
-            <input type="text" name="content" id="content" required>
-            <input type="hidden" name="parentId" value="{{ lists[0].0.id }}">
-            <input type="hidden" name="authorId" value="{{ lists[0].0.user_uid }}">
-            <input type="submit" value="Add Comment">
-        </form>
     </div>
-</div>
+
+
+    <div class="Thread-Comments-Container">
+
+      {% if result|length < 1 %}
+        <h4 class="Comment-Text">No comments yet.</h4>
+
+      {% else %}
+        <div class="Thread-Comments">
+          <table>
+            <!-- <tr>
+              <th>Comments</th>
+              <th>Added</th>
+            </tr> -->
+            {% for sublist in result %}
+              <div class="Comment-Container">
+                  <p class="Comment-Content">{{ sublist[0].body }}</p>
+                  <p class="Date-Added"><strong>{{ sublist[1] }}</strong> - {{ sublist[0].timestamp.strftime('%H:%M - %B-%d-%Y') }}</p>
+              </div>
+            {% endfor %}
+          </table>
+        </div>
+      {% endif %}
+
+      <form class="Create-Comment-Form" action="/comments/1" method="POST">
+          <textarea type="text" name="content" class="Single-Comment-Content" placeholder="Write a comment"></textarea><br>
+          <input type="hidden" name="parentId" value="{{ lists[0].0.id }}">
+          <input type="hidden" name="authorId" value="{{ lists[0].0.user_uid }}">
+          <input type="submit" value="Comment" class="Post-Comment-Button">
+      </form>
+      <br><br>
+    </div>
+
+
+
+
 <br><br><br>
 {% endblock %}
