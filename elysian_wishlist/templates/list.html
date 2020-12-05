@@ -3,9 +3,20 @@
 {% block head %}
 <title>Wishlists</title>
 <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/list.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/alert.css') }}">
 {% endblock %}
 
 {% block body %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for category, message in get_flashed_messages(with_categories=True) %}
+  <div style="text-align:center" class="alert alert-{{ category }}">{{ message }}</div>
+{% endfor %}
+
+{% endif %}
+{% endwith %}
+
 <div class="content">
     <div class="form-container">
         <h1 class="Current-Wishlist-Title">Current Wishlist: <b><u>{{ result.0.content }}</u></b></h1>
@@ -24,7 +35,7 @@
             <img class="Item-Image" src={{ sublist.image_file }}>
             <div class="Middle-Section">
                 <p class="Item-Title">{{ sublist.child_content }}</p>
-                <p class="Item-Date-Added">Added on {{ sublist.date_created.date() }}</p>
+                <p class="Item-Date-Added">Added on {{ sublist.date_created.date().strftime('%B %d, %Y') }}</p>
             </div>
             <div class="End-Section">
                 <p class="Item-Price">{{ sublist.prices }}</p>

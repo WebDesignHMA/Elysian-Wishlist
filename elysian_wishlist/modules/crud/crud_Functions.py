@@ -14,7 +14,7 @@ import json
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 #db = SQLAlchemy(app)
 
-#route for all wishlists
+#route for all my wishlists
 def index():
     #creates your wishlist or returns all wishlists created
     db.create_all()
@@ -45,8 +45,10 @@ def index():
             return render_template('index.html', lists=user_wishlist)
         #lists = Wishlist.query.order_by(Wishlist.date_created).all()
         else:
-            lists=''
-            return render_template('index.html', lists=lists)
+            flash("User Must Login to Create Wishlist", "danger")
+            return redirect('/login/')
+            #lists=''
+            #return render_template('index.html', lists=lists)
 
 
 #all WISHLISTS everyone made
@@ -173,11 +175,23 @@ def postComments(id):
 def list(id):
     #creates items for each wishlist
     myList = Wishlist.query.get_or_404(id)
+    user = User.query.filter_by(uid=myList.user_uid).first()
+
 
     if request.method == "POST":
-        content = request.form['content']
-        parentId = request.form['parentId']
-        return redirect(url_for('ebayApiResult', name=content, id=id))
+        if session.get("USERNAME", None) is not None and user.username == session.get("USERNAME"):
+            content = request.form['content']
+            parentId = request.form['parentId']
+            return redirect(url_for('ebayApiResult', name=content, id=id))
+        else:
+            myList = Wishlist.query.get_or_404(id)
+            sub_list = child.query.filter_by(Wishlist_id=id).all()
+            result_list = [
+                           myList,
+                           sub_list
+                           ]
+            flash("Only wishlist authors can edit this item!", "danger")
+            return render_template('list.html', result = result_list)
     else:
         context = {
             'myList': myList
@@ -186,66 +200,74 @@ def list(id):
         sub_list = child.query.filter_by(Wishlist_id=id).all()
         # print(sub_list)
         result_list = [
-                       myList,
-                       sub_list
-                       ]
+                    myList,
+                    sub_list
+                    ]
 
         print(result_list)
         return render_template('list.html', result = result_list)
+
 
 #deletes items from each wishlist
 def deletesub(id):
     sublist_to_delete = child.query.get_or_404(id)
     parent_id = sublist_to_delete.Wishlist_id
-    try:
-        db.session.delete(sublist_to_delete)
-        db.session.commit()
-        return redirect('/list/{}'.format(str(parent_id)))
-    except:
-        return 'There was a problem deleting that list'
+    WishList = Wishlist.query.get_or_404(parent_id)
+    user = User.query.filter_by(uid=WishList.user_uid).first()
+
+    if session.get("USERNAME", None) is not None and user.username == session.get("USERNAME"):
+        try:
+            db.session.delete(sublist_to_delete)
+            db.session.commit()
+            return redirect('/list/{}'.format(str(parent_id)))
+        except:
+            return 'There was a problem deleting that list'
+    else:
+        flash("Only wishlist authors can delete this item!", "danger")
+        return redirect('/list/'+str(parent_id))
 
 #update items from each wishlist
 def updatesub(id):
     sublist = child.query.get_or_404(id)
     parent_id = sublist.Wishlist_id
+    WishList = Wishlist.query.get_or_404(parent_id)
+    user = User.query.filter_by(uid=WishList.user_uid).first()
 
-    if request.method == 'POST':
-        sublist.child_content = request.form['content']
+    if session.get("USERNAME", None) is not None and user.username == session.get("USERNAME"):
+        if request.method == 'POST':
+            sublist.child_content = request.form['content']
 
-        try:
-            db.session.commit()
-            return redirect('/list/{}'.format(str(parent_id)))
-        except:
-            return 'There was an issue updating your list'
+            try:
+                db.session.commit()
+                return redirect('/list/{}'.format(str(parent_id)))
+            except:
+                return 'There was an issue updating your list'
 
+        else:
+            result = {'sub':True, 'sublist':sublist}
+            return render_template('update.html', context = result)
     else:
-        result = {'sub':True, 'sublist':sublist}
-        return render_template('update.html', context = result)
+        flash("Only wishlist authors can update this item!", "danger")
+        return redirect('/list/'+str(parent_id))
 
 
 #to like a wishlist (HELPER)
 def like_wishlist(Wishlist):
-    username = session.get("USERNAME")
-    user = User.query.filter_by(username=username).first()
-    if user:
+    if session.get("USERNAME", None) is not None:
         if not has_liked_wishlist(Wishlist):
             like = LikedWishlist(user_uid=user.uid, Wishlist_id=Wishlist.id)
             db.session.add(like)
             #return redirect('/wishlists/')
     else:
-        flash("User Must Login to Like Wishlist", "danger")
         return redirect('/login/')
 
 #to unlike a wishlist (HELPER)
 def unlike_wishlist(Wishlist):
-    username = session.get("USERNAME")
-    user = User.query.filter_by(username=username).first()
-    if user:
+    if session.get("USERNAME", None) is not None:
         if has_liked_wishlist(Wishlist):
             LikedWishlist.query.filter(LikedWishlist.user_uid == user.uid).filter(LikedWishlist.Wishlist_id == Wishlist.id).delete()
             #return redirect('/wishlists/')
     else:
-        flash("User Must Login to Like/Dislike Wishlist", "danger")
         return redirect('/login/')
 
 
@@ -253,7 +275,7 @@ def unlike_wishlist(Wishlist):
 def has_liked_wishlist(Wishlist):
     username = session.get("USERNAME")
     user = User.query.filter_by(username=username).first()
-    if user:
+    if session.get("USERNAME", None) is not None:
         return LikedWishlist.query.filter(LikedWishlist.user_uid == user.uid, LikedWishlist.Wishlist_id == Wishlist.id).count() > 0
     else:
         return False
@@ -261,11 +283,15 @@ def has_liked_wishlist(Wishlist):
 
 #action to like wishlists (MAIN)
 def like_action_api(wishlist_id, action):
-    wishlist = Wishlist.query.filter_by(id=wishlist_id).first_or_404()
-    if action == 'like':
-        like_wishlist(wishlist)
-        db.session.commit()
-    if action == 'unlike':
-        unlike_wishlist(wishlist)
-        db.session.commit()
-    return redirect('/wishlists/')
+    if session.get("USERNAME", None) is not None:
+        wishlist = Wishlist.query.filter_by(id=wishlist_id).first_or_404()
+        if action == 'like':
+            like_wishlist(wishlist)
+            db.session.commit()
+        if action == 'unlike':
+            unlike_wishlist(wishlist)
+            db.session.commit()
+        return redirect('/wishlists/')
+    else:
+        flash("User Must Login to Like/Dislike a Wishlist", "danger")
+        return redirect('/login/')
