@@ -44,10 +44,10 @@ def test_logout():
 def test_index():
     with app.test_client() as client:
         response = client.get('/')
-        assert response.status == "200 OK"
+        assert response.status == "302 FOUND"
 
 def test_allWishlist():
     with app.test_client() as client:
         response = client.get('/')
-        assert response.status == "200 OK"
+        assert response.status == "302 FOUND"
         
