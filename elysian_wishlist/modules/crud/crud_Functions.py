@@ -253,6 +253,8 @@ def updatesub(id):
 
 #to like a wishlist (HELPER)
 def like_wishlist(Wishlist):
+    username = session.get("USERNAME")
+    user = User.query.filter_by(username=username).first()
     if session.get("USERNAME", None) is not None:
         if not has_liked_wishlist(Wishlist):
             like = LikedWishlist(user_uid=user.uid, Wishlist_id=Wishlist.id)
@@ -263,6 +265,8 @@ def like_wishlist(Wishlist):
 
 #to unlike a wishlist (HELPER)
 def unlike_wishlist(Wishlist):
+    username = session.get("USERNAME")
+    user = User.query.filter_by(username=username).first()
     if session.get("USERNAME", None) is not None:
         if has_liked_wishlist(Wishlist):
             LikedWishlist.query.filter(LikedWishlist.user_uid == user.uid).filter(LikedWishlist.Wishlist_id == Wishlist.id).delete()
