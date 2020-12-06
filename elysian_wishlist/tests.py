@@ -1,8 +1,8 @@
 from flask_sqlalchemy import SQLAlchemy
 from elysian_wishlist import create_app, db
 app = create_app('sqlite:///test.db')
-db.drop_all()
-db.create_all()
+#db.drop_all()
+#db.create_all()
 
 from flask import render_template, url_for, redirect, flash
 from elysian_wishlist.modules.crud.crud_Functions import *
