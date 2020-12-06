@@ -2,29 +2,23 @@
 
 {% block head %}
 <title>Wishlists</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/update.css') }}">
 {% endblock %}
 
 {% block body %}
 <div class="content">
     {% if context.sub %}
-    <h1 style="text-align: center">Update your sub list</h1>
-
-    <div class="form">
+    <h1 class="Update-Title" style="text-align: center">Update your sub list</h1>
         <form action="/updatesub/{{context.sublist.id}}" method="POST">
-            <input type="text" name="content" id="content" value="{{context.sublist.child_content}}" required>
-            <input type="submit" value="Update">
+            <input type="text" name="content" class="Update-Input" value="{{context.sublist.child_content}}" required>
+            <input type="submit" class="Submit-Update" value="+">
         </form>
-    </div>
     {% else %}
-    <h1 style="text-align: center">Update Wishlist</h1>
-
-    <div class="form">
-        <form action="/update/{{context.list.id}}" method="POST">
-            <input type="text" name="content" id="content" value="{{context.list.content}}">
-            <input type="submit" value="Update">
+    <h1 class="Update-Title" style="text-align: center">Update Wishlist</h1>
+        <form class="Update-Wishlist-Form" action="/update/{{context.list.id}}" method="POST">
+            <input type="text" name="content" class="Update-Input" value="{{context.list.content}}">
+            <input type="submit" value="+" class="Submit-Update">
         </form>
-    </div>
-
     {% endif %}
 </div>
 {% endblock %}

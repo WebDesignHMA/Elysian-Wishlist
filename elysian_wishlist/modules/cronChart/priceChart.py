@@ -7,9 +7,10 @@ import re
 
 
 
-def makePriceChart():
-
-    lists = db.session.query(cronScheduler).filter_by(ebay_id='173727095451').all()
+def makePriceChart(id):
+    chartItem = db.session.query(child).filter_by(id=id).first()
+    item_content = chartItem.child_content
+    lists = db.session.query(cronScheduler).filter_by(ebay_id=chartItem.ebay_id).all()
     xAxis = []
     yAxis = []
     for list in lists:
@@ -26,5 +27,5 @@ def makePriceChart():
     #plt.ylabel('Prices')
     #plt.savefig("/elysian_wishlist/static/images/chart.png")
     #plt.close()
-    return render_template('displayChart.html', xVal=labels, yVal=data)
+    return render_template('displayChart.html', xVal=labels, yVal=data, product=item_content)
     #plt.show()

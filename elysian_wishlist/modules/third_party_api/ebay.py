@@ -77,7 +77,10 @@ def ebay_search_item(item_id):
     try:
         price=soup.find('span', id='prcIsum').get_text()
     except:
-        price=soup.find('span', id='mm-saleDscPrc').get_text()
+        try:
+            price=soup.find('span', id='mm-saleDscPrc').get_text()
+        except:
+            price=0
 
     return json.dumps({
         'item_id': item_id,
