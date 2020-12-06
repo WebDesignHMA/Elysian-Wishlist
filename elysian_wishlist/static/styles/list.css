@@ -71,6 +71,12 @@
   height: 25px;
 }
 
+.Chart-Icon {
+  width: 29px;
+  height: 29px;
+  padding-right: 10px;
+}
+
 .Add-List-Input {
   width: 350px;
   height: 35px;

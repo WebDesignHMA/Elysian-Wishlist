@@ -40,9 +40,9 @@ def allWishlists():
     return api_allWishlists()
 
 #route for charts
-@app.route("/charts/")
-def displayChartApi():
-    return makePriceChart()
+@app.route("/charts/<int:id>")
+def displayChartApi(id):
+    return makePriceChart(id)
 
 #like/unlike wishlists
 @app.route('/like/<int:wishlist_id>/<action>')
