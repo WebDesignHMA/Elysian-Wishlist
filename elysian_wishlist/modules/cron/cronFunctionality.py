@@ -1,12 +1,12 @@
 from elysian_wishlist import db
-from flask_apscheduler import APScheduler
+#from flask_apscheduler import APScheduler
 from elysian_wishlist.modules.third_party_api.ebay import *
 from elysian_wishlist.models import *
 import json
 
 
 
-scheduler = APScheduler()
+#scheduler = APScheduler()
 
 def scheduledTask():
     print("Task initiated...")
