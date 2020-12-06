@@ -1,5 +1,5 @@
 from apscheduler.schedulers.blocking import BlockingScheduler
-from cronFunctionality import *
+from elysian_wishlist.modules.cron.cronFunctionality import *
 
 sched = BlockingScheduler()
 
