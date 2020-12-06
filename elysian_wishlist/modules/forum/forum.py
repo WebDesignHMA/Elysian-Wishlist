@@ -41,16 +41,23 @@ def api_new_thread():
 
 #editing so that only users that created the thread can delete the thread
 def api_delete_thread(id):
-    username = session.get("USERNAME")
-    user = User.query.filter_by(username=username).first()
-    if user:
-           uid = user.uid
-           thread_to_delete = Thread.query.get_or_404(id) #function to return error 404 if object not found
-           db.session.delete(thread_to_delete)
-           db.session.commit()
-           return redirect('/forum')
+    thread_to_delete = Thread.query.get_or_404(id)
+    thread_userId = thread_to_delete.uid
+    user = User.query.filter_by(uid=thread_userId).first()
+
+    if session.get("USERNAME", None) is not None and user.username == session.get("USERNAME"):
+        if user:
+               uid = user.uid
+               thread_to_delete = Thread.query.get_or_404(id) #function to return error 404 if object not found
+               db.session.delete(thread_to_delete)
+               db.session.commit()
+               flash("Thread deleted successfully!", "success")
+               return redirect('/forum')
+        else:
+            flash("Cannot perform this action", "danger")
+            return redirect('/forum')
     else:
-        flash("Cannot perform this action", "danger")
+        flash("Only thread authors can delete this item!", "danger")
         return redirect('/forum')
 
 
