@@ -16,7 +16,7 @@
                 class="New-List-Input"
                 type="text"
                 name="content"
-                >
+                required>
             <input
                 class="Add-List-Button"
                 type="submit"
@@ -47,10 +47,10 @@
 
 <div class="main">
   <ul class="cards">
-    {% for list in lists %}
+    {% for list, image in combined %}
     <li class="cards_item">
       <div class="card">
-        <div class="card_image"><img src="https://picsum.photos/500/300/?image=10"></div>
+        <div class="card_image"><img src={{ image }}></div>
         <div class="card_content">
           <p class = "Wishlist-Title">
           <a class="Wishlist-Title-List" href="/list/{{list.id}}">

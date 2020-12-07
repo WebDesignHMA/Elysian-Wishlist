@@ -6,5 +6,5 @@ if __name__ == "__main__":
 
     #scheduler.add_job(id='Scheduled task', func=scheduledTask, trigger='interval', minutes=1)
     #scheduler.start()
-    #app.run(port=5000, debug=True)
-    app.run(port=5000, debug=True, use_reloader=False)
+    app.run(port=5000, debug=True)
+    #app.run(port=5000, debug=True, use_reloader=False)

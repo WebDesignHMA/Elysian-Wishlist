@@ -42,7 +42,17 @@ def index():
             user = User.query.filter_by(username=username).first()
             user_uid = user.uid
             user_wishlist = Wishlist.query.filter_by(user_uid=user_uid).all()
-            return render_template('index.html', lists=user_wishlist)
+            images = []
+            for list in user_wishlist:
+                childList = child.query.filter_by(Wishlist_id=list.id).first()
+                if childList is not None:
+                    images.append(childList.image_file)
+                else:
+                    images.append("../static/images/santa.png")
+            combined = []
+            for i in range(len(user_wishlist)):
+                combined.append([user_wishlist[i], images[i]])
+            return render_template('index.html', lists=user_wishlist, combined=combined)
         #lists = Wishlist.query.order_by(Wishlist.date_created).all()
         else:
             flash("User Must Login to Create Wishlist", "danger")
@@ -59,9 +69,18 @@ def api_allWishlists():
         bubbleSort(lists)
     else:
         lists = ''
-    #for list in lists:
-    #    print (list[0].liked.count())
-    return render_template('allWishlists.html', lists=lists, has_liked_wishlist = has_liked_wishlist, like_action = like_action_api, displayComments=displayComments)
+    images = []
+    for list in lists:
+        childList = child.query.filter_by(Wishlist_id=list[0].id).first()
+        if childList is not None:
+            images.append(childList.image_file)
+        else:
+            images.append("../static/images/santa.png")
+    combined = []
+    for i in range(len(lists)):
+        combined.append([lists[i], images[i]])
+
+    return render_template('allWishlists.html', lists=lists, combined=combined, has_liked_wishlist = has_liked_wishlist, like_action = like_action_api, displayComments=displayComments)
 
 #bubbleSort to sort the likes
 def bubbleSort(arr):
