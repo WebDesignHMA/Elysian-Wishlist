@@ -1,4 +1,4 @@
-
+/*
 .All-Wishlists-Content{
   background-color: #b3e0ff;
 }
@@ -9,8 +9,8 @@
   width: 60%;
   margin-left: 20%;
   background-color: white;
-}
-
+} */
+/*
 .Card-Image {
   height: 50%;
   width: auto;
@@ -46,38 +46,185 @@
 .Card-Bottom {
   display: flex;
   flex-direction: row;
-}
+} */
 
-.Wishlist-Like {
+/* .Wishlist-Like {
   padding-right: 7px;
   padding-left: 15px;
   text-decoration-line: none;
   color: #5AB9EA;
+} */
+
+.Wishlist-Title-Link {
+  color: #adadad;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  margin: 0px;
+}
+
+.Wishlist-Title{
+  text-align: center;
+}
+
+.Creator-Username {
+  text-align: center;
+  position: relative;
+  padding-top: 10px;
+  /* left: 35%; */
+  bottom: 10%;
 }
 
 .Date-Added {
-  margin-left: 63px;
+  position: relative;
+  text-align: right;
+  padding-right: 7px;
+  bottom: 155px;
+  font-size: 10px;
+  /* left: 60%; */
+  text-decoration-line: none;
+  /* color: #5AB9EA; */
+}
+
+.Like-Count{
+  position: relative;
+  padding-right: 7px;
+  bottom: 27%;
+  left: 17%;
+  text-decoration-line: none;
 }
 
 .Like-Icon {
   width: 32px;
   height: auto;
   position: relative;
-  bottom: 10%;
+  bottom: 18%;
+  left: 7%;
 }
 
 .Comment-Icon {
   width: 32px;
   height: auto;
   margin-left: 5px;
-  bottom: 10%;
+  bottom: -10%;
+}
+
+.Comments-Center{
+  width: 32px;
+  height: auto;
+  position: relative;
+  bottom: 45%;
+  left: 22%;
+}
+
+.Comment-Count{
+  position: relative;
+  padding-right: 7px;
+  bottom: 56%;
+  left: 34%;
+  text-decoration-line: none;
 }
 
 .Unlike-Icon {
-  width: 27px;
+  width: 28px;
   height: auto;
   position: relative;
-  bottom: 10%;
-  margin-left: 14px;
-  margin-right: 7px;
+  bottom: 18%;
+  left: 7%;
 }
+
+/* ///////////////////////////////////////////////////// */
+
+/* Design */
+/* *,
+*::before,
+*::after {
+  box-sizing: border-box;
+} */
+
+html {
+  background-color: #ecf9ff;
+}
+
+body {
+  background: linear-gradient(to bottom left, #D2BCFB 40%, #84CEEB 100%);
+  font-family: serif;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0;
+  padding: 1rem;
+}
+
+.main{
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: 400;
+    text-align: center;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cards_item {
+  display: flex;
+  padding: 1rem;
+}
+
+@media (min-width: 40rem) {
+  .cards_item {
+    width: 50%;
+  }
+}
+
+@media (min-width: 56rem) {
+  .cards_item {
+    width: 33.3333%;
+  }
+}
+
+.card {
+  background-color: white;
+  border-radius: 0.25rem;
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+  display: flex;
+  height: 65%;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.card:hover {
+	transform: translateY(-0.5rem) scale(1.0125);
+	box-shadow: 0 0.5em 3rem -1rem rgba(0,0,0,0.5);
+}
+
+.card_content {
+  /* padding: 1rem; */
+  height: 75%;
+  background: #ffffff;
+}
+
+
+/* .card_text {
+  color: #ffffff;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+  font-weight: 400;
+} */
