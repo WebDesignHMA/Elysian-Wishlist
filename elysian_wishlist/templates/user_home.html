@@ -15,7 +15,7 @@
   <div class="Profile-Container">
     <div class="Profile-Heading">
       <div class="Button-Set">
-        <p class="User-Name">{{session["USERNAME"].title()}}</p>
+        <!-- <p class="User-Name">{{session["USERNAME"].title()}}</p> -->
         <a class="Action-Link" href="{{ url_for('myWishlists') }}">My Wishlists</a>
         <a class="Action-Link" href="{{ url_for('logout') }}">Logout</a>
       </div>
@@ -30,6 +30,12 @@
         </p>
         <p class="User-Email">
           {{userInfo.email}}
+        </p>
+        <p class="Wishlist-Like-Count">
+          Liked {{likedList|length}} Wishlists
+        </p>
+        <p class="Wishlist-Like-Count">
+            Created {{listCreated|length}} Wishlists
         </p>
       </div>
     </div>
