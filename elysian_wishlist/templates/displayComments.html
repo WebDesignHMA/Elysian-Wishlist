@@ -37,7 +37,7 @@
         </div>
       {% endif %}
 
-      <form class="Create-Comment-Form" action="/comments/1" method="POST">
+      <form class="Create-Comment-Form" action="/comments/{{ lists[0].0.id }}" method="POST">
           <textarea type="text" name="content" class="Single-Comment-Content" placeholder="Write a comment" required></textarea><br>
           <input type="hidden" name="parentId" value="{{ lists[0].0.id }}">
           <input type="hidden" name="authorId" value="{{ lists[0].0.user_uid }}">

@@ -152,6 +152,7 @@ def displayComments(id):
             try:
                 db.session.add(new_list)
                 db.session.commit()
+                print(id)
                 return redirect('/comments/'+str(id))
             except:
                 return 'There was an issue adding your wishlist'
@@ -159,18 +160,15 @@ def displayComments(id):
             flash("User Must Login to Create Wishlist", "danger")
             return redirect('/login/')
 
-
-
-
-    #myList = WishlistComment.query.filter_by(wishlist_id=id).join(User).add_columns('username').all()
+    #User and WishlistComment Table Joined
     myList = db.session.query(WishlistComment).filter(WishlistComment.wishlist_id == id).join(User, WishlistComment.uid==User.uid).add_columns('username').all()
-    #myList = Wishlist.query.filter_by(id=id).join(User).add_columns('username').join(LikedWishlist).add_columns('body')
-    #myList = []
+    #Wishlist and User Joined Table
     lists = Wishlist.query.filter_by(id=id).join(User).add_columns('username')
     for list in lists:
         print(list[0].id)
         print(list[1])
     return render_template('displayComments.html', result = myList, lists=lists)
+
 
 def postComments(id):
     #myList = Wishlist.query.get_or_404(id)
