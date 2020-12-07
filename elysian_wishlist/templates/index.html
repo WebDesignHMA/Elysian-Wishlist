@@ -12,20 +12,20 @@
         <h1 class="My-Wishlists-Text"
         style="text-align: center">My Wishlists</h1>
         <form class="form" action="/" method="POST">
-            <input 
+            <input
                 class="New-List-Input"
-                type="text" 
-                name="content" 
+                type="text"
+                name="content"
                 >
-            <input 
+            <input
                 class="Add-List-Button"
-                type="submit" 
+                type="submit"
                 value="+">
         </form>
         {% if lists|length < 1 %}
         <h4 style="text-align: center">There are no wishlists. Create one above!</h4>
         {% else %}
-        <div class="Wishlists-Container">
+        <!-- <div class="Wishlists-Container">
             {% for list in lists %}
             <div class="Wishlist-Card">
                 <img class="Card-Image" src="https://source.unsplash.com/300x225/?wave" alt="wave"/>
@@ -43,7 +43,34 @@
                 </div>
             </div>
             {% endfor %}
+        </div> -->
+
+<div class="main">
+  <ul class="cards">
+    {% for list in lists %}
+    <li class="cards_item">
+      <div class="card">
+        <div class="card_image"><img src="https://picsum.photos/500/300/?image=10"></div>
+        <div class="card_content">
+          <p class = "Wishlist-Title">
+          <a class="Wishlist-Title-List" href="/list/{{list.id}}">
+              {{ list.content }}
+          </a>
+          </p>
+          <p class="Date-Added">{{ list.date_created.date().strftime('%B %d,%Y') }} </p>
+          <a class="Update-Link" href="/update/{{list.id}}">
+              <img class="Update-Icon" src="../static/images/updateIcon.png" />
+          </a>
+          <a class="Delete-Link" href="/delete/{{list.id}}">
+              <img class="Delete-Icon" src="../static/images/deleteIcon.png" />
+          </a>
         </div>
+        {% endfor %}
+      </div>
+    </li>
+  </ul>
+</div>
+
         {% endif %}
     </div>
 </body>

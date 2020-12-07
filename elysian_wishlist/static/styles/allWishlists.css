@@ -100,7 +100,7 @@
   width: 32px;
   height: auto;
   position: relative;
-  bottom: 18%;
+  bottom: 17%;
   left: 7%;
 }
 
@@ -131,34 +131,34 @@
   width: 28px;
   height: auto;
   position: relative;
-  bottom: 18%;
+  bottom: 17%;
   left: 7%;
 }
 
-/* ///////////////////////////////////////////////////// */
+
 
 /* Design */
-/* *,
+*,
 *::before,
 *::after {
   box-sizing: border-box;
-} */
-
-html {
-  background-color: #ecf9ff;
 }
 
+/* html {
+  background-color: #ecf9ff;
+} */
+
 body {
-  background: linear-gradient(to bottom left, #D2BCFB 40%, #84CEEB 100%);
-  font-family: serif;
+  background: url(../images/sample.png) center center no-repeat;
+  /* font-family: serif;
   font-style: normal;
   font-weight: 400;
   letter-spacing: 0;
-  padding: 1rem;
+  padding: 1rem; */
 }
 
 .main{
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
