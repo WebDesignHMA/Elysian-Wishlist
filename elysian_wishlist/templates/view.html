@@ -33,7 +33,7 @@
   {% endif %}
 
   <form class="Create-Comment-Form" action="/view/{{thread.id}}" method="POST">
-    <textarea type="text" name="content" class="Single-Comment-Content" placeholder="Write a comment" required></textarea><br>
+    <textarea type="text" name="content" class="Single-Comment-Content" placeholder="Write a comment" maxlength="100" required></textarea><br>
     <input type="submit" value="Comment" class="Post-Comment-Button">
   </form>
 </div>

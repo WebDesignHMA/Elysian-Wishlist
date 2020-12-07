@@ -10,8 +10,8 @@
   <a href="/forum" class= "button" id="backbutton">❮ Back</a>
   <h3 class="Title-Text">Create a new thread</h3>
   <form class="Thread-Form" action="/new" method="POST">
-    <input type="text" name="title" id="threadtitle" placeholder="Title" required><br>
-    <textarea type="text" name="content" id="threadcontent" placeholder="Text" required></textarea><br>
+    <input type="text" name="title" id="threadtitle" placeholder="Title" maxlength="100" required><br>
+    <textarea type="text" name="content" id="threadcontent" placeholder="Text" maxlength="100" required></textarea><br>
     <input type="submit" id="threadsubmit" value="Post" class="button">
   </form>
 </div>

@@ -10,13 +10,13 @@
     {% if context.sub %}
     <h1 class="Update-Title" style="text-align: center">Update your sub list</h1>
         <form action="/updatesub/{{context.sublist.id}}" method="POST">
-            <input type="text" name="content" class="Update-Input" value="{{context.sublist.child_content}}" required>
+            <input type="text" name="content" class="Update-Input" value="{{context.sublist.child_content}}" maxlength="100" required>
             <input type="submit" class="Submit-Update" value="+">
         </form>
     {% else %}
     <h1 class="Update-Title" style="text-align: center">Update Wishlist</h1>
         <form class="Update-Wishlist-Form" action="/update/{{context.list.id}}" method="POST">
-            <input type="text" name="content" class="Update-Input" value="{{context.list.content}}" required>
+            <input type="text" name="content" class="Update-Input" value="{{context.list.content}}" maxlength="100" required>
             <input type="submit" value="+" class="Submit-Update">
         </form>
     {% endif %}

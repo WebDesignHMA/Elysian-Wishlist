@@ -21,7 +21,7 @@
     <div class="form-container">
         <h1 class="Current-Wishlist-Title">Current Wishlist: <b><u>{{ result.0.content }}</u></b></h1>
         <form class="form" action="" method="POST">
-            <input class="Add-List-Input" type="text" name="content" required>
+            <input class="Add-List-Input" type="text" name="content" maxlength="100" required>
             <input type="hidden" name="parentId" value="{{ result.0.id }}">
             <input class="Add-Sub-List-Button" type="submit" value="Add Sub-List">
         </form>
