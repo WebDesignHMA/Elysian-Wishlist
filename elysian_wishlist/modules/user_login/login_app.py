@@ -75,6 +75,7 @@ def api_user_home():
             #myList = db.session.query(Wishlist, LikedWishlist).join(LikedWishlist, LikedWishlist.Wishlist_id == Wishlist.id).filter_by(LikedWishlist.user_uid==user.uid).all()
             #myList = Wishlist.query.join(LikedWishlist, LikedWishlist.user_uid==user.uid).all()
             likedList = db.session.query(Wishlist).join(LikedWishlist).filter(LikedWishlist.user_uid==user.uid).all()
+            listCreated = db.session.query(Wishlist).join(User).filter(User.uid==user.uid).all()
             images = []
             for list in likedList:
                 childList = child.query.filter_by(Wishlist_id=list.id).first()
@@ -85,7 +86,7 @@ def api_user_home():
             combined = []
             for i in range(len(likedList)):
                 combined.append([likedList[i], images[i]])
-            return render_template("user_home.html", likedList=likedList, combined=combined, userInfo=user)
+            return render_template("user_home.html", likedList=likedList, listCreated=listCreated, combined=combined, userInfo=user)
         else:
             print("session not found")
             return redirect(url_for('login'))
