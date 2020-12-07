@@ -41,7 +41,7 @@
     <h4 class="No-Liked-Title" style="text-align: center">There are no liked wishlists.</h4>
     {% else %}
 
-    <div class="Wishlists-Container">
+    <!-- <div class="Wishlists-Container">
       {% for list in likedList %}
       <div class="Wishlist-Card">
         <img class="Card-Image" src="https://source.unsplash.com/300x225/?wave" alt="wave" />
@@ -58,11 +58,34 @@
         </div>
       </div>
       {% endfor %}
-    </div>
+    </div> -->
+
+
+<div class="main">
+  <ul class="cards">
+    {% for list in likedList %}
+    <li class="cards_item">
+      <div class="card">
+        <div class="card_image"><img src="https://picsum.photos/500/300/?image=10"></div>
+        <div class="card_content">
+          <p class="Wishlist-Title">{{ list.content }}</p>
+          <p class="Wishlist-Owner">{{ list.username }}</p>
+          <img class="Like-Icon" src="../static/images/thumbsUpIcon.png" />
+          <p class="Like-Count">{{ list.liked.count() }}</p>
+          <a href="/list/{{list.id}}" class="Go-Link">
+            <img class="Go-Icon" src="../static/images/goIcon.png" />
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    </li>
+  </ul>
+</div>
+
     {% endif %}
   </div>
 
-  <div class="CreatedWishlist">
+  <!-- <div class="CreatedWishlist">
     <h1 style="text-align: center">Wishlists I created</h1>
     {% if listCreated|length < 1 %}
     <h4 style="text-align: center">There are no liked wishlists.</h4>
@@ -87,7 +110,7 @@
       {% endfor %}
     </div>
     {% endif %}
-  </div>
+  </div> -->
 
 </body>
 {% endblock %}

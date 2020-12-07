@@ -1,4 +1,4 @@
-body{
+/* body{
   overflow-x: hidden;
 }
 .Wishlists-Container {
@@ -7,9 +7,9 @@ body{
   width: 70%;
   padding-left: 15%;
   padding-right: 15%;
-}
+} */
 
-.Wishlist-Card {
+/* .Wishlist-Card {
   display: flex;
   flex-direction: column;
   width: 40%;
@@ -19,17 +19,20 @@ body{
   margin-top: 4%;
   border-radius: 10px;
   font-family: 'Poppins', sans-serif;
-}
+} */
 
 .Wishlist-Title {
+  color: #adadad;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: capitalize;
   text-decoration-line: none;
-  text-align:center;
-  font-size: 18px;
-  padding-top: 15px;
-  color: #84CEEB;
+  margin: 0px;
 }
 
-.Card-Image {
+/* .Card-Image {
   height: 50%;
   width: auto;
   border-top-left-radius: 10px;
@@ -40,27 +43,30 @@ body{
   display: flex;
   flex-direction: row;
   margin-top: 30px;
-}
+} */
 
 .Like-Icon {
-  height: 30px;
-  width: auto;
-  padding-left: 14px;
-  padding-right: 10px;
+  width: 25px;
+  height: 25px;
+  position: relative;
+  bottom: 0%;
+  left: 10%;
 }
 
 .Like-Count {
-  font-size: 20px;
+  width: 25px;
+  height: 25px;
   position: relative;
-  bottom: 10px;
+  bottom: 23%;
+  left: 20%;
 }
 
 .Go-Icon {
-  height: 24px;
-  width: auto;
-  margin-left: 290px;
+  width: 23px;
+  height: 23px;
   position: relative;
-  top: 5px;
+  bottom: 53%;
+  left: 75%;
 }
 
 .Button-Set {
@@ -117,3 +123,106 @@ body{
   text-align: center;
   color: black;
 }
+
+
+
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #ecf9ff;
+}
+
+/* body {
+  color: #272727;
+  font-family: serif;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0;
+  padding: 1rem;
+} */
+
+.main{
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: 400;
+    text-align: center;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cards_item {
+  display: flex;
+  padding: 1rem;
+}
+
+@media (min-width: 40rem) {
+  .cards_item {
+    width: 50%;
+  }
+}
+
+@media (min-width: 56rem) {
+  .cards_item {
+    width: 33.3333%;
+  }
+}
+
+.card {
+  background-color: white;
+  border-radius: 0.25rem;
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+  display: flex;
+  height: 90%;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.card:hover {
+	transform: translateY(-0.5rem) scale(1.0125);
+	box-shadow: 0 0.5em 3rem -1rem rgba(0,0,0,0.5);
+}
+
+.card_content {
+  /* padding: 1rem; */
+  height: 75%;
+  /* background: linear-gradient(to bottom left, #EF8D9C 40%, #FFC39E 100%); */
+}
+
+/* .card_title {
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  margin: 0px;
+} */
+
+/* .card_text {
+  color: #ffffff;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+  font-weight: 400;
+} */
