@@ -1,6 +1,8 @@
-body {
+html, body {
   background-color:#b3e0ff;
+  height: auto;
 }
+
 .Thread-Comments-Container {
   margin-top: 100px;
   width: 60%;

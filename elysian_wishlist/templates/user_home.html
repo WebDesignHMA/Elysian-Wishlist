@@ -41,31 +41,17 @@
     </div>
   </div>
 
+
+
+
+
+
+
   <div class="LikedWishlist">
     <h1 class="I-Liked-Title" style="text-align: center">Wishlists I Liked</h1>
     {% if likedList|length < 1 %}
     <h4 class="No-Liked-Title" style="text-align: center">There are no liked wishlists.</h4>
     {% else %}
-
-    <!-- <div class="Wishlists-Container">
-      {% for list in likedList %}
-      <div class="Wishlist-Card">
-        <img class="Card-Image" src="https://source.unsplash.com/300x225/?wave" alt="wave" />
-        <div class="Card-Middle">
-          <p class="Wishlist-Title">{{ list.content }}</p>
-          <p class="Wishlist-Owner">{{ list.username }}</p>
-        </div>
-        <div class="Card-Bottom">
-          <img class="Like-Icon" src="../static/images/thumbsUpIcon.png" />
-          <p class="Like-Count">{{ list.liked.count() }}</p>
-          <a href="/list/{{list.id}}" class="Go-Link">
-            <img class="Go-Icon" src="../static/images/goIcon.png" />
-          </a>
-        </div>
-      </div>
-      {% endfor %}
-    </div> -->
-
 
 <div class="main">
   <ul class="cards">
@@ -91,32 +77,6 @@
     {% endif %}
   </div>
 
-  <!-- <div class="CreatedWishlist">
-    <h1 style="text-align: center">Wishlists I created</h1>
-    {% if listCreated|length < 1 %}
-    <h4 style="text-align: center">There are no liked wishlists.</h4>
-    {% else %}
-
-    <div class="Wishlists-Container">
-      {% for list in listCreated %}
-      <div class="Wishlist-Card">
-        <img class="Card-Image" src="https://source.unsplash.com/300x225/?wave" alt="wave" />
-        <div class="Card-Middle">
-          <p class="Wishlist-Title">{{ list.content }}</p>
-          <p class="Wishlist-Owner">{{ list.username }}</p>
-        </div>
-        <div class="Card-Bottom">
-          <img class="Like-Icon" src="../static/images/thumbsUpIcon.png" />
-          <p class="Like-Count">{{ list.liked.count() }}</p>
-          <a href="/list/{{list.id}}" class="Go-Link">
-            <img class="Go-Icon" src="../static/images/goIcon.png" />
-          </a>
-        </div>
-      </div>
-      {% endfor %}
-    </div>
-    {% endif %}
-  </div> -->
 
 </body>
 {% endblock %}
