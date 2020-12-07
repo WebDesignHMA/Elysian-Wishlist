@@ -89,13 +89,12 @@ body{
 
 .Profile-Card {
   border: 0.5px solid black;
-  margin-left: 100px;
-  width: 200px;
-  height: 200px;
+  margin-left: 2%;
+  width: 220px;
   border-radius: 8px;
+  margin-top: 20px;
   position: relative;
   bottom: 25px;
-  left: 78%;
 }
 
 .User-Profile-Icon {
@@ -116,4 +115,9 @@ body{
   height:auto;
   text-align: center;
   color: black;
+}
+
+.LikedWishlist {
+  position: relative;
+  bottom: 200px;
 }
