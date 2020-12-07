@@ -23,7 +23,7 @@
             <th class="Column-Title">Added</th>
             <th class="Column-Title">Creators</th>
         </tr> -->
-        <div class="Wishlists-Holder">
+        <!-- <div class="Wishlists-Holder">
         {% for list in lists %}
             <div class="Wishlist-Card">
                 <img class="Card-Image" src="https://source.unsplash.com/300x225/?wave" alt="wave" />
@@ -52,7 +52,47 @@
                 </div>
             </div>
             {% endfor %}
+        </div> -->
+
+        <div class="main">
+          <h1>Explore Wishlists</h1>
+          <ul class="cards">
+            {% for list in lists %}
+            <li class="cards_item">
+              <div class="card">
+                <div class="card_image"><img src="https://picsum.photos/500/300/?image=10">
+                </div>
+                <div class="card_content">
+                  <p class = "Wishlist-Title">
+                  <a class="Wishlist-Title-Link" href="/list/{{list[0].id}}">
+                      {{ list[0].content }}
+                  </a>
+                  </p>
+                  <p class="Creator-Username"> @{{ list[1].username }}</p>
+                  {% if has_liked_wishlist(list[0]) %}
+                    <a class="Wishlist-Unlike" href="{{ url_for('like_action', wishlist_id=list[0].id, action='unlike') }}" >
+                        <img class="Unlike-Icon" src="../static/images/thumbsUpIcon.png"/>
+                    </a>
+                  {% else %}
+                    <a class="Wishlist-Like" href="{{ url_for('like_action', wishlist_id=list[0].id, action='like') }}">
+                        <img class="Like-Icon" src="../static/images/thumbsUpUnfilled.png"/>
+                    </a>
+                  {% endif %}
+                  <p class="Like-Count"> {{ list[0].liked.count() }}</p>
+                    <a class="Comments-Center" href="{{ url_for('displayCommentsApi', id= list[0].id ) }}">
+                        <img class="Comment-Icon" src="../static/images/commentsIcon.png"/>
+                    </a>
+                  <p class="Comment-Count"> {{ list[0].comment.count() }}</p>
+                  <p class="Date-Added">{{ list[0].date_created.date().strftime('%B %d,%Y') }}</p>
+                </div>
+                {% endfor %}
+
+              </div>
+            </li>
+
+          </ul>
         </div>
+
         <!-- </table> -->
         {% endif %}
     <!--
