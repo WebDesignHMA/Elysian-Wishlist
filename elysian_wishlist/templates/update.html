@@ -16,7 +16,7 @@
     {% else %}
     <h1 class="Update-Title" style="text-align: center">Update Wishlist</h1>
         <form class="Update-Wishlist-Form" action="/update/{{context.list.id}}" method="POST">
-            <input type="text" name="content" class="Update-Input" value="{{context.list.content}}" maxlength="100" required>
+            <input type="text" name="content" class="Update-Input" value="{{context.list.content}}" maxlength="22" required>
             <input type="submit" value="+" class="Submit-Update">
         </form>
     {% endif %}
